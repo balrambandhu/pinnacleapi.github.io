@@ -1,0 +1,210 @@
+
+<h2>StraightBet</h2>
+<ul class="parameter">
+  <li class="param-required-true">betId : Integer
+    <br/>Bet identification
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">uniqueRequestId : String
+    <br/>Unique Request Id
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">wagerNumber : Integer
+    <br/>Wager identification. All bets placed thru the API will have value 1. Website supports multiple bets (wagers) placement in the same bet slip. In that case the bet would have appropriate wager number.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">placedAt : String
+    <br/>Date time when the bet was placed.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">betStatus : String
+    <br/>Bet Status. &#x3D;&gt; [ ACCEPTED &#x3D; Bet was accepted, CANCELLED &#x3D; Bet is cancelled as per Pinnacle betting rules, LOSE &#x3D; The bet is settled as lose, PENDING_ACCEPTANCE &#x3D; This status is reserved only for live bets. If a live bet is placed during danger zone or live delay is applied, it will be in PENDING_ACCEPTANCE , otherwise in ACCEPTED status. From this status bet can go to ACCEPTED or REJECTED status, REFUNDED &#x3D; When an event is cancelled or when the bet is settled as push, the bet will have REFUNDED status, NOT_ACCEPTED &#x3D; Bet was rejected. Bet can be rejected only if it was previously in PENDING_ACCEPTANCE status, WON &#x3D; The bet is settled as won ] 
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>ACCEPTED</dd>
+            <dd>CANCELLED</dd>
+            <dd>LOSE</dd>
+            <dd>PENDING_ACCEPTANCE</dd>
+            <dd>REFUNDED</dd>
+            <dd>NOT_ACCEPTED</dd>
+            <dd>WON</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">betType : String
+    <br/>Bet Type. &#x3D;&gt; [ MONEYLINE, TEAM_TOTAL_POINTS, SPREAD, TOTAL_POINTS, SPECIAL, PARLAY, TEASER, MANUAL ] 
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>MONEYLINE</dd>
+            <dd>TEAM_TOTAL_POINTS</dd>
+            <dd>SPREAD</dd>
+            <dd>TOTAL_POINTS</dd>
+            <dd>SPECIAL</dd>
+            <dd>PARLAY</dd>
+            <dd>TEASER</dd>
+            <dd>MANUAL</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">win : Double
+    <br/>Win amount.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">risk : Double
+    <br/>Risk amount.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">winLoss : Double
+    <br/>Win-Loss for settled bets.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">oddsFormat : String
+    <br/>Bet odds format. &#x3D;&gt; [ AMERICAN &#x3D; American odds format, DECIMAL &#x3D; Decimal (European) odds format, HONGKONG &#x3D; Hong Kong odds format, INDONESIAN &#x3D; Indonesian odds format, MALAY &#x3D; Malaysian odds format ] 
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>AMERICAN</dd>
+            <dd>DECIMAL</dd>
+            <dd>HONGKONG</dd>
+            <dd>INDONESIAN</dd>
+            <dd>MALAY</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">customerCommission : Double
+    <br/>Client’s commission on the bet.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">cancellationReason : CancellationReason
+    <br/>Cancellation Reason
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-true">updateSequence : Long
+    <br/>Update Sequence
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">sportId : Integer
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">leagueId : Integer
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">eventId : Integer
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">handicap : Double
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">price : Double
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">teamName : String
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">side : String
+    <br/> &#x3D;&gt; [ OVER, UNDER ] 
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>OVER</dd>
+            <dd>UNDER</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">pitcher1 : String
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">pitcher2 : String
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">pitcher1MustStart : String
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">pitcher2MustStart : String
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">team1 : String
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">team2 : String
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">periodNumber : Integer
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">team1Score : Double
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">team2Score : Double
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">ftTeam1Score : Double
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">ftTeam2Score : Double
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">pTeam1Score : Double
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">pTeam2Score : Double
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">isLive : String
+    <br/>
+  </li>
+</ul>

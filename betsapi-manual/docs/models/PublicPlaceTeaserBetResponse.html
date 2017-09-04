@@ -1,0 +1,93 @@
+
+<h2>PublicPlaceTeaserBetResponse</h2>
+<ul class="parameter">
+  <li class="param-required-">status : String
+    <br/>Status of the request.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">errorCode : String
+    <br/>When Status is PROCESSED_WITH_ERROR, provides a code indicating the specific problem. &#x3D;&gt; [ ABOVE_MAX_BET_AMOUNT &#x3D; Bet is above the maximum allowed, ALL_BETTING_CLOSED &#x3D; The wagering is disabled in the system (not related to a customer), BELOW_MIN_BET_AMOUNT &#x3D; Bet is below the minimum allowed, BLOCKED_BETTING &#x3D; Customer is an agent, BLOCKED_CLIENT &#x3D; Customer is inactive in the system, DOUBLE_HIT &#x3D; The website submitted the same bet more than once, DUPLICATE_CLIENT_REFERENCE_ID &#x3D; The teaser unique id and/or one of the leg unique id are the same, INCOMPLETE_CUSTOMER_BETTING_PROFILE &#x3D; The customer does not exist, INSUFFICIENT_FUNDS &#x3D; The risk amount is above the customer’s available balance, INVALID_COUNTRY &#x3D; Current location is proscribed, INVALID_CUSTOMER_PROFILE &#x3D; EITHER the customer does not exist OR the customer business rules are not verified, INVALID_LEGS &#x3D; One or more legs are not verified, INVALID_REQUEST &#x3D; Teaser request is not valid, ODDS_FORMAT_MISMATCH &#x3D; Agent customer’s odds format differs from wager request odds format, RESUBMIT_REQUEST &#x3D; The ticket hast to be resubmitted, TEASER_DOES_NOT_EXIST &#x3D; Teaser does not exist in the system, SAME_EVENT_ONLY_REQUIRED &#x3D; Legs required to be for the same game only. Specified in the Teaser Specifications, SYSTEM_ERROR_1 &#x3D; System error, SYSTEM_ERROR_2 &#x3D; System error, SYSTEM_ERROR_3 &#x3D; System error, TOO_FEW_LEGS &#x3D; Legs count is below Min Picks specified in the Teaser Specifications, TOO_MANY_LEGS &#x3D; Legs count is above Max Picks specified in the Teaser Specifications, WAGERING_SUSPENDED &#x3D; The customer wagering is suspended, CONTEST_FUNCTIONALITY_IS_DISABLED, DUPLICATE_UNIQUE_REQUEST_ID, RESPONSIBLE_BETTING_LOSS_LIMIT_EXCEEDED, RESPONSIBLE_BETTING_RISK_LIMIT_EXCEEDED ] 
+      <dl class="param-enum">
+        <dt>Enum:
+            <dd>ABOVE_MAX_BET_AMOUNT</dd>
+            <dd>ALL_BETTING_CLOSED</dd>
+            <dd>BELOW_MIN_BET_AMOUNT</dd>
+            <dd>BLOCKED_BETTING</dd>
+            <dd>BLOCKED_CLIENT</dd>
+            <dd>DOUBLE_HIT</dd>
+            <dd>DUPLICATE_CLIENT_REFERENCE_ID</dd>
+            <dd>INCOMPLETE_CUSTOMER_BETTING_PROFILE</dd>
+            <dd>INSUFFICIENT_FUNDS</dd>
+            <dd>INVALID_COUNTRY</dd>
+            <dd>INVALID_CUSTOMER_PROFILE</dd>
+            <dd>INVALID_LEGS</dd>
+            <dd>INVALID_REQUEST</dd>
+            <dd>ODDS_FORMAT_MISMATCH</dd>
+            <dd>RESUBMIT_REQUEST</dd>
+            <dd>TEASER_DOES_NOT_EXIST</dd>
+            <dd>SAME_EVENT_ONLY_REQUIRED</dd>
+            <dd>SYSTEM_ERROR_1</dd>
+            <dd>SYSTEM_ERROR_2</dd>
+            <dd>SYSTEM_ERROR_3</dd>
+            <dd>TOO_FEW_LEGS</dd>
+            <dd>TOO_MANY_LEGS</dd>
+            <dd>WAGERING_SUSPENDED</dd>
+            <dd>CONTEST_FUNCTIONALITY_IS_DISABLED</dd>
+            <dd>DUPLICATE_UNIQUE_REQUEST_ID</dd>
+            <dd>RESPONSIBLE_BETTING_LOSS_LIMIT_EXCEEDED</dd>
+            <dd>RESPONSIBLE_BETTING_RISK_LIMIT_EXCEEDED</dd>
+        </dt>
+      </dl>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">betId : Integer
+    <br/>Id of a newly created bet.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">uniqueRequestId : String
+    <br/>Unique identifier provided in the request.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">price : Double
+    <br/>Price for the bet.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">riskAmount : Double
+    <br/>Amount wagered..
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">winAmount : Double
+    <br/>Potential winnings.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">winRiskStake : String
+    <br/>Whether the stake amount is risk or win amount.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">minStakeAmount : Double
+    <br/>**TODO: SHOULD THIS PROPERTY BE REMOVED?**
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">maxStakeAmount : Double
+    <br/>**TODO: SHOULD THIS PROPERTY BE REMOVED?**
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">invalidLegs : List
+    <br/>A collection of invalid legs, if any.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">validLegs : List
+    <br/>A collection of valid legs, if any.
+  </li>
+</ul>

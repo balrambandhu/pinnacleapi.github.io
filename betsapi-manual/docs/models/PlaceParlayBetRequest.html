@@ -1,0 +1,37 @@
+
+<h2>PlaceParlayBetRequest</h2>
+<ul class="parameter">
+  <li class="param-required-">uniqueRequestId : String
+    <br/>This unique id of the place bet requests. This is to support idempotent requests.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">acceptBetterLine : String
+    <br/>Whether or not to accept a bet when there is a line change in favor of the client.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">riskAmount : String
+    <br/>Wagered amount in Client’s currency. It is always risk amount when placing Parlay bets NOTE: If round robin options is used this amount will apply for all parlays so actual amount wagered will be riskAmount X number of Parlays.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">oddsFormat : String
+    <br/>Bet is processed with this odds format.
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">externalCustomerId : String
+    <br/>
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">legs : List
+    <br/>Collection of parlay legs (format described below).
+  </li>
+</ul>
+<ul class="parameter">
+  <li class="param-required-">roundRobinOptions : List
+    <br/>[Parlay, TwoLegRoundRobin, ThreeLegRoundRobin, FourLegRoundRobin, FiveLegRoundRobin, SixLegRoundRobin, SevenLegRoundRobin, EightLegRoundRobin]
+  </li>
+</ul>
