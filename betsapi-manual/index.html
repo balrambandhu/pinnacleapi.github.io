@@ -2458,7 +2458,7 @@ margin-bottom: 20px;
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Bets-betsGetBetsByType-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> "https://api.pinnacle.com/v2/bets?betlist=&fromDate=&toDate=&betids=&uniqueRequestIds="
+curl -X <span style="text-transform: uppercase;">get</span> -H "Authorization: Basic [[basicHash]]"  "https://api.pinnacle.com/v2/bets?betlist=&fromDate=&toDate=&betids=&uniqueRequestIds="
 
 
 </code></pre>
@@ -2477,7 +2477,13 @@ import java.util.*;
 public class BetsApiExample {
 
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
         
+        // Configure HTTP basic authorization: basicAuth
+        HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
+
         BetsApi apiInstance = new BetsApi();
         String betlist = betlist_example; // String | Type of bet list to return. Not needed when betids is submitted. => [ SETTLED, RUNNING, CANCELLED ] 
         String fromDate = fromDate_example; // String | Start date of the requested period. <br />Required when betlist parameter is submitted.<br />Difference between fromDate and toDdate can’t be more than 30 days.<br />Expected format is ISO8601 - can be set to just date or date and time.
@@ -2532,6 +2538,11 @@ public class BetsApiExample {
 
                                                 <div class="tab-pane" id="examples-Bets-betsGetBetsByType-0-objc">
                                                     <pre class="prettyprint"><code class="language-cpp">
+Configuration *apiConfig = [Configuration sharedConfig];
+// Configure HTTP basic authorization (authentication scheme: basicAuth)
+[apiConfig setUsername:@"YOUR_USERNAME"];
+[apiConfig setPassword:@"YOUR_PASSWORD"];
+
 
 String *betlist = betlist_example; // Type of bet list to return. Not needed when betids is submitted. => [ SETTLED, RUNNING, CANCELLED ]  (optional)
 String *fromDate = fromDate_example; // Start date of the requested period. <br />Required when betlist parameter is submitted.<br />Difference between fromDate and toDdate can’t be more than 30 days.<br />Expected format is ISO8601 - can be set to just date or date and time. (optional)
@@ -2561,6 +2572,12 @@ BetsApi *apiInstance = [[BetsApi alloc] init];
                                                 <div class="tab-pane" id="examples-Bets-betsGetBetsByType-0-javascript">
                                                     <pre class="prettyprint"><code class="language-js">
 var  = require('');
+var defaultClient = .ApiClient.instance;
+
+// Configure HTTP basic authorization: basicAuth
+var basicAuth = defaultClient.authentications['basicAuth'];
+basicAuth.username = 'YOUR USERNAME'
+basicAuth.password = 'YOUR PASSWORD'
 
 var api = new .BetsApi()
 
@@ -2603,6 +2620,10 @@ namespace Example
         public void main()
         {
             
+            // Configure HTTP basic authorization: basicAuth
+            Configuration.Default.Username = "YOUR_USERNAME";
+            Configuration.Default.Password = "YOUR_PASSWORD";
+
             var apiInstance = new BetsApi();
             var betlist = betlist_example;  // String | Type of bet list to return. Not needed when betids is submitted. => [ SETTLED, RUNNING, CANCELLED ]  (optional) 
             var fromDate = fromDate_example;  // String | Start date of the requested period. <br />Required when betlist parameter is submitted.<br />Difference between fromDate and toDdate can’t be more than 30 days.<br />Expected format is ISO8601 - can be set to just date or date and time. (optional) 
@@ -2632,6 +2653,10 @@ namespace Example
                                                   <pre class="prettyprint"><code class="language-php">
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure HTTP basic authorization: basicAuth
+io.swagger.client\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERNAME');
+io.swagger.client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
 
 $api_instance = new io.swagger.client\Api\BetsApi();
 $betlist = betlist_example; // String | Type of bet list to return. Not needed when betids is submitted. => [ SETTLED, RUNNING, CANCELLED ] 
@@ -3004,7 +3029,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Bets-betsGetBettingStatus-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">get</span> "https://api.pinnacle.com/v1/bets/betting-status"
+curl -X <span style="text-transform: uppercase;">get</span> -H "Authorization: Basic [[basicHash]]"  "https://api.pinnacle.com/v1/bets/betting-status"
 
 
 </code></pre>
@@ -3023,7 +3048,13 @@ import java.util.*;
 public class BetsApiExample {
 
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
         
+        // Configure HTTP basic authorization: basicAuth
+        HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
+
         BetsApi apiInstance = new BetsApi();
         try {
             WageringStatusResponse result = apiInstance.betsGetBettingStatus();
@@ -3068,6 +3099,11 @@ public class BetsApiExample {
 
                                                 <div class="tab-pane" id="examples-Bets-betsGetBettingStatus-0-objc">
                                                     <pre class="prettyprint"><code class="language-cpp">
+Configuration *apiConfig = [Configuration sharedConfig];
+// Configure HTTP basic authorization (authentication scheme: basicAuth)
+[apiConfig setUsername:@"YOUR_USERNAME"];
+[apiConfig setPassword:@"YOUR_PASSWORD"];
+
 
 
 BetsApi *apiInstance = [[BetsApi alloc] init];
@@ -3088,6 +3124,12 @@ BetsApi *apiInstance = [[BetsApi alloc] init];
                                                 <div class="tab-pane" id="examples-Bets-betsGetBettingStatus-0-javascript">
                                                     <pre class="prettyprint"><code class="language-js">
 var  = require('');
+var defaultClient = .ApiClient.instance;
+
+// Configure HTTP basic authorization: basicAuth
+var basicAuth = defaultClient.authentications['basicAuth'];
+basicAuth.username = 'YOUR USERNAME'
+basicAuth.password = 'YOUR PASSWORD'
 
 var api = new .BetsApi()
 
@@ -3122,6 +3164,10 @@ namespace Example
         public void main()
         {
             
+            // Configure HTTP basic authorization: basicAuth
+            Configuration.Default.Username = "YOUR_USERNAME";
+            Configuration.Default.Password = "YOUR_PASSWORD";
+
             var apiInstance = new BetsApi();
 
             try
@@ -3146,6 +3192,10 @@ namespace Example
                                                   <pre class="prettyprint"><code class="language-php">
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure HTTP basic authorization: basicAuth
+io.swagger.client\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERNAME');
+io.swagger.client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
 
 $api_instance = new io.swagger.client\Api\BetsApi();
 
@@ -3330,7 +3380,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Bets-betsParlay-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "https://api.pinnacle.com/v1/bets/parlay"
+curl -X <span style="text-transform: uppercase;">post</span> -H "Authorization: Basic [[basicHash]]"  "https://api.pinnacle.com/v1/bets/parlay"
 
 
 </code></pre>
@@ -3349,7 +3399,13 @@ import java.util.*;
 public class BetsApiExample {
 
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
         
+        // Configure HTTP basic authorization: basicAuth
+        HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
+
         BetsApi apiInstance = new BetsApi();
         PlaceParlayBetRequest request = ; // PlaceParlayBetRequest | The Parlay request.
         try {
@@ -3396,6 +3452,11 @@ public class BetsApiExample {
 
                                                 <div class="tab-pane" id="examples-Bets-betsParlay-0-objc">
                                                     <pre class="prettyprint"><code class="language-cpp">
+Configuration *apiConfig = [Configuration sharedConfig];
+// Configure HTTP basic authorization (authentication scheme: basicAuth)
+[apiConfig setUsername:@"YOUR_USERNAME"];
+[apiConfig setPassword:@"YOUR_PASSWORD"];
+
 
 PlaceParlayBetRequest *request = ; // The Parlay request.
 
@@ -3417,6 +3478,12 @@ BetsApi *apiInstance = [[BetsApi alloc] init];
                                                 <div class="tab-pane" id="examples-Bets-betsParlay-0-javascript">
                                                     <pre class="prettyprint"><code class="language-js">
 var  = require('');
+var defaultClient = .ApiClient.instance;
+
+// Configure HTTP basic authorization: basicAuth
+var basicAuth = defaultClient.authentications['basicAuth'];
+basicAuth.username = 'YOUR USERNAME'
+basicAuth.password = 'YOUR PASSWORD'
 
 var api = new .BetsApi()
 
@@ -3454,6 +3521,10 @@ namespace Example
         public void main()
         {
             
+            // Configure HTTP basic authorization: basicAuth
+            Configuration.Default.Username = "YOUR_USERNAME";
+            Configuration.Default.Password = "YOUR_PASSWORD";
+
             var apiInstance = new BetsApi();
             var request = new PlaceParlayBetRequest(); // PlaceParlayBetRequest | The Parlay request.
 
@@ -3479,6 +3550,10 @@ namespace Example
                                                   <pre class="prettyprint"><code class="language-php">
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure HTTP basic authorization: basicAuth
+io.swagger.client\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERNAME');
+io.swagger.client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
 
 $api_instance = new io.swagger.client\Api\BetsApi();
 $request = ; // PlaceParlayBetRequest | The Parlay request.
@@ -3875,7 +3950,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Bets-betsSpecial-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "https://api.pinnacle.com/v1/bets/special"
+curl -X <span style="text-transform: uppercase;">post</span> -H "Authorization: Basic [[basicHash]]"  "https://api.pinnacle.com/v1/bets/special"
 
 
 </code></pre>
@@ -3894,7 +3969,13 @@ import java.util.*;
 public class BetsApiExample {
 
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
         
+        // Configure HTTP basic authorization: basicAuth
+        HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
+
         BetsApi apiInstance = new BetsApi();
         MultiBetRequest[SpecialBetRequest] request = ; // MultiBetRequest[SpecialBetRequest] | The SpecialBet request.
         try {
@@ -3941,6 +4022,11 @@ public class BetsApiExample {
 
                                                 <div class="tab-pane" id="examples-Bets-betsSpecial-0-objc">
                                                     <pre class="prettyprint"><code class="language-cpp">
+Configuration *apiConfig = [Configuration sharedConfig];
+// Configure HTTP basic authorization (authentication scheme: basicAuth)
+[apiConfig setUsername:@"YOUR_USERNAME"];
+[apiConfig setPassword:@"YOUR_PASSWORD"];
+
 
 MultiBetRequest[SpecialBetRequest] *request = ; // The SpecialBet request.
 
@@ -3962,6 +4048,12 @@ BetsApi *apiInstance = [[BetsApi alloc] init];
                                                 <div class="tab-pane" id="examples-Bets-betsSpecial-0-javascript">
                                                     <pre class="prettyprint"><code class="language-js">
 var  = require('');
+var defaultClient = .ApiClient.instance;
+
+// Configure HTTP basic authorization: basicAuth
+var basicAuth = defaultClient.authentications['basicAuth'];
+basicAuth.username = 'YOUR USERNAME'
+basicAuth.password = 'YOUR PASSWORD'
 
 var api = new .BetsApi()
 
@@ -3999,6 +4091,10 @@ namespace Example
         public void main()
         {
             
+            // Configure HTTP basic authorization: basicAuth
+            Configuration.Default.Username = "YOUR_USERNAME";
+            Configuration.Default.Password = "YOUR_PASSWORD";
+
             var apiInstance = new BetsApi();
             var request = new MultiBetRequest[SpecialBetRequest](); // MultiBetRequest[SpecialBetRequest] | The SpecialBet request.
 
@@ -4024,6 +4120,10 @@ namespace Example
                                                   <pre class="prettyprint"><code class="language-php">
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure HTTP basic authorization: basicAuth
+io.swagger.client\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERNAME');
+io.swagger.client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
 
 $api_instance = new io.swagger.client\Api\BetsApi();
 $request = ; // MultiBetRequest[SpecialBetRequest] | The SpecialBet request.
@@ -4211,7 +4311,7 @@ try {
                                         <article id="api-Bets-betsStraight-0" data-group="User" data-name="betsStraight" data-version="0">
                                             <div class="pull-left">
                                                 <h1>betsStraight</h1>
-                                                <p>Place straight bet in the system.</p>
+                                                <p>Place straight bet.</p>
                                             </div>
                                             <div class="pull-right">
 
@@ -4262,7 +4362,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Bets-betsStraight-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "https://api.pinnacle.com/v1/bets/place"
+curl -X <span style="text-transform: uppercase;">post</span> -H "Authorization: Basic [[basicHash]]"  "https://api.pinnacle.com/v1/bets/place"
 
 
 </code></pre>
@@ -4281,7 +4381,13 @@ import java.util.*;
 public class BetsApiExample {
 
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
         
+        // Configure HTTP basic authorization: basicAuth
+        HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
+
         BetsApi apiInstance = new BetsApi();
         PlaceBetRequest request = ; // PlaceBetRequest | The Place StraightBet request.
         try {
@@ -4328,12 +4434,17 @@ public class BetsApiExample {
 
                                                 <div class="tab-pane" id="examples-Bets-betsStraight-0-objc">
                                                     <pre class="prettyprint"><code class="language-cpp">
+Configuration *apiConfig = [Configuration sharedConfig];
+// Configure HTTP basic authorization (authentication scheme: basicAuth)
+[apiConfig setUsername:@"YOUR_USERNAME"];
+[apiConfig setPassword:@"YOUR_PASSWORD"];
+
 
 PlaceBetRequest *request = ; // The Place StraightBet request.
 
 BetsApi *apiInstance = [[BetsApi alloc] init];
 
-// Place straight bet in the system.
+// Place straight bet.
 [apiInstance betsStraightWith:request
               completionHandler: ^(PlaceBetResponse output, NSError* error) {
                             if (output) {
@@ -4349,6 +4460,12 @@ BetsApi *apiInstance = [[BetsApi alloc] init];
                                                 <div class="tab-pane" id="examples-Bets-betsStraight-0-javascript">
                                                     <pre class="prettyprint"><code class="language-js">
 var  = require('');
+var defaultClient = .ApiClient.instance;
+
+// Configure HTTP basic authorization: basicAuth
+var basicAuth = defaultClient.authentications['basicAuth'];
+basicAuth.username = 'YOUR USERNAME'
+basicAuth.password = 'YOUR PASSWORD'
 
 var api = new .BetsApi()
 
@@ -4386,12 +4503,16 @@ namespace Example
         public void main()
         {
             
+            // Configure HTTP basic authorization: basicAuth
+            Configuration.Default.Username = "YOUR_USERNAME";
+            Configuration.Default.Password = "YOUR_PASSWORD";
+
             var apiInstance = new BetsApi();
             var request = new PlaceBetRequest(); // PlaceBetRequest | The Place StraightBet request.
 
             try
             {
-                // Place straight bet in the system.
+                // Place straight bet.
                 PlaceBetResponse result = apiInstance.betsStraight(request);
                 Debug.WriteLine(result);
             }
@@ -4411,6 +4532,10 @@ namespace Example
                                                   <pre class="prettyprint"><code class="language-php">
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure HTTP basic authorization: basicAuth
+io.swagger.client\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERNAME');
+io.swagger.client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
 
 $api_instance = new io.swagger.client\Api\BetsApi();
 $request = ; // PlaceBetRequest | The Place StraightBet request.
@@ -4807,7 +4932,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Bets-betsStraightV2-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "https://api.pinnacle.com/v2/bets/straight"
+curl -X <span style="text-transform: uppercase;">post</span> -H "Authorization: Basic [[basicHash]]"  "https://api.pinnacle.com/v2/bets/straight"
 
 
 </code></pre>
@@ -4826,7 +4951,13 @@ import java.util.*;
 public class BetsApiExample {
 
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
         
+        // Configure HTTP basic authorization: basicAuth
+        HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
+
         BetsApi apiInstance = new BetsApi();
         PlaceBetRequest request = ; // PlaceBetRequest | 
         try {
@@ -4873,6 +5004,11 @@ public class BetsApiExample {
 
                                                 <div class="tab-pane" id="examples-Bets-betsStraightV2-0-objc">
                                                     <pre class="prettyprint"><code class="language-cpp">
+Configuration *apiConfig = [Configuration sharedConfig];
+// Configure HTTP basic authorization (authentication scheme: basicAuth)
+[apiConfig setUsername:@"YOUR_USERNAME"];
+[apiConfig setPassword:@"YOUR_PASSWORD"];
+
 
 PlaceBetRequest *request = ; // 
 
@@ -4894,6 +5030,12 @@ BetsApi *apiInstance = [[BetsApi alloc] init];
                                                 <div class="tab-pane" id="examples-Bets-betsStraightV2-0-javascript">
                                                     <pre class="prettyprint"><code class="language-js">
 var  = require('');
+var defaultClient = .ApiClient.instance;
+
+// Configure HTTP basic authorization: basicAuth
+var basicAuth = defaultClient.authentications['basicAuth'];
+basicAuth.username = 'YOUR USERNAME'
+basicAuth.password = 'YOUR PASSWORD'
 
 var api = new .BetsApi()
 
@@ -4931,6 +5073,10 @@ namespace Example
         public void main()
         {
             
+            // Configure HTTP basic authorization: basicAuth
+            Configuration.Default.Username = "YOUR_USERNAME";
+            Configuration.Default.Password = "YOUR_PASSWORD";
+
             var apiInstance = new BetsApi();
             var request = new PlaceBetRequest(); // PlaceBetRequest | 
 
@@ -4956,6 +5102,10 @@ namespace Example
                                                   <pre class="prettyprint"><code class="language-php">
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure HTTP basic authorization: basicAuth
+io.swagger.client\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERNAME');
+io.swagger.client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
 
 $api_instance = new io.swagger.client\Api\BetsApi();
 $request = ; // PlaceBetRequest | 
@@ -5431,7 +5581,7 @@ try {
                                             <div class="tab-content">
                                                 <div class="tab-pane active" id="examples-Bets-betsTeaser-0-curl">
                                                     <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "https://api.pinnacle.com/v1/bets/teaser"
+curl -X <span style="text-transform: uppercase;">post</span> -H "Authorization: Basic [[basicHash]]"  "https://api.pinnacle.com/v1/bets/teaser"
 
 
 </code></pre>
@@ -5450,7 +5600,13 @@ import java.util.*;
 public class BetsApiExample {
 
     public static void main(String[] args) {
+        ApiClient defaultClient = Configuration.getDefaultApiClient();
         
+        // Configure HTTP basic authorization: basicAuth
+        HttpBasicAuth basicAuth = (HttpBasicAuth) defaultClient.getAuthentication("basicAuth");
+        basicAuth.setUsername("YOUR USERNAME");
+        basicAuth.setPassword("YOUR PASSWORD");
+
         BetsApi apiInstance = new BetsApi();
         PlaceTeaserBetRequest request = ; // PlaceTeaserBetRequest | The PlaceTeaser request.
         try {
@@ -5497,6 +5653,11 @@ public class BetsApiExample {
 
                                                 <div class="tab-pane" id="examples-Bets-betsTeaser-0-objc">
                                                     <pre class="prettyprint"><code class="language-cpp">
+Configuration *apiConfig = [Configuration sharedConfig];
+// Configure HTTP basic authorization (authentication scheme: basicAuth)
+[apiConfig setUsername:@"YOUR_USERNAME"];
+[apiConfig setPassword:@"YOUR_PASSWORD"];
+
 
 PlaceTeaserBetRequest *request = ; // The PlaceTeaser request.
 
@@ -5518,6 +5679,12 @@ BetsApi *apiInstance = [[BetsApi alloc] init];
                                                 <div class="tab-pane" id="examples-Bets-betsTeaser-0-javascript">
                                                     <pre class="prettyprint"><code class="language-js">
 var  = require('');
+var defaultClient = .ApiClient.instance;
+
+// Configure HTTP basic authorization: basicAuth
+var basicAuth = defaultClient.authentications['basicAuth'];
+basicAuth.username = 'YOUR USERNAME'
+basicAuth.password = 'YOUR PASSWORD'
 
 var api = new .BetsApi()
 
@@ -5555,6 +5722,10 @@ namespace Example
         public void main()
         {
             
+            // Configure HTTP basic authorization: basicAuth
+            Configuration.Default.Username = "YOUR_USERNAME";
+            Configuration.Default.Password = "YOUR_PASSWORD";
+
             var apiInstance = new BetsApi();
             var request = new PlaceTeaserBetRequest(); // PlaceTeaserBetRequest | The PlaceTeaser request.
 
@@ -5580,6 +5751,10 @@ namespace Example
                                                   <pre class="prettyprint"><code class="language-php">
 <?php
 require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure HTTP basic authorization: basicAuth
+io.swagger.client\Configuration::getDefaultConfiguration()->setUsername('YOUR_USERNAME');
+io.swagger.client\Configuration::getDefaultConfiguration()->setPassword('YOUR_PASSWORD');
 
 $api_instance = new io.swagger.client\Api\BetsApi();
 $request = ; // PlaceTeaserBetRequest | The PlaceTeaser request.
@@ -5939,7 +6114,7 @@ try {
             </div>
             <div id="generator">
                 <div class="content">
-                    Generated 2017-09-04T01:04:14.798Z
+                    Generated 2017-09-04T01:17:54.089Z
                 </div>
             </div>
         </div>
