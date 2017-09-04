@@ -2343,6 +2343,9 @@ margin-bottom: 20px;
 
 
                                 <li class="nav-header" data-group="Bets"><a href="#api-Bets">API Methods - Bets</a></li>
+                                    <li data-group="Bets" data-name="bets Straight" class="">
+                                        <a href="#api-Bets-bets Straight">bets Straight</a>
+                                    </li>
                                     <li data-group="Bets" data-name="betsGetBetsByType" class="">
                                         <a href="#api-Bets-betsGetBetsByType">betsGetBetsByType</a>
                                     </li>
@@ -2354,9 +2357,6 @@ margin-bottom: 20px;
                                     </li>
                                     <li data-group="Bets" data-name="betsSpecial" class="">
                                         <a href="#api-Bets-betsSpecial">betsSpecial</a>
-                                    </li>
-                                    <li data-group="Bets" data-name="betsStraight" class="">
-                                        <a href="#api-Bets-betsStraight">betsStraight</a>
                                     </li>
                                     <li data-group="Bets" data-name="betsStraightV2" class="">
                                         <a href="#api-Bets-betsStraightV2">betsStraightV2</a>
@@ -2395,6 +2395,551 @@ margin-bottom: 20px;
 
                             <section id="api-Bets">
                                 <h1>Bets</h1>
+
+
+
+
+
+
+
+                                    <div id="api-Bets-bets Straight">
+
+                                        <article id="api-Bets-bets Straight-0" data-group="User" data-name="bets Straight" data-version="0">
+                                            <div class="pull-left">
+                                                <h1>bets Straight</h1>
+                                                <p>Place straight bet in the system.</p>
+                                            </div>
+                                            <div class="pull-right">
+
+                                            </div>
+                                            <div class="clearfix"></div>
+
+                                            <p></p>
+                                            <p class="marked"></p>
+                                            <p></p>
+                                            <br />
+
+                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/v1/bets/place</span></code></pre>
+
+                                            <p>
+                                                <h3>Usage and SDK Samples</h3>
+                                            </p>
+
+                                            <ul class="nav nav-tabs nav-tabs-examples">
+                                                <li class="active">
+                                                    <a href="#examples-Bets-bets Straight-0-curl">Curl</a>
+                                                </li>
+                                                <li class="">
+              <a href="#examples-Bets-bets Straight-0-java">Java</a>
+            </li>
+            <li class="">
+              <a href="#examples-Bets-bets Straight-0-android">Android</a>
+            </li>
+            <!--<li class="">
+              <a href="#examples-Bets-bets Straight-0-groovy">Groovy</a>
+            </li>-->
+                                                <li class="">
+                                                    <a href="#examples-Bets-bets Straight-0-objc">Obj-C</a>
+                                                </li>
+                                                <li class="">
+                                                    <a href="#examples-Bets-bets Straight-0-javascript">JavaScript</a>
+                                                </li>
+                                                <!--<li class="">
+              <a href="#examples-Bets-bets Straight-0-angular">Angular</a>
+            </li>-->
+                                                <li class="">
+                                                    <a href="#examples-Bets-bets Straight-0-csharp">C#</a>
+                                                </li>
+                                                <li class="">
+              <a href="#examples-Bets-bets Straight-0-php">PHP</a>
+            </li>
+                                            </ul>
+
+                                            <div class="tab-content">
+                                                <div class="tab-pane active" id="examples-Bets-bets Straight-0-curl">
+                                                    <pre class="prettyprint"><code class="language-bsh">
+curl -X <span style="text-transform: uppercase;">post</span> "https://virtserver.swaggerhub.com/pinnacle/BetsAPI/1.0.0/v1/bets/place"
+
+
+</code></pre>
+                                                </div>
+
+                                                <div class="tab-pane" id="examples-Bets-bets Straight-0-java">
+                                                  <pre class="prettyprint"><code class="language-java">
+import io.swagger.client.*;
+import io.swagger.client.auth.*;
+import io.swagger.client.model.*;
+import .BetsApi;
+
+import java.io.File;
+import java.util.*;
+
+public class BetsApiExample {
+
+    public static void main(String[] args) {
+        
+        BetsApi apiInstance = new BetsApi();
+        PlaceBetRequest request = ; // PlaceBetRequest | The Place StraightBet request.
+        try {
+            PlaceBetResponse result = apiInstance.bets Straight(request);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling BetsApi#bets Straight");
+            e.printStackTrace();
+        }
+    }
+}
+
+                                                  </code></pre>
+          </div>
+
+
+                                                <div class="tab-pane" id="examples-Bets-bets Straight-0-android">
+                                                  <pre class="prettyprint"><code class="language-java">
+import .BetsApi;
+
+public class BetsApiExample {
+
+    public static void main(String[] args) {
+        BetsApi apiInstance = new BetsApi();
+        PlaceBetRequest request = ; // PlaceBetRequest | The Place StraightBet request.
+        try {
+            PlaceBetResponse result = apiInstance.bets Straight(request);
+            System.out.println(result);
+        } catch (ApiException e) {
+            System.err.println("Exception when calling BetsApi#bets Straight");
+            e.printStackTrace();
+        }
+    }
+}
+
+                                                  </code></pre>
+          </div>
+
+          <!--
+          <div class="tab-pane" id="examples-Bets-bets Straight-0-groovy">
+            <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+          </div> -->
+
+
+                                                <div class="tab-pane" id="examples-Bets-bets Straight-0-objc">
+                                                    <pre class="prettyprint"><code class="language-cpp">
+
+PlaceBetRequest *request = ; // The Place StraightBet request.
+
+BetsApi *apiInstance = [[BetsApi alloc] init];
+
+// Place straight bet in the system.
+[apiInstance bets StraightWith:request
+              completionHandler: ^(PlaceBetResponse output, NSError* error) {
+                            if (output) {
+                                NSLog(@"%@", output);
+                            }
+                            if (error) {
+                                NSLog(@"Error: %@", error);
+                            }
+                        }];
+
+                                                    </code></pre>
+                                                </div>
+                                                <div class="tab-pane" id="examples-Bets-bets Straight-0-javascript">
+                                                    <pre class="prettyprint"><code class="language-js">
+var  = require('');
+
+var api = new .BetsApi()
+
+var request = ; // {PlaceBetRequest} The Place StraightBet request.
+
+
+var callback = function(error, data, response) {
+  if (error) {
+    console.error(error);
+  } else {
+    console.log('API called successfully. Returned data: ' + data);
+  }
+};
+api.bets Straight(request, callback);
+
+                                                    </code></pre>
+                                                </div>
+
+                                                <!--<div class="tab-pane" id="examples-Bets-bets Straight-0-angular">
+            <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
+          </div>-->
+
+                                                <div class="tab-pane" id="examples-Bets-bets Straight-0-csharp">
+                                                    <pre class="prettyprint"><code class="language-cs">
+using System;
+using System.Diagnostics;
+using .Api;
+using .Client;
+using ;
+
+namespace Example
+{
+    public class bets StraightExample
+    {
+        public void main()
+        {
+            
+            var apiInstance = new BetsApi();
+            var request = new PlaceBetRequest(); // PlaceBetRequest | The Place StraightBet request.
+
+            try
+            {
+                // Place straight bet in the system.
+                PlaceBetResponse result = apiInstance.bets Straight(request);
+                Debug.WriteLine(result);
+            }
+            catch (Exception e)
+            {
+                Debug.Print("Exception when calling BetsApi.bets Straight: " + e.Message );
+            }
+        }
+    }
+}
+
+                                                    </code></pre>
+                                                </div>
+
+
+                                                <div class="tab-pane" id="examples-Bets-bets Straight-0-php">
+                                                  <pre class="prettyprint"><code class="language-php">
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+$api_instance = new io.swagger.client\Api\BetsApi();
+$request = ; // PlaceBetRequest | The Place StraightBet request.
+
+try {
+    $result = $api_instance->bets Straight($request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling BetsApi->bets Straight: ', $e->getMessage(), PHP_EOL;
+}
+
+                                                  </code></pre>
+          </div>
+
+                                            </div>
+
+
+
+
+
+                                            <h2>Parameters</h2>
+
+
+
+
+
+
+                                                <div class="methodsubtabletitle">Body parameters</div>
+                                                <table id="methodsubtable">
+                                                    <tr>
+                                                        <th width="150px">Name</th>
+                                                        <th>Description</th>
+                                                    </tr>
+                                                    <!---->
+                                                        <tr><td style="width:150px;">request <span style="color:red;">*</span></td>
+<td>
+
+
+<script>
+												$(document).ready(function() {
+													var schemaWrapper = {
+  "in" : "body",
+  "name" : "request",
+  "description" : "The Place StraightBet request.",
+  "required" : true,
+  "schema" : {
+    "$ref" : "#/definitions/PlaceBetRequest"
+  }
+};
+													
+														var schema = schemaWrapper.schema;
+														schemaWrapper.definitions = defs;
+														JsonRefs.resolveRefs(schemaWrapper, {"depth":3, "resolveRemoteRefs":false,"resolveFileRefs":false },function (err, resolved, metadata) {
+														
+
+														
+													var view = new JSONSchemaView(resolved.schema,2,{isBodyParam: true});
+													 
+													var result = $('#d2e199_bets Straight_request');
+													result.empty();
+													result.append(view.render());
+													
+
+													
+    											
+													
+
+
+												});
+
+
+
+												});
+												</script>
+												<div id="d2e199_bets Straight_request"></div>
+</td>
+</tr>
+
+
+                                                </table>
+
+
+
+                                            <h2>Responses</h2>
+
+                                                <h3> Status: 200 - OK </h3>
+
+                                                <ul class="nav nav-tabs nav-tabs-examples" >
+
+                                                    <li class="active">
+                                                        <a href="#examples-Bets-bets Straight-schema">Schema</a>
+                                                    </li>
+
+
+                                                </ul>
+
+
+
+
+
+
+
+                                                <div class="tab-content" style='margin-bottom: 10px;'>
+
+
+
+                                                    <div class="tab-pane active" id="examples-Bets-bets Straight-schema">
+
+
+
+
+                                                        <div id='examples-Bets-bets Straight-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+
+                                                            <script>
+                                                                $(document).ready(function() {
+                                                                    var schemaWrapper = {
+  "description" : "OK",
+  "schema" : {
+    "$ref" : "#/definitions/PlaceBetResponse"
+  }
+};
+                                                                    var schema = schemaWrapper.schema;
+                                                                    schemaWrapper.definitions = defs;
+                                                                    //console.log(JSON.stringify(schema))
+                                                                    JsonRefs.resolveRefs(schemaWrapper, {
+                                                                        "depth": 3,
+                                                                        "resolveRemoteRefs": false,
+                                                                        "resolveFileRefs": false
+                                                                    }, function(err, resolved, metadata) {
+
+                                                                        //console.log(JSON.stringify(resolved));
+
+
+
+                                                                        var view = new JSONSchemaView(resolved.schema, 3);
+                                                                        $('#examples-Bets-bets Straight-schema-data').val(JSON.stringify(resolved.schema));
+                                                                        var result = $('#examples-Bets-bets Straight-schema-200');
+                                                                        result.empty();
+                                                                        result.append(view.render());
+                                                                    });
+
+
+
+
+                                                                });
+                                                            </script>
+                                                        </div>
+                                                        <input id='examples-Bets-bets Straight-schema-data' type='hidden' value=''></input>
+
+
+
+
+
+
+                                                    </div>
+
+
+
+
+                                                </div>
+
+
+
+
+                                                <h3> Status: 400 - BadRequest </h3>
+
+                                                <ul class="nav nav-tabs nav-tabs-examples" >
+
+                                                    <li class="active">
+                                                        <a href="#examples-Bets-bets Straight-schema">Schema</a>
+                                                    </li>
+
+
+                                                </ul>
+
+
+
+
+
+
+
+                                                <div class="tab-content" style='margin-bottom: 10px;'>
+
+
+
+                                                    <div class="tab-pane active" id="examples-Bets-bets Straight-schema">
+
+
+
+
+                                                        <div id='examples-Bets-bets Straight-schema-400' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+
+                                                            <script>
+                                                                $(document).ready(function() {
+                                                                    var schemaWrapper = {
+  "description" : "BadRequest",
+  "schema" : {
+    "$ref" : "#/definitions/ErrorResponse"
+  }
+};
+                                                                    var schema = schemaWrapper.schema;
+                                                                    schemaWrapper.definitions = defs;
+                                                                    //console.log(JSON.stringify(schema))
+                                                                    JsonRefs.resolveRefs(schemaWrapper, {
+                                                                        "depth": 3,
+                                                                        "resolveRemoteRefs": false,
+                                                                        "resolveFileRefs": false
+                                                                    }, function(err, resolved, metadata) {
+
+                                                                        //console.log(JSON.stringify(resolved));
+
+
+
+                                                                        var view = new JSONSchemaView(resolved.schema, 3);
+                                                                        $('#examples-Bets-bets Straight-schema-data').val(JSON.stringify(resolved.schema));
+                                                                        var result = $('#examples-Bets-bets Straight-schema-400');
+                                                                        result.empty();
+                                                                        result.append(view.render());
+                                                                    });
+
+
+
+
+                                                                });
+                                                            </script>
+                                                        </div>
+                                                        <input id='examples-Bets-bets Straight-schema-data' type='hidden' value=''></input>
+
+
+
+
+
+
+                                                    </div>
+
+
+
+
+                                                </div>
+
+
+
+
+                                                <h3> Status: 500 - InternalServerError </h3>
+
+                                                <ul class="nav nav-tabs nav-tabs-examples" >
+
+                                                    <li class="active">
+                                                        <a href="#examples-Bets-bets Straight-schema">Schema</a>
+                                                    </li>
+
+
+                                                </ul>
+
+
+
+
+
+
+
+                                                <div class="tab-content" style='margin-bottom: 10px;'>
+
+
+
+                                                    <div class="tab-pane active" id="examples-Bets-bets Straight-schema">
+
+
+
+
+                                                        <div id='examples-Bets-bets Straight-schema-500' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
+
+                                                            <script>
+                                                                $(document).ready(function() {
+                                                                    var schemaWrapper = {
+  "description" : "InternalServerError",
+  "schema" : {
+    "$ref" : "#/definitions/ErrorResponse"
+  }
+};
+                                                                    var schema = schemaWrapper.schema;
+                                                                    schemaWrapper.definitions = defs;
+                                                                    //console.log(JSON.stringify(schema))
+                                                                    JsonRefs.resolveRefs(schemaWrapper, {
+                                                                        "depth": 3,
+                                                                        "resolveRemoteRefs": false,
+                                                                        "resolveFileRefs": false
+                                                                    }, function(err, resolved, metadata) {
+
+                                                                        //console.log(JSON.stringify(resolved));
+
+
+
+                                                                        var view = new JSONSchemaView(resolved.schema, 3);
+                                                                        $('#examples-Bets-bets Straight-schema-data').val(JSON.stringify(resolved.schema));
+                                                                        var result = $('#examples-Bets-bets Straight-schema-500');
+                                                                        result.empty();
+                                                                        result.append(view.render());
+                                                                    });
+
+
+
+
+                                                                });
+                                                            </script>
+                                                        </div>
+                                                        <input id='examples-Bets-bets Straight-schema-data' type='hidden' value=''></input>
+
+
+
+
+
+
+                                                    </div>
+
+
+
+
+                                                </div>
+
+
+
+
+
+
+
+
+
+                                        </article>
+
+                                    </div>
+
+                                    <hr>
+
 
 
 
@@ -4206,551 +4751,6 @@ try {
 
 
 
-                                    <div id="api-Bets-betsStraight">
-
-                                        <article id="api-Bets-betsStraight-0" data-group="User" data-name="betsStraight" data-version="0">
-                                            <div class="pull-left">
-                                                <h1>betsStraight</h1>
-                                                <p>Place straight bet in the system.</p>
-                                            </div>
-                                            <div class="pull-right">
-
-                                            </div>
-                                            <div class="clearfix"></div>
-
-                                            <p></p>
-                                            <p class="marked"></p>
-                                            <p></p>
-                                            <br />
-
-                                            <pre class="prettyprint language-html prettyprinted" data-type="post"><code><span class="pln">/v1/bets/place</span></code></pre>
-
-                                            <p>
-                                                <h3>Usage and SDK Samples</h3>
-                                            </p>
-
-                                            <ul class="nav nav-tabs nav-tabs-examples">
-                                                <li class="active">
-                                                    <a href="#examples-Bets-betsStraight-0-curl">Curl</a>
-                                                </li>
-                                                <li class="">
-              <a href="#examples-Bets-betsStraight-0-java">Java</a>
-            </li>
-            <li class="">
-              <a href="#examples-Bets-betsStraight-0-android">Android</a>
-            </li>
-            <!--<li class="">
-              <a href="#examples-Bets-betsStraight-0-groovy">Groovy</a>
-            </li>-->
-                                                <li class="">
-                                                    <a href="#examples-Bets-betsStraight-0-objc">Obj-C</a>
-                                                </li>
-                                                <li class="">
-                                                    <a href="#examples-Bets-betsStraight-0-javascript">JavaScript</a>
-                                                </li>
-                                                <!--<li class="">
-              <a href="#examples-Bets-betsStraight-0-angular">Angular</a>
-            </li>-->
-                                                <li class="">
-                                                    <a href="#examples-Bets-betsStraight-0-csharp">C#</a>
-                                                </li>
-                                                <li class="">
-              <a href="#examples-Bets-betsStraight-0-php">PHP</a>
-            </li>
-                                            </ul>
-
-                                            <div class="tab-content">
-                                                <div class="tab-pane active" id="examples-Bets-betsStraight-0-curl">
-                                                    <pre class="prettyprint"><code class="language-bsh">
-curl -X <span style="text-transform: uppercase;">post</span> "https://virtserver.swaggerhub.com/pinnacle/BetsAPI/1.0.0/v1/bets/place"
-
-
-</code></pre>
-                                                </div>
-
-                                                <div class="tab-pane" id="examples-Bets-betsStraight-0-java">
-                                                  <pre class="prettyprint"><code class="language-java">
-import io.swagger.client.*;
-import io.swagger.client.auth.*;
-import io.swagger.client.model.*;
-import .BetsApi;
-
-import java.io.File;
-import java.util.*;
-
-public class BetsApiExample {
-
-    public static void main(String[] args) {
-        
-        BetsApi apiInstance = new BetsApi();
-        PlaceBetRequest request = ; // PlaceBetRequest | The Place StraightBet request.
-        try {
-            PlaceBetResponse result = apiInstance.betsStraight(request);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling BetsApi#betsStraight");
-            e.printStackTrace();
-        }
-    }
-}
-
-                                                  </code></pre>
-          </div>
-
-
-                                                <div class="tab-pane" id="examples-Bets-betsStraight-0-android">
-                                                  <pre class="prettyprint"><code class="language-java">
-import .BetsApi;
-
-public class BetsApiExample {
-
-    public static void main(String[] args) {
-        BetsApi apiInstance = new BetsApi();
-        PlaceBetRequest request = ; // PlaceBetRequest | The Place StraightBet request.
-        try {
-            PlaceBetResponse result = apiInstance.betsStraight(request);
-            System.out.println(result);
-        } catch (ApiException e) {
-            System.err.println("Exception when calling BetsApi#betsStraight");
-            e.printStackTrace();
-        }
-    }
-}
-
-                                                  </code></pre>
-          </div>
-
-          <!--
-          <div class="tab-pane" id="examples-Bets-betsStraight-0-groovy">
-            <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-          </div> -->
-
-
-                                                <div class="tab-pane" id="examples-Bets-betsStraight-0-objc">
-                                                    <pre class="prettyprint"><code class="language-cpp">
-
-PlaceBetRequest *request = ; // The Place StraightBet request.
-
-BetsApi *apiInstance = [[BetsApi alloc] init];
-
-// Place straight bet in the system.
-[apiInstance betsStraightWith:request
-              completionHandler: ^(PlaceBetResponse output, NSError* error) {
-                            if (output) {
-                                NSLog(@"%@", output);
-                            }
-                            if (error) {
-                                NSLog(@"Error: %@", error);
-                            }
-                        }];
-
-                                                    </code></pre>
-                                                </div>
-                                                <div class="tab-pane" id="examples-Bets-betsStraight-0-javascript">
-                                                    <pre class="prettyprint"><code class="language-js">
-var  = require('');
-
-var api = new .BetsApi()
-
-var request = ; // {PlaceBetRequest} The Place StraightBet request.
-
-
-var callback = function(error, data, response) {
-  if (error) {
-    console.error(error);
-  } else {
-    console.log('API called successfully. Returned data: ' + data);
-  }
-};
-api.betsStraight(request, callback);
-
-                                                    </code></pre>
-                                                </div>
-
-                                                <!--<div class="tab-pane" id="examples-Bets-betsStraight-0-angular">
-            <pre class="prettyprint language-json prettyprinted" data-type="json"><code>Coming Soon!</code></pre>
-          </div>-->
-
-                                                <div class="tab-pane" id="examples-Bets-betsStraight-0-csharp">
-                                                    <pre class="prettyprint"><code class="language-cs">
-using System;
-using System.Diagnostics;
-using .Api;
-using .Client;
-using ;
-
-namespace Example
-{
-    public class betsStraightExample
-    {
-        public void main()
-        {
-            
-            var apiInstance = new BetsApi();
-            var request = new PlaceBetRequest(); // PlaceBetRequest | The Place StraightBet request.
-
-            try
-            {
-                // Place straight bet in the system.
-                PlaceBetResponse result = apiInstance.betsStraight(request);
-                Debug.WriteLine(result);
-            }
-            catch (Exception e)
-            {
-                Debug.Print("Exception when calling BetsApi.betsStraight: " + e.Message );
-            }
-        }
-    }
-}
-
-                                                    </code></pre>
-                                                </div>
-
-
-                                                <div class="tab-pane" id="examples-Bets-betsStraight-0-php">
-                                                  <pre class="prettyprint"><code class="language-php">
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-$api_instance = new io.swagger.client\Api\BetsApi();
-$request = ; // PlaceBetRequest | The Place StraightBet request.
-
-try {
-    $result = $api_instance->betsStraight($request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling BetsApi->betsStraight: ', $e->getMessage(), PHP_EOL;
-}
-
-                                                  </code></pre>
-          </div>
-
-                                            </div>
-
-
-
-
-
-                                            <h2>Parameters</h2>
-
-
-
-
-
-
-                                                <div class="methodsubtabletitle">Body parameters</div>
-                                                <table id="methodsubtable">
-                                                    <tr>
-                                                        <th width="150px">Name</th>
-                                                        <th>Description</th>
-                                                    </tr>
-                                                    <!---->
-                                                        <tr><td style="width:150px;">request <span style="color:red;">*</span></td>
-<td>
-
-
-<script>
-												$(document).ready(function() {
-													var schemaWrapper = {
-  "in" : "body",
-  "name" : "request",
-  "description" : "The Place StraightBet request.",
-  "required" : true,
-  "schema" : {
-    "$ref" : "#/definitions/PlaceBetRequest"
-  }
-};
-													
-														var schema = schemaWrapper.schema;
-														schemaWrapper.definitions = defs;
-														JsonRefs.resolveRefs(schemaWrapper, {"depth":3, "resolveRemoteRefs":false,"resolveFileRefs":false },function (err, resolved, metadata) {
-														
-
-														
-													var view = new JSONSchemaView(resolved.schema,2,{isBodyParam: true});
-													 
-													var result = $('#d2e199_betsStraight_request');
-													result.empty();
-													result.append(view.render());
-													
-
-													
-    											
-													
-
-
-												});
-
-
-
-												});
-												</script>
-												<div id="d2e199_betsStraight_request"></div>
-</td>
-</tr>
-
-
-                                                </table>
-
-
-
-                                            <h2>Responses</h2>
-
-                                                <h3> Status: 200 - OK </h3>
-
-                                                <ul class="nav nav-tabs nav-tabs-examples" >
-
-                                                    <li class="active">
-                                                        <a href="#examples-Bets-betsStraight-schema">Schema</a>
-                                                    </li>
-
-
-                                                </ul>
-
-
-
-
-
-
-
-                                                <div class="tab-content" style='margin-bottom: 10px;'>
-
-
-
-                                                    <div class="tab-pane active" id="examples-Bets-betsStraight-schema">
-
-
-
-
-                                                        <div id='examples-Bets-betsStraight-schema-200' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-
-                                                            <script>
-                                                                $(document).ready(function() {
-                                                                    var schemaWrapper = {
-  "description" : "OK",
-  "schema" : {
-    "$ref" : "#/definitions/PlaceBetResponse"
-  }
-};
-                                                                    var schema = schemaWrapper.schema;
-                                                                    schemaWrapper.definitions = defs;
-                                                                    //console.log(JSON.stringify(schema))
-                                                                    JsonRefs.resolveRefs(schemaWrapper, {
-                                                                        "depth": 3,
-                                                                        "resolveRemoteRefs": false,
-                                                                        "resolveFileRefs": false
-                                                                    }, function(err, resolved, metadata) {
-
-                                                                        //console.log(JSON.stringify(resolved));
-
-
-
-                                                                        var view = new JSONSchemaView(resolved.schema, 3);
-                                                                        $('#examples-Bets-betsStraight-schema-data').val(JSON.stringify(resolved.schema));
-                                                                        var result = $('#examples-Bets-betsStraight-schema-200');
-                                                                        result.empty();
-                                                                        result.append(view.render());
-                                                                    });
-
-
-
-
-                                                                });
-                                                            </script>
-                                                        </div>
-                                                        <input id='examples-Bets-betsStraight-schema-data' type='hidden' value=''></input>
-
-
-
-
-
-
-                                                    </div>
-
-
-
-
-                                                </div>
-
-
-
-
-                                                <h3> Status: 400 - BadRequest </h3>
-
-                                                <ul class="nav nav-tabs nav-tabs-examples" >
-
-                                                    <li class="active">
-                                                        <a href="#examples-Bets-betsStraight-schema">Schema</a>
-                                                    </li>
-
-
-                                                </ul>
-
-
-
-
-
-
-
-                                                <div class="tab-content" style='margin-bottom: 10px;'>
-
-
-
-                                                    <div class="tab-pane active" id="examples-Bets-betsStraight-schema">
-
-
-
-
-                                                        <div id='examples-Bets-betsStraight-schema-400' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-
-                                                            <script>
-                                                                $(document).ready(function() {
-                                                                    var schemaWrapper = {
-  "description" : "BadRequest",
-  "schema" : {
-    "$ref" : "#/definitions/ErrorResponse"
-  }
-};
-                                                                    var schema = schemaWrapper.schema;
-                                                                    schemaWrapper.definitions = defs;
-                                                                    //console.log(JSON.stringify(schema))
-                                                                    JsonRefs.resolveRefs(schemaWrapper, {
-                                                                        "depth": 3,
-                                                                        "resolveRemoteRefs": false,
-                                                                        "resolveFileRefs": false
-                                                                    }, function(err, resolved, metadata) {
-
-                                                                        //console.log(JSON.stringify(resolved));
-
-
-
-                                                                        var view = new JSONSchemaView(resolved.schema, 3);
-                                                                        $('#examples-Bets-betsStraight-schema-data').val(JSON.stringify(resolved.schema));
-                                                                        var result = $('#examples-Bets-betsStraight-schema-400');
-                                                                        result.empty();
-                                                                        result.append(view.render());
-                                                                    });
-
-
-
-
-                                                                });
-                                                            </script>
-                                                        </div>
-                                                        <input id='examples-Bets-betsStraight-schema-data' type='hidden' value=''></input>
-
-
-
-
-
-
-                                                    </div>
-
-
-
-
-                                                </div>
-
-
-
-
-                                                <h3> Status: 500 - InternalServerError </h3>
-
-                                                <ul class="nav nav-tabs nav-tabs-examples" >
-
-                                                    <li class="active">
-                                                        <a href="#examples-Bets-betsStraight-schema">Schema</a>
-                                                    </li>
-
-
-                                                </ul>
-
-
-
-
-
-
-
-                                                <div class="tab-content" style='margin-bottom: 10px;'>
-
-
-
-                                                    <div class="tab-pane active" id="examples-Bets-betsStraight-schema">
-
-
-
-
-                                                        <div id='examples-Bets-betsStraight-schema-500' style="padding: 30px; border-left: 1px solid #eee; border-right: 1px solid #eee; border-bottom: 1px solid #eee;">
-
-                                                            <script>
-                                                                $(document).ready(function() {
-                                                                    var schemaWrapper = {
-  "description" : "InternalServerError",
-  "schema" : {
-    "$ref" : "#/definitions/ErrorResponse"
-  }
-};
-                                                                    var schema = schemaWrapper.schema;
-                                                                    schemaWrapper.definitions = defs;
-                                                                    //console.log(JSON.stringify(schema))
-                                                                    JsonRefs.resolveRefs(schemaWrapper, {
-                                                                        "depth": 3,
-                                                                        "resolveRemoteRefs": false,
-                                                                        "resolveFileRefs": false
-                                                                    }, function(err, resolved, metadata) {
-
-                                                                        //console.log(JSON.stringify(resolved));
-
-
-
-                                                                        var view = new JSONSchemaView(resolved.schema, 3);
-                                                                        $('#examples-Bets-betsStraight-schema-data').val(JSON.stringify(resolved.schema));
-                                                                        var result = $('#examples-Bets-betsStraight-schema-500');
-                                                                        result.empty();
-                                                                        result.append(view.render());
-                                                                    });
-
-
-
-
-                                                                });
-                                                            </script>
-                                                        </div>
-                                                        <input id='examples-Bets-betsStraight-schema-data' type='hidden' value=''></input>
-
-
-
-
-
-
-                                                    </div>
-
-
-
-
-                                                </div>
-
-
-
-
-
-
-
-
-
-                                        </article>
-
-                                    </div>
-
-                                    <hr>
-
-
-
-
-
-
-
-
                                     <div id="api-Bets-betsStraightV2">
 
                                         <article id="api-Bets-betsStraightV2-0" data-group="User" data-name="betsStraightV2" data-version="0">
@@ -5939,7 +5939,7 @@ try {
             </div>
             <div id="generator">
                 <div class="content">
-                    Generated 2017-09-04T00:43:06.971Z
+                    Generated 2017-09-04T00:51:17.151Z
                 </div>
             </div>
         </div>
