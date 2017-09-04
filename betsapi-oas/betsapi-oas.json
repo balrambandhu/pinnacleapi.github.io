@@ -12,7 +12,8 @@
       "post" : {
         "tags" : [ "Bets" ],
         "summary" : "Place straight bet in the system.",
-        "operationId" : "Bets Straight",
+        "description" : "Place Straight Bet v2",
+        "operationId" : "Bets_Straight",
         "consumes" : [ "application/json", "text/json", "application/x-www-form-urlencoded" ],
         "produces" : [ "application/json" ],
         "parameters" : [ {
