@@ -1,0 +1,2436 @@
+{
+  "swagger" : "2.0",
+  "info" : {
+    "version" : "1.0.0",
+    "title" : "Pinnacle Lines API Specification v2.0"
+  },
+  "host" : "virtserver.swaggerhub.com",
+  "basePath" : "/pinnacle/LinesAPI/1.0.0",
+  "schemes" : [ "https" ],
+  "security" : [ {
+    "basicAuth" : [ ]
+  } ],
+  "paths" : {
+    "/v1/cancellationreasons" : {
+      "get" : {
+        "tags" : [ "CancellationReason" ],
+        "summary" : "Lookup for all the cancellation reasons",
+        "operationId" : "CancellationReason_Get",
+        "consumes" : [ ],
+        "produces" : [ "application/json", "text/json", "application/xml", "text/xml" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/CancellationReasonResponse"
+            }
+          },
+          "500" : {
+            "description" : "InternalServerError",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/currencies" : {
+      "get" : {
+        "tags" : [ "Currencies" ],
+        "summary" : "Returns the list of supported currencies.",
+        "operationId" : "Currencies_GetV2",
+        "consumes" : [ ],
+        "produces" : [ "application/json", "text/json", "application/xml", "text/xml" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/SuccessfulCurrenciesResponse"
+            }
+          },
+          "400" : {
+            "description" : "BadRequest",
+            "schema" : {
+              "$ref" : "#/definitions/LinesErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/currencies" : {
+      "get" : {
+        "tags" : [ "Currencies" ],
+        "summary" : "Returns the list of supported currencies.",
+        "operationId" : "Currencies_Get",
+        "consumes" : [ ],
+        "produces" : [ "application/json", "text/json", "application/xml", "text/xml" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/SuccessfulCurrenciesResponse"
+            }
+          },
+          "400" : {
+            "description" : "BadRequest",
+            "schema" : {
+              "$ref" : "#/definitions/LinesErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/fixtures" : {
+      "get" : {
+        "tags" : [ "Fixtures" ],
+        "summary" : "Returns all non-settled events.<br />            Please note that it is possible that the event is in Get Fixtures response but not in Get Odds. This is happens when the odds have not been set yet for the event.<br />            Please note that it is possible to receive the same exact response when using \"since\" parameter. This is rare and can be caused by internal updates of event's properties.",
+        "operationId" : "Fixtures_Get",
+        "consumes" : [ ],
+        "produces" : [ "application/json", "text/json", "application/xml", "text/xml" ],
+        "parameters" : [ {
+          "name" : "sportId",
+          "in" : "query",
+          "description" : "The sportid for which to retrieve the fixutres.",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "leagueIds",
+          "in" : "query",
+          "description" : "The leagueIds array may contain a list of comma separated league ids.",
+          "required" : false,
+          "type" : "array",
+          "items" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "collectionFormat" : "multi"
+        }, {
+          "name" : "isLive",
+          "in" : "query",
+          "description" : "To retrieve ONLY live events set the value to islive =1. Any other value will result in retrieval of events regardless of their Live status.",
+          "required" : false,
+          "type" : "boolean"
+        }, {
+          "name" : "since",
+          "in" : "query",
+          "description" : "This is used to receive incremental updates. Use the value of last from previous fixtures response.<br />            When since parameter is not provided, the fixtures are delayed up to 1 min to encourage the use of the parameter.",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int64"
+        }, {
+          "name" : "eventIds",
+          "in" : "query",
+          "description" : "Filter by EventIds",
+          "required" : false,
+          "type" : "array",
+          "items" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "collectionFormat" : "multi"
+        }, {
+          "name" : "soccerLiveBettingType",
+          "in" : "query",
+          "description" : "Filter to return live soccer games only for specified market (Danger Zone or Live Delay) = [Legacy, DangerZone, LiveDelay, NotSet]",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "Legacy", "DangerZone", "LiveDelay", "NotSet" ]
+        }, {
+          "name" : "showLiveBettingTypeValue",
+          "in" : "query",
+          "description" : "Filter whether to return the bet acceptance type value",
+          "required" : false,
+          "type" : "boolean"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/FixturesResponse"
+            }
+          },
+          "500" : {
+            "description" : "InternalServerError",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/fixtures/settled" : {
+      "get" : {
+        "tags" : [ "GradedEvent" ],
+        "summary" : "Returns fixtures settled in the last 24 hours.",
+        "operationId" : "GradedGames_Get",
+        "consumes" : [ ],
+        "produces" : [ "application/json", "text/json", "application/xml", "text/xml" ],
+        "parameters" : [ {
+          "name" : "sportId",
+          "in" : "query",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "leagueIds",
+          "in" : "query",
+          "required" : false,
+          "type" : "array",
+          "items" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "collectionFormat" : "multi"
+        }, {
+          "name" : "since",
+          "in" : "query",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int32"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/SettledFixturesSport"
+            },
+            "examples" : {
+              "application/json" : {
+                "sportId" : 0,
+                "last" : 0,
+                "leagues" : [ {
+                  "id" : 0,
+                  "events" : [ {
+                    "id" : 0,
+                    "periods" : [ {
+                      "number" : 0,
+                      "status" : 0,
+                      "settlementId" : 0,
+                      "settledAt" : "2017-09-03T18:21:22.3846289-07:00",
+                      "team1Score" : 0,
+                      "team2Score" : 0,
+                      "cancellationReason" : {
+                        "code" : "string",
+                        "details" : {
+                          "correctTeam1Id" : "string",
+                          "correctTeam2Id" : "string",
+                          "correctListedPitcher1" : "string",
+                          "correctListedPitcher2" : "string",
+                          "correctSpread" : "0.0",
+                          "correctTotalPoints" : "0.0",
+                          "correctTeam1TotalPoints" : "0.0",
+                          "correctTeam2TotalPoints" : "0.0",
+                          "correctTeam1Score" : "0",
+                          "correctTeam2Score" : "0",
+                          "correctTeam1TennisSetsScore" : "0",
+                          "correctTeam2TennisSetsScore" : "0"
+                        }
+                      }
+                    } ]
+                  } ]
+                } ]
+              }
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/inrunning" : {
+      "get" : {
+        "tags" : [ "InRunning" ],
+        "summary" : "Returns all soccer events that have a live status associated with them and have a status that indicates the event is in progress..",
+        "operationId" : "InRunning_Get",
+        "consumes" : [ ],
+        "produces" : [ "application/json", "text/json", "application/xml", "text/xml" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/InRunningResponse"
+            }
+          },
+          "500" : {
+            "description" : "InternalServerError",
+            "schema" : {
+              "$ref" : "#/definitions/LinesErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/leagues" : {
+      "get" : {
+        "tags" : [ "Leagues" ],
+        "summary" : "Returns all sports leagues with the status whether they currently have lines or not.",
+        "operationId" : "Leagues_GetV2",
+        "consumes" : [ ],
+        "produces" : [ "application/json", "text/json", "application/xml", "text/xml" ],
+        "parameters" : [ {
+          "name" : "sportId",
+          "in" : "query",
+          "description" : "Sport id for which the leagues are requested.",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/Leagues"
+            }
+          },
+          "400" : {
+            "description" : "BadRequest",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "500" : {
+            "description" : "InternalServerError",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/line" : {
+      "get" : {
+        "tags" : [ "Line" ],
+        "summary" : "Returns latest line.",
+        "operationId" : "Line_Get",
+        "consumes" : [ ],
+        "produces" : [ "application/json", "text/json", "application/xml", "text/xml" ],
+        "parameters" : [ {
+          "name" : "leagueId",
+          "in" : "query",
+          "description" : "League Id.",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "handicap",
+          "in" : "query",
+          "description" : "This is needed for SPREAD, TOTAL_POINTS and TEAM_TOTAL_POINTS bet type.",
+          "required" : true,
+          "type" : "number",
+          "format" : "double"
+        }, {
+          "name" : "oddsFormat",
+          "in" : "query",
+          "description" : "Format in which we return the odds. Default is American. = [American, Decimal, HongKong, Indonesian, Malay]",
+          "required" : true,
+          "type" : "string",
+          "enum" : [ "American", "Decimal", "HongKong", "Indonesian", "Malay" ]
+        }, {
+          "name" : "soccerLiveBettingType",
+          "in" : "query",
+          "description" : "Live Betting Type = [Legacy, DangerZone, LiveDelay, NotSet]",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "Legacy", "DangerZone", "LiveDelay", "NotSet" ]
+        }, {
+          "name" : "sportId",
+          "in" : "query",
+          "description" : "Sport identification.",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "eventId",
+          "in" : "query",
+          "description" : "Event identification.",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        }, {
+          "name" : "periodNumber",
+          "in" : "query",
+          "description" : "This represents the period of the match. For example, for soccer we have: 0 - Game,  1 - 1st &amp; Half 2 - 2nd Half",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "betType",
+          "in" : "query",
+          "description" : "Bet Type = [SPREAD, MONEYLINE, TOTAL_POINTS, TEAM_TOTAL_POINTS]",
+          "required" : true,
+          "type" : "string",
+          "enum" : [ "SPREAD", "MONEYLINE", "TOTAL_POINTS", "TEAM_TOTAL_POINTS" ]
+        }, {
+          "name" : "team",
+          "in" : "query",
+          "description" : "Chosen team type. This is needed only for SPREAD, MONEYLINE and TEAM_TOTAL_POINTS bet types => [ Team1 = Team 1, Team2 = Team 2, Draw = Draw. This is used for MONEYLINE bet type only. ] ",
+          "required" : true,
+          "type" : "string",
+          "enum" : [ "Team1", "Team2", "Draw" ]
+        }, {
+          "name" : "side",
+          "in" : "query",
+          "description" : "Chosen side. This is needed only for TOTAL_POINTS and TEAM_TOTAL_POINTS bet type = [OVER, UNDER]",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "OVER", "UNDER" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/LineResponse"
+            }
+          },
+          "400" : {
+            "description" : "BadRequest",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/line/parlay" : {
+      "post" : {
+        "tags" : [ "Line" ],
+        "summary" : "Returns parlay lines and calculate odds.",
+        "operationId" : "Line_PostParlay",
+        "consumes" : [ "application/json", "text/json", "application/xml", "text/xml", "application/x-www-form-urlencoded" ],
+        "produces" : [ "application/json", "text/json", "application/xml", "text/xml" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "request",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/ParlayLinesRequest"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/ParlayLinesResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/line/teaser" : {
+      "post" : {
+        "tags" : [ "Line" ],
+        "summary" : "Validates a teaser bet prior to submission. Returns bet limit and price on success.",
+        "operationId" : "Line_PostTeaser",
+        "consumes" : [ "application/json", "text/json", "application/xml", "text/xml", "application/x-www-form-urlencoded" ],
+        "produces" : [ "application/json", "text/json", "application/xml", "text/xml" ],
+        "parameters" : [ {
+          "in" : "body",
+          "name" : "teaserLinesRequest",
+          "required" : true,
+          "schema" : {
+            "$ref" : "#/definitions/LinesRequestTeaser"
+          }
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/TeaserLinesResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/odds" : {
+      "get" : {
+        "tags" : [ "Odds" ],
+        "summary" : "Returns straight and parlay odds for all non-settled events.<br />            Please note that it is possible that the event is in Get Fixtures response but not in Get Odds. This is happens when the odds have not been set yet for the event.",
+        "operationId" : "Odds_GetOdds",
+        "consumes" : [ ],
+        "produces" : [ "application/json", "text/json", "application/xml", "text/xml" ],
+        "parameters" : [ {
+          "name" : "sportId",
+          "in" : "query",
+          "description" : "The sportid for which to retrieve the odds.",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "leagueIds",
+          "in" : "query",
+          "description" : "The leagueIds array may contain a list of comma separated league ids.",
+          "required" : false,
+          "type" : "array",
+          "items" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "collectionFormat" : "multi"
+        }, {
+          "name" : "oddsFormat",
+          "in" : "query",
+          "description" : "Format in which we return the odds. Default is American. = [American, Decimal, HongKong, Indonesian, Malay]",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "American", "Decimal", "HongKong", "Indonesian", "Malay" ]
+        }, {
+          "name" : "since",
+          "in" : "query",
+          "description" : "This is used to receive incremental updates. Use the value of last from previous odds response.<br />            When since parameter is not provided, the odds are delayed up to 1 min to encourage the use of the parameter.<br />            Please note that when using since parameter you will get in the response ONLY changed periods. If a period didn’t have any changes it will not be in the response.",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int64"
+        }, {
+          "name" : "isLive",
+          "in" : "query",
+          "description" : "To retrieve ONLY live odds set the value to islive =1. Otherwise response will have all odds.",
+          "required" : false,
+          "type" : "boolean"
+        }, {
+          "name" : "eventIds",
+          "in" : "query",
+          "description" : "Filter by EventIds",
+          "required" : false,
+          "type" : "array",
+          "items" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "collectionFormat" : "multi"
+        }, {
+          "name" : "soccerLiveBettingType",
+          "in" : "query",
+          "description" : "Filter by bet acceptance type = [Legacy, DangerZone, LiveDelay, NotSet]",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "Legacy", "DangerZone", "LiveDelay", "NotSet" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/OddsResponse"
+            }
+          },
+          "400" : {
+            "description" : "BadRequest",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/odds/parlay" : {
+      "get" : {
+        "tags" : [ "Odds" ],
+        "summary" : "Returns straight and parlay odds for all non-settled events.<br />            Please note that it is possible that the event is in Get Fixtures response but not in Get Odds. This is happens when the odds have not been set yet for the event.",
+        "operationId" : "Odds_GetParlays",
+        "consumes" : [ ],
+        "produces" : [ "application/json", "text/json", "application/xml", "text/xml" ],
+        "parameters" : [ {
+          "name" : "sportId",
+          "in" : "query",
+          "description" : "The sportid for which to retrieve the odds.",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int32"
+        }, {
+          "name" : "leagueIds",
+          "in" : "query",
+          "description" : "The leagueIds array may contain a list of comma separated league ids.",
+          "required" : false,
+          "type" : "array",
+          "items" : {
+            "type" : "integer",
+            "format" : "int32"
+          },
+          "collectionFormat" : "multi"
+        }, {
+          "name" : "oddsFormat",
+          "in" : "query",
+          "description" : "Format in which we return the odds. Default is American. = [American, Decimal, HongKong, Indonesian, Malay]",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "American", "Decimal", "HongKong", "Indonesian", "Malay" ]
+        }, {
+          "name" : "since",
+          "in" : "query",
+          "description" : "This is used to receive incremental updates. Use the value of last from previous odds response.<br />            When since parameter is not provided, the odds are delayed up to 1 min to encourage the use of the parameter.<br />            Please note that when using since parameter you will get in the response ONLY changed periods. If a period didn’t have any changes it will not be in the response.",
+          "required" : false,
+          "type" : "integer",
+          "format" : "int64"
+        }, {
+          "name" : "isLive",
+          "in" : "query",
+          "description" : "To retrieve ONLY live odds set the value to islive =1. Otherwise response will have all odds.",
+          "required" : false,
+          "type" : "boolean"
+        }, {
+          "name" : "eventIds",
+          "in" : "query",
+          "description" : "Filter by EventIds",
+          "required" : false,
+          "type" : "array",
+          "items" : {
+            "type" : "integer",
+            "format" : "int64"
+          },
+          "collectionFormat" : "multi"
+        }, {
+          "name" : "soccerLiveBettingType",
+          "in" : "query",
+          "description" : "Filter by bet acceptance type = [Legacy, DangerZone, LiveDelay, NotSet]",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "Legacy", "DangerZone", "LiveDelay", "NotSet" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/ParlayOddsResponse"
+            }
+          },
+          "400" : {
+            "description" : "BadRequest",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/odds/teaser" : {
+      "get" : {
+        "tags" : [ "Odds" ],
+        "summary" : "Returns odds for specified teaser.",
+        "operationId" : "Odds_GetTeasers",
+        "consumes" : [ ],
+        "produces" : [ "application/json", "text/json", "application/xml", "text/xml" ],
+        "parameters" : [ {
+          "name" : "teaserId",
+          "in" : "query",
+          "description" : "Unique identifier.<br />            Teaser details can be retrieved from a call to Get Teaser Groups endpoint.",
+          "required" : true,
+          "type" : "integer",
+          "format" : "int64"
+        }, {
+          "name" : "soccerLiveBettingType",
+          "in" : "query",
+          "description" : "Gets or sets LiveBettingType. Filter to return odds only for specified live market (Danger Zone or Live Delay) = [Legacy, DangerZone, LiveDelay, NotSet]",
+          "required" : false,
+          "type" : "string",
+          "enum" : [ "Legacy", "DangerZone", "LiveDelay", "NotSet" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/TeaserOddsResponse"
+            }
+          },
+          "400" : {
+            "description" : "BadRequest",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/periods" : {
+      "get" : {
+        "tags" : [ "Period" ],
+        "summary" : "Returns straight and parlay odds for all non-settled events.<br />            Please note that it is possible that the event is in Get Fixtures response but not in Get Odds. This is happens when the odds have not been set yet for the event.",
+        "operationId" : "Period_GetPeriods",
+        "consumes" : [ ],
+        "produces" : [ "application/json", "text/json", "application/xml", "text/xml" ],
+        "parameters" : [ {
+          "name" : "sportId",
+          "in" : "query",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/SportPeriod"
+            }
+          },
+          "400" : {
+            "description" : "BadRequest",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v2/sports" : {
+      "get" : {
+        "tags" : [ "Sports" ],
+        "summary" : "Returns all sports with the status whether they currently have lines or not.",
+        "operationId" : "Sports_GetV2",
+        "consumes" : [ ],
+        "produces" : [ "application/json", "text/json", "application/xml", "text/xml" ],
+        "parameters" : [ ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/SportsResponse"
+            }
+          },
+          "500" : {
+            "description" : "InternalServerError",
+            "schema" : {
+              "$ref" : "#/definitions/LinesErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/teaser/groups" : {
+      "get" : {
+        "tags" : [ "Teaser" ],
+        "summary" : "Returns all teaser groups.",
+        "operationId" : "Teaser_Groups",
+        "consumes" : [ ],
+        "produces" : [ "application/json", "text/json", "application/xml", "text/xml" ],
+        "parameters" : [ {
+          "name" : "oddsFormat",
+          "in" : "query",
+          "description" : "Format the odds are returned in. = [American, Decimal, HongKong, Indonesian, Malay]",
+          "required" : true,
+          "type" : "string",
+          "enum" : [ "American", "Decimal", "HongKong", "Indonesian", "Malay" ]
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/TeaserGroupsResponse"
+            }
+          },
+          "400" : {
+            "description" : "BadRequest",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          }
+        }
+      }
+    },
+    "/v1/translations" : {
+      "get" : {
+        "tags" : [ "Translations" ],
+        "summary" : "Each string in parameters must be URL encoded and separated with “|” character<br />            Parameters are not case-sensitive",
+        "operationId" : "Translations_Get",
+        "consumes" : [ ],
+        "produces" : [ "application/json", "text/json", "application/xml", "text/xml" ],
+        "parameters" : [ {
+          "name" : "cultureCodes",
+          "in" : "query",
+          "description" : "Must be in \"Language Culture Name\" format.",
+          "required" : true,
+          "type" : "string"
+        }, {
+          "name" : "baseTexts",
+          "in" : "query",
+          "description" : "Array of strings to be translated.",
+          "required" : true,
+          "type" : "string"
+        } ],
+        "responses" : {
+          "200" : {
+            "description" : "OK",
+            "schema" : {
+              "$ref" : "#/definitions/TranslationResponse"
+            }
+          }
+        }
+      }
+    }
+  },
+  "securityDefinitions" : {
+    "basicAuth" : {
+      "type" : "basic"
+    }
+  },
+  "definitions" : {
+    "CancellationReasonResponse" : {
+      "type" : "object",
+      "properties" : {
+        "cancellationReasons" : {
+          "type" : "array",
+          "description" : "Contains a list of CancellationReason.",
+          "items" : {
+            "$ref" : "#/definitions/CancellationReason"
+          }
+        }
+      },
+      "description" : "Cancellation Response Data"
+    },
+    "CancellationReason" : {
+      "type" : "object",
+      "properties" : {
+        "code" : {
+          "type" : "string",
+          "description" : "Cancellation code assigned by the server"
+        },
+        "description" : {
+          "type" : "string",
+          "description" : "Text description for the cancellation reason"
+        }
+      },
+      "description" : "Cancellation Data"
+    },
+    "ErrorResponse" : {
+      "type" : "object",
+      "properties" : {
+        "code" : {
+          "type" : "string",
+          "description" : "Identifier representing the the type of error that occurred."
+        },
+        "message" : {
+          "type" : "string",
+          "description" : "Description of the the error."
+        }
+      },
+      "description" : "Contains details of an error that was encountered."
+    },
+    "SuccessfulCurrenciesResponse" : {
+      "type" : "object",
+      "properties" : {
+        "currencies" : {
+          "type" : "array",
+          "description" : "Currencies container.",
+          "items" : {
+            "$ref" : "#/definitions/Currency"
+          }
+        }
+      }
+    },
+    "Currency" : {
+      "type" : "object",
+      "properties" : {
+        "code" : {
+          "type" : "string",
+          "description" : "Currency code."
+        },
+        "name" : {
+          "type" : "string",
+          "description" : "Currency name."
+        },
+        "rate" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Exchange rate to USD."
+        }
+      }
+    },
+    "LinesErrorResponse" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "string"
+        },
+        "error" : {
+          "$ref" : "#/definitions/Error"
+        },
+        "code" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Code identifying an error that occurred.",
+          "readOnly" : true
+        }
+      }
+    },
+    "Error" : {
+      "type" : "object",
+      "properties" : {
+        "code" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "message" : {
+          "type" : "string"
+        }
+      }
+    },
+    "FixturesResponse" : {
+      "type" : "object",
+      "properties" : {
+        "sportId" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Same as requested sport Id."
+        },
+        "last" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Use this value for the subsequent requests for since query parameter to get just the changes since previous response."
+        },
+        "league" : {
+          "type" : "array",
+          "description" : "Contains a list of Leagues.",
+          "items" : {
+            "$ref" : "#/definitions/FixturesLeague"
+          }
+        }
+      }
+    },
+    "FixturesLeague" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "League ID."
+        },
+        "name" : {
+          "type" : "string",
+          "description" : "League Name."
+        },
+        "events" : {
+          "type" : "array",
+          "description" : "Contains a list of events.",
+          "items" : {
+            "$ref" : "#/definitions/Fixture"
+          }
+        }
+      }
+    },
+    "Fixture" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Event ID."
+        },
+        "starts" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "Start time of the event in UTC."
+        },
+        "home" : {
+          "type" : "string",
+          "description" : "Home team name."
+        },
+        "away" : {
+          "type" : "string",
+          "description" : "Away team name."
+        },
+        "rotNum" : {
+          "type" : "string",
+          "description" : "Team1 rotation number."
+        },
+        "liveStatus" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Indicates event’s live status."
+        },
+        "homePitcher" : {
+          "type" : "string",
+          "description" : "Home team pitcher. Only for baseball."
+        },
+        "awayPitcher" : {
+          "type" : "string",
+          "description" : "Away team pitcher. Only for baseball."
+        },
+        "status" : {
+          "type" : "string",
+          "description" : "Status of the event. => [ O = This is the starting status of a game. It means that the lines are open for betting, H = This status indicates that the lines are temporarily unavailable for betting, I = This status indicates that one or more lines have a red circle (a lower maximum bet amount) ] ",
+          "enum" : [ "O", "H", "I" ]
+        },
+        "parlayRestriction" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Parlay status of the event."
+        },
+        "betAcceptanceType" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Live Betting Type"
+        }
+      }
+    },
+    "SettledFixturesSport" : {
+      "type" : "object",
+      "properties" : {
+        "sportId" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Same as requested sport Id."
+        },
+        "last" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Use this value for the subsequent requests for since query parameter to get just the changes since previous response."
+        },
+        "leagues" : {
+          "type" : "array",
+          "description" : "Contains a list of Leagues.",
+          "items" : {
+            "$ref" : "#/definitions/SettledFixturesLeague"
+          }
+        }
+      }
+    },
+    "SettledFixturesLeague" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "League Id."
+        },
+        "events" : {
+          "type" : "array",
+          "description" : "Contains a list of events.",
+          "items" : {
+            "$ref" : "#/definitions/SettledFixturesEvent"
+          }
+        }
+      }
+    },
+    "SettledFixturesEvent" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Event Id."
+        },
+        "periods" : {
+          "type" : "array",
+          "description" : "Contains a list of periods.",
+          "items" : {
+            "$ref" : "#/definitions/SettledFixturesPeriod"
+          }
+        }
+      }
+    },
+    "SettledFixturesPeriod" : {
+      "type" : "object",
+      "properties" : {
+        "number" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "This represents the period of the match. For example, for soccer we have:\r\n            0 - Game\r\n            1 - 1st Half\r\n            2 - 2nd Half"
+        },
+        "status" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Period settlement status."
+        },
+        "settlementId" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Unique id of the settlement. In case of a re-settlement, a new settlementId and settledAt will be generated."
+        },
+        "settledAt" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "Date and time when teh period was settled ."
+        },
+        "team1Score" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Team1 score."
+        },
+        "team2Score" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Team2 score."
+        },
+        "cancellationReason" : {
+          "description" : "Cancellation reason for the period",
+          "$ref" : "#/definitions/CancellationReasonType"
+        }
+      }
+    },
+    "CancellationReasonType" : {
+      "type" : "object",
+      "properties" : {
+        "code" : {
+          "type" : "string",
+          "description" : "Cancellation Reason Code"
+        },
+        "details" : {
+          "description" : "Cancellation Specifics",
+          "$ref" : "#/definitions/CancellationSpecificsType"
+        }
+      }
+    },
+    "CancellationSpecificsType" : {
+      "type" : "object",
+      "properties" : {
+        "key" : {
+          "type" : "string"
+        },
+        "value" : {
+          "type" : "string"
+        }
+      }
+    },
+    "InRunningResponse" : {
+      "type" : "object",
+      "properties" : {
+        "sports" : {
+          "type" : "array",
+          "description" : "Sports container.",
+          "items" : {
+            "$ref" : "#/definitions/InRunningSport"
+          }
+        }
+      }
+    },
+    "InRunningSport" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Sport Id."
+        },
+        "leagues" : {
+          "type" : "array",
+          "description" : "Leagues container.",
+          "items" : {
+            "$ref" : "#/definitions/InRunningLeague"
+          }
+        }
+      }
+    },
+    "InRunningLeague" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "League Id."
+        },
+        "events" : {
+          "type" : "array",
+          "description" : "Events container.",
+          "items" : {
+            "$ref" : "#/definitions/InRunningEvent"
+          }
+        }
+      }
+    },
+    "InRunningEvent" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Game Id."
+        },
+        "state" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "State of the game."
+        },
+        "elapsed" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Elapsed minutes."
+        }
+      }
+    },
+    "Leagues" : {
+      "type" : "object",
+      "properties" : {
+        "leagues" : {
+          "type" : "array",
+          "description" : "Leagues container.",
+          "items" : {
+            "$ref" : "#/definitions/League "
+          }
+        }
+      }
+    },
+    "League " : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "League Id."
+        },
+        "name" : {
+          "type" : "string",
+          "description" : "Name of the league."
+        },
+        "homeTeamType" : {
+          "type" : "string",
+          "description" : "Specifies whether the home team is team1 or team2. You need this information to place a bet."
+        },
+        "hasOfferings" : {
+          "type" : "boolean",
+          "description" : "Whether the league currently has events.",
+          "readOnly" : true
+        },
+        "container" : {
+          "type" : "string",
+          "description" : "**TODO: ADD APPROPRIATE DESCRIPTION**"
+        },
+        "allowRoundRobins" : {
+          "type" : "boolean",
+          "description" : "Specifies whether you can place parlay round robins on events in this league.",
+          "readOnly" : true
+        },
+        "seqNo" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "**TODO: ADD APPROPRIATE DESCRIPTION**"
+        },
+        "featured" : {
+          "type" : "boolean",
+          "description" : "**TODO: ADD APPROPRIATE DESCRIPTION**"
+        },
+        "leagueSpecialsCount" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Indicates how many specials are in the given sport/league."
+        },
+        "eventSpecialsCount" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Indicates how many game special counts are in the given sport/league."
+        },
+        "eventCount" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Indicates how many games are in the given league."
+        }
+      }
+    },
+    "LineResponse" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "string",
+          "description" : "If the value is NOT_EXISTS, than this will be the only parameter in the response. All other params would be empty. => [ SUCCESS = OK, NOT_EXISTS = Line not offered anymore ] ",
+          "enum" : [ "SUCCESS", "NOT_EXISTS" ]
+        },
+        "price" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Latest price."
+        },
+        "lineId" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Line identification needed to place a bet."
+        },
+        "altLineId" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "This would be needed to place the bet if the handicap is on alternate line, otherwise it will not be in the response."
+        },
+        "team1Score" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Away team score. Applicable to soccer only."
+        },
+        "team2Score" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Home team score. Applicable to soccer only."
+        },
+        "team1RedCards" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Team 1 red cards. Applicable to soccer only."
+        },
+        "team2RedCards" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Team 2 red cards. Applicable to soccer only."
+        },
+        "maxRiskStake" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Maximum bettable risk amount."
+        },
+        "minRiskStake" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Minimum bettable risk amount."
+        },
+        "maxWinStake" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Maximum bettable win amount."
+        },
+        "minWinStake" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Minimum bettable win amount."
+        },
+        "effectiveAsOf" : {
+          "type" : "string",
+          "description" : "Line is effective as of this date and time."
+        }
+      }
+    },
+    "ParlayLinesRequest" : {
+      "type" : "object",
+      "properties" : {
+        "oddsFormat" : {
+          "type" : "string",
+          "description" : "Odds in the response will be in this format. = [American, Decimal, HongKong, Indonesian, Malay]",
+          "enum" : [ "American", "Decimal", "HongKong", "Indonesian", "Malay" ]
+        },
+        "legs" : {
+          "type" : "array",
+          "description" : "This is a collection of legs (the format of the object is described below).",
+          "items" : {
+            "$ref" : "#/definitions/ParlayLineRequest"
+          }
+        }
+      }
+    },
+    "ParlayLineRequest" : {
+      "type" : "object",
+      "properties" : {
+        "uniqueLegId" : {
+          "type" : "string",
+          "description" : "This unique id of the leg. It used to identify and match leg in the response."
+        },
+        "eventId" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Id of the event."
+        },
+        "periodNumber" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "This represents the period of the match. For example, for soccer we have:\r\n            0 -  Game\r\n            1 - 1st Half\r\n            2 - 2nd Half"
+        },
+        "legBetType" : {
+          "type" : "string",
+          "description" : "Only SPREAD, MONEYLINE and TOTAL_POINTS are supported. = ['Spread', 'Moneyline', 'Total_Points']",
+          "enum" : [ "Spread", "Moneyline", "Total_Points" ]
+        },
+        "team" : {
+          "type" : "string",
+          "description" : "Chosen team type. This is needed only for SPREAD and MONEYLINE bet types. => [ Team1 = Team 1, Team2 = Team 2, Draw = Draw. This is used for MONEYLINE bet type only. ] ",
+          "enum" : [ "Team1", "Team2", "Draw" ]
+        },
+        "side" : {
+          "type" : "string",
+          "description" : "Chosen side. This is needed only for TOTAL_POINTS bet type. = ['Over', 'Under']",
+          "enum" : [ "OVER", "UNDER" ]
+        },
+        "handicap" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "This is needed for SPREAD and TOTAL_POINTS bet type."
+        }
+      }
+    },
+    "ParlayLinesResponse" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "string",
+          "description" : " => [ VALID = Parlay is valid, PROCESSED_WITH_ERROR = Parlay contains error(s) ] ",
+          "enum" : [ "VALID", "PROCESSED_WITH_ERROR" ]
+        },
+        "error" : {
+          "type" : "string",
+          "description" : "If Status is PROCESSED_WITH_ERROR , error will be in the response. => [ ABOVE_MAX_BET_AMOUNT = Stake is above allowed maximum amount, ALL_BETTING_CLOSED = Betting is not allowed at this moment, BELOW_MIN_BET_AMOUNT = Stake is below allowed minimum amount, BLOCKED_BETTING = Customer is an agent, BLOCKED_CLIENT = Client is no longer active, INSUFFICIENT_FUNDS = Bet is submitted by a client with insufficient funds, INVALID_COUNTRY = Client country is not allowed for betting, INVALID_LEGS = One or more legs are invalid, INVALID_ODDS_FORMAT = If a bet was submitted with the odds format that is not allowed for the client, INVALID_ROUND_ROBIN_OPTIONS = Round robin options are invalid (i.e. does not match with number of legs), ROUND_ROBIN_DISALLOWED = Round robin is disallowed for one of the leagues, TOO_MANY_LEGS = Maximum of 10 legs can be specified, TOO_FEW_LEGS = At least 2 legs are required for Parlay, INVALID_CUSTOMER_PROFILE = Invalid Customer Profile ] ",
+          "enum" : [ "ABOVE_MAX_BET_AMOUNT", "ALL_BETTING_CLOSED", "BELOW_MIN_BET_AMOUNT", "BLOCKED_BETTING", "BLOCKED_CLIENT", "INSUFFICIENT_FUNDS", "INVALID_COUNTRY", "INVALID_LEGS", "INVALID_ODDS_FORMAT", "INVALID_ROUND_ROBIN_OPTIONS", "ROUND_ROBIN_DISALLOWED", "TOO_MANY_LEGS", "TOO_FEW_LEGS", "INVALID_CUSTOMER_PROFILE" ]
+        },
+        "maxRiskStake" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Maximum allowed stake amount."
+        },
+        "minRiskStake" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Minimum allowed stake amount."
+        },
+        "roundRobinOptionWithOdds" : {
+          "type" : "array",
+          "description" : "Provides array with all acceptable Round Robin options with parlay odds for that option.",
+          "items" : {
+            "$ref" : "#/definitions/RoundRobinOptionWithOdds"
+          }
+        },
+        "legs" : {
+          "type" : "array",
+          "description" : "The collection of legs (the format of the object is described below).",
+          "items" : {
+            "$ref" : "#/definitions/ParlayLineLeg"
+          }
+        }
+      }
+    },
+    "RoundRobinOptionWithOdds" : {
+      "type" : "object",
+      "properties" : {
+        "roundRobinOption" : {
+          "type" : "string",
+          "description" : "RoundRobinOptions => [ NotSet = For initialization only - should not happen, Parlay = Single parlay that include all wagers (No Round Robin), TwoLegRoundRobin = Multiple parlays having 2 wagers each (round robin style), ThreeLegRoundRobin = Multiple parlays having 3 wagers each (round robin style), FourLegRoundRobin = Multiple parlays having 4 wagers each (round robin style), FiveLegRoundRobin = Multiple parlays having 5 wagers each (round robin style), SixLegRoundRobin = Multiple parlays having 6 wagers each (round robin style), SevenLegRoundRobin = Multiple parlays having 7 wagers each (round robin style), EightLegRoundRobin = Multiple parlays having 8 wagers each (round robin style) ] ",
+          "enum" : [ "Parlay", "TwoLegRoundRobin", "ThreeLegRoundRobin", "FourLegRoundRobin", "FiveLegRoundRobin", "SixLegRoundRobin", "SevenLegRoundRobin", "EightLegRoundRobin" ]
+        },
+        "odds" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Parlay odds for this option."
+        },
+        "unroundedDecimalOdds" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Unrounded parlay odds in decimal format to be used for calculations only"
+        }
+      }
+    },
+    "ParlayLineLeg" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "string",
+          "description" : "Status of the request. => [ VALID = Valid leg, PROCESSED_WITH_ERROR = Processed with error ] ",
+          "enum" : [ "VALID", "PROCESSED_WITH_ERROR" ]
+        },
+        "errorCode" : {
+          "type" : "string",
+          "description" : "When Status is PROCESSED_WITH_ERROR, provides a code indicating the specific problem. => [ CANNOT_PARLAY_LIVE_GAME = The wager is placed on Live game, CORRELATED = The leg is correlated with another one, EVENT_NO_LONGER_AVAILABLE_FOR_BETTING = The event is no longer offered for Parlays, EVENT_NOT_OFFERED_FOR_PARLAY = The event is not offered for Parlays, INVALID_EVENT = Live betting is not allowed at this moment, INVALID_LEG_BET_TYPE = Leg bet type is not accepted for Parlays, Accepted values are: SPREAD, MONEYLINE, TOTAL_POINTS, INVALID_PARLAY_BET = The leg did not validated due to error on Parlay Bet. Check the error PlaceParlayBet response for error details, LINE_CHANGED = Bet is submitted on a line that has changed, LINE_DOES_NOT_BELONG_TO_EVENT = LineId does not match the EventId specified in the request, LISTED_PITCHERS_SELECTION_ERROR = If bet was submitted with pitcher1MustStart and/or pitcher2MustStart parameters with values that are not allowed, ODDS_NO_LONGER_OFFERED_FOR_PARLAY_1 = Due to line change odds are not offered for Parlay anymore, ODDS_NO_LONGER_OFFERED_FOR_PARLAY_2 = Due to line change odds are not offered for Parlay anymore, ODDS_NO_LONGER_OFFERED_FOR_PARLAY_3 = Due to line change odds are not offered for Parlay anymore, OFFLINE_EVENT = Bet is submitted on an event that is offline or with incorrect lineId, PAST_CUTOFFTIME = Bet is submitted on a game after the betting cutoff time, SYSTEM_ERROR_1 = Unexpected error or System error, SYSTEM_ERROR_2 = Unexpected error or System error, SYSTEM_ERROR_3 = Unexpected error or System error ] ",
+          "enum" : [ "CANNOT_PARLAY_LIVE_GAME", "CORRELATED", "EVENT_NO_LONGER_AVAILABLE_FOR_BETTING", "EVENT_NOT_OFFERED_FOR_PARLAY", "INVALID_EVENT", "INVALID_LEG_BET_TYPE", "INVALID_PARLAY_BET", "LINE_CHANGED", "LINE_DOES_NOT_BELONG_TO_EVENT", "LISTED_PITCHERS_SELECTION_ERROR", "ODDS_NO_LONGER_OFFERED_FOR_PARLAY_1", "ODDS_NO_LONGER_OFFERED_FOR_PARLAY_2", "ODDS_NO_LONGER_OFFERED_FOR_PARLAY_3", "OFFLINE_EVENT", "PAST_CUTOFFTIME", "WAGER_TYPE_NO_LONGER_AVAILABLE_FOR_BETTING", "WAGER_TYPE_NOT_VALID_FOR_PARLAY", "WAGER_TYPE_CONFLICTS_WITH_OTHER_LEG", "SYSTEM_ERROR_1", "SYSTEM_ERROR_2", "SYSTEM_ERROR_3" ]
+        },
+        "legId" : {
+          "type" : "string",
+          "description" : "Echo of the legId from the request."
+        },
+        "lineId" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Line identification that bet was placed on."
+        },
+        "altLineId" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "If Bet was placed on Alternate Line the Id of that line will be returned."
+        },
+        "price" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Price that the bet was placed on."
+        },
+        "correlatedLegs" : {
+          "type" : "array",
+          "description" : "If errorCode is CORRELATED will contain legIds of all correlated legs.",
+          "items" : {
+            "type" : "string"
+          }
+        }
+      }
+    },
+    "LinesRequestTeaser" : {
+      "type" : "object",
+      "properties" : {
+        "teaserId" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Unique identifier.\r\n            Teaser details can be retrieved from a call to Get Teaser Groups endpoint."
+        },
+        "oddsFormat" : {
+          "type" : "string",
+          "description" : "Format the odds are returned in.. = [American, Decimal, HongKong, Indonesian, Malay]",
+          "enum" : [ "American", "Decimal", "HongKong", "Indonesian", "Malay" ]
+        },
+        "legs" : {
+          "type" : "array",
+          "description" : "Collection of Leg.",
+          "items" : {
+            "$ref" : "#/definitions/TeaserLineRequest"
+          }
+        }
+      }
+    },
+    "TeaserLineRequest" : {
+      "type" : "object",
+      "properties" : {
+        "legId" : {
+          "type" : "string",
+          "description" : "Client genereated GUID for uniquely identifying the leg."
+        },
+        "eventId" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Unique identifier."
+        },
+        "periodNumber" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Period of the match that is being bet on.\r\n            Refer to Period Number lookup table."
+        },
+        "betType" : {
+          "type" : "string",
+          "description" : "Type of bet.\r\n            Currently, only BET_TYPE.SPREAD and BET_TYPE.TOTAL_POINTS are supported. = ['Spread', 'Moneyline', 'Total_Points']",
+          "enum" : [ "Spread", "Total_Points" ]
+        },
+        "team" : {
+          "type" : "string",
+          "description" : "Team being bet on for a spread line.\r\n            Currenlty, only TEAM_TYPE.Team1 and TEAM_TYPE.Team2 are supported. => [ Team1 = Team 1, Team2 = Team 2, Draw = Draw. This is used for MONEYLINE bet type only. ] ",
+          "enum" : [ "Team1", "Team2" ]
+        },
+        "side" : {
+          "type" : "string",
+          "description" : "Side of a total line being bet on. = ['Over', 'Under']",
+          "enum" : [ "OVER", "UNDER" ]
+        },
+        "handicap" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Number of points."
+        }
+      }
+    },
+    "TeaserLinesResponse" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "string",
+          "description" : "Status of the request. => [ VALID = Teaser is valid, PROCESSED_WITH_ERROR = Teaser contains error(s) ] ",
+          "enum" : [ "VALID", "PROCESSED_WITH_ERROR" ]
+        },
+        "errorCode" : {
+          "type" : "string",
+          "description" : "When Status is PROCESSED_WITH_ERROR, provides a code indicating the specific problem. => [ INVALID_LEGS = One or more of the legs is invalid., SAME_EVENT_ONLY_REQUIRED = Teaser specified requires that all legs are from the same event., TEASER_DISABLED = Teaser has been disabled and cannot be bet on., TEASER_DOES_NOT_EXIST = The teaser identifier could requeted could not be found., TOO_FEW_LEGS = You do not meet the minimum number of legs requirement for the teaser specified., TOO_MANY_LEGS = You are above the maximum number of legs for the teaser specified., UNKNOWN = An unknown error has occured. ] ",
+          "enum" : [ "INVALID_LEGS", "SAME_EVENT_ONLY_REQUIRED", "TEASER_DISABLED", "TEASER_DOES_NOT_EXIST", "TOO_FEW_LEGS", "TOO_MANY_LEGS", "UNKNOWN" ]
+        },
+        "price" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Price for the bet."
+        },
+        "minRiskStake" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Minimum bet amount for WIN_RISK_TYPE.RISK."
+        },
+        "maxRiskStake" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Maximum bet amount for WIN_RISK_TYPE.RISK."
+        },
+        "minWinStake" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Minimum bet amount for WIN_RISK_TYPE.WIN."
+        },
+        "maxWinStake" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Maximum bet amount for WIN_RISK_TYPE.WIN."
+        },
+        "legs" : {
+          "type" : "array",
+          "description" : "Collection of Leg.",
+          "items" : {
+            "$ref" : "#/definitions/TeaserLineLeg"
+          }
+        }
+      }
+    },
+    "TeaserLineLeg" : {
+      "type" : "object",
+      "properties" : {
+        "status" : {
+          "type" : "string",
+          "description" : "Status of the request. => [ VALID = Teaser is valid, PROCESSED_WITH_ERROR = Teaser contains error(s) ] ",
+          "enum" : [ "VALID", "PROCESSED_WITH_ERROR" ]
+        },
+        "errorCode" : {
+          "type" : "string",
+          "description" : "When Status is PROCESSED_WITH_ERROR, provides a code indicating the specific problem. => [ EVENT_NOT_FOUND = he event specified could not be found., POINTS_NO_LONGER_AVAILABLE = The points requested are no longer available. This means that the lines a moved., UNKNOWN = An unknown error has occured., WAGER_TYPE_NOT_VALID_FOR_TEASER = The specified wager type is not valid for teasers. ] ",
+          "enum" : [ "EVENT_NOT_FOUND", "POINTS_NO_LONGER_AVAILABLE", "UNKNOWN", "WAGER_TYPE_NOT_VALID_FOR_TEASER" ]
+        },
+        "legId" : {
+          "type" : "string",
+          "description" : "Echo of the legId from the request."
+        },
+        "lineId" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Line identification that bet was placed on."
+        }
+      }
+    },
+    "OddsResponse" : {
+      "type" : "object",
+      "properties" : {
+        "sportId" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Same as requested sport Id."
+        },
+        "last" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Use this value for the subsequent requests for since query parameter to get just the changes since previous response."
+        },
+        "leagues" : {
+          "type" : "array",
+          "description" : "Contains a list of Leagues.",
+          "items" : {
+            "$ref" : "#/definitions/OddsLeague"
+          }
+        }
+      }
+    },
+    "OddsLeague" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "League Id."
+        },
+        "events" : {
+          "type" : "array",
+          "description" : "Contains a list of events.",
+          "items" : {
+            "$ref" : "#/definitions/OddsEvent"
+          }
+        }
+      }
+    },
+    "OddsEvent" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Event Id."
+        },
+        "awayScore" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Away team score. Only for live soccer events."
+        },
+        "homeScore" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Home team score. Only for live soccer events."
+        },
+        "awayRedCards" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Away team red cards. Only for live soccer events."
+        },
+        "homeRedCards" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Home team red cards. Only for live soccer events."
+        },
+        "periods" : {
+          "type" : "array",
+          "description" : "Contains a list of periods.",
+          "items" : {
+            "$ref" : "#/definitions/OddsPeriod"
+          }
+        }
+      }
+    },
+    "OddsPeriod" : {
+      "type" : "object",
+      "properties" : {
+        "lineId" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Line Id."
+        },
+        "number" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "This represents the period of the match. For example, for soccer we have:\r\n            0 - Game\r\n            1 - 1st Half\r\n            2 - 2nd Half\r\n            Full list of periods per sports"
+        },
+        "cutoff" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "Period’s wagering cut-off date."
+        },
+        "maxSpread" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Maximum spread bet. Only in straight odds response."
+        },
+        "maxMoneyline" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Maximum moneyline bet. Only in straight odds response."
+        },
+        "maxTotal" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Maximum total points bet. Only in straight odds response."
+        },
+        "maxTeamTotal" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Maximum team total points bet. Only in straight odds response."
+        },
+        "spreads" : {
+          "type" : "array",
+          "description" : "Container for spread odds.",
+          "items" : {
+            "$ref" : "#/definitions/OddsSpread"
+          }
+        },
+        "moneyline" : {
+          "description" : "Container for moneyLine odds.",
+          "$ref" : "#/definitions/OddsMoneyline"
+        },
+        "totals" : {
+          "type" : "array",
+          "description" : "Container for team total points.",
+          "items" : {
+            "$ref" : "#/definitions/OddsTotal"
+          }
+        },
+        "teamTotal" : {
+          "description" : "Container for team total points.",
+          "$ref" : "#/definitions/OddsTeamTotals"
+        }
+      }
+    },
+    "OddsSpread" : {
+      "type" : "object",
+      "properties" : {
+        "altLineId" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "This is present only if it’s alternative line."
+        },
+        "hdp" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Home team handicap."
+        },
+        "home" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Home team price."
+        },
+        "away" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Away team price."
+        }
+      }
+    },
+    "OddsMoneyline" : {
+      "type" : "object",
+      "properties" : {
+        "home" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Away team price"
+        },
+        "away" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Away team price."
+        },
+        "draw" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Draw price. This is present only for events we offer price for draw."
+        }
+      }
+    },
+    "OddsTotal" : {
+      "type" : "object",
+      "properties" : {
+        "altLineId" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "This is present only if it’s alternative line."
+        },
+        "points" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Total points."
+        },
+        "over" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Over price."
+        },
+        "under" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Under price."
+        }
+      }
+    },
+    "OddsTeamTotals" : {
+      "type" : "object",
+      "properties" : {
+        "home" : {
+          "description" : "Away team total points.",
+          "$ref" : "#/definitions/OddsTeamTotal"
+        },
+        "away" : {
+          "description" : "Home team total points.",
+          "$ref" : "#/definitions/OddsTeamTotal"
+        }
+      }
+    },
+    "OddsTeamTotal" : {
+      "type" : "object",
+      "properties" : {
+        "points" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Total points."
+        },
+        "over" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Over price."
+        },
+        "under" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Under price."
+        }
+      }
+    },
+    "ParlayOddsResponse" : {
+      "type" : "object",
+      "properties" : {
+        "sportId" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Same as requested sport Id."
+        },
+        "last" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Use this value for the subsequent requests for since query parameter to get just the changes since previous response."
+        },
+        "leagues" : {
+          "type" : "array",
+          "description" : "Contains a list of Leagues.",
+          "items" : {
+            "$ref" : "#/definitions/ParlayOddsLeague"
+          }
+        }
+      }
+    },
+    "ParlayOddsLeague" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "League Id."
+        },
+        "events" : {
+          "type" : "array",
+          "description" : "Contains a list of events.",
+          "items" : {
+            "$ref" : "#/definitions/ParlayOddsEvent"
+          }
+        }
+      }
+    },
+    "ParlayOddsEvent" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Event Id."
+        },
+        "awayScore" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Away team score. Only for live soccer events."
+        },
+        "homeScore" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Home team score. Only for live soccer events."
+        },
+        "awayRedCards" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Away team red cards. Only for live soccer events."
+        },
+        "homeRedCards" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Home team red cards. Only for live soccer events."
+        },
+        "periods" : {
+          "type" : "array",
+          "description" : "Contains a list of periods.",
+          "items" : {
+            "$ref" : "#/definitions/ParlayOddsPeriod"
+          }
+        }
+      }
+    },
+    "ParlayOddsPeriod" : {
+      "type" : "object",
+      "properties" : {
+        "lineId" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Line Id."
+        },
+        "number" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "This represents the period of the match. For example, for soccer we have:\r\n            0 - Game\r\n            1 - 1st Half\r\n            2 - 2nd Half\r\n            Full list of periods per sports"
+        },
+        "cutoff" : {
+          "type" : "string",
+          "format" : "date-time",
+          "description" : "Period’s wagering cut-off date."
+        },
+        "maxSpread" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Maximum spread bet. Only in straight odds response."
+        },
+        "maxMoneyline" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Maximum moneyline bet. Only in straight odds response."
+        },
+        "maxTotal" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Maximum total points bet. Only in straight odds response."
+        },
+        "maxTeamTotal" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Maximum team total points bet. Only in straight odds response."
+        },
+        "spreads" : {
+          "type" : "array",
+          "description" : "Container for spread odds.",
+          "items" : {
+            "$ref" : "#/definitions/ParlayOddsSpread"
+          }
+        },
+        "moneyline" : {
+          "description" : "Container for moneyLine odds.",
+          "$ref" : "#/definitions/ParlayOddsMoneyline"
+        },
+        "totals" : {
+          "type" : "array",
+          "description" : "Container for team total points.",
+          "items" : {
+            "$ref" : "#/definitions/ParlayOddsTotal"
+          }
+        },
+        "teamTotal" : {
+          "description" : "Container for team total points.",
+          "$ref" : "#/definitions/ParlayOddsTeamTotals"
+        }
+      }
+    },
+    "ParlayOddsSpread" : {
+      "type" : "object",
+      "properties" : {
+        "altLineId" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "This is present only if it’s alternative line."
+        },
+        "hdp" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Home team handicap."
+        },
+        "home" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Home team price."
+        },
+        "away" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Away team price."
+        }
+      }
+    },
+    "ParlayOddsMoneyline" : {
+      "type" : "object",
+      "properties" : {
+        "home" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Away team price"
+        },
+        "away" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Away team price."
+        },
+        "draw" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Draw price. This is present only for events we offer price for draw."
+        }
+      }
+    },
+    "ParlayOddsTotal" : {
+      "type" : "object",
+      "properties" : {
+        "altLineId" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "This is present only if it’s alternative line."
+        },
+        "points" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Total points."
+        },
+        "over" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Over price."
+        },
+        "under" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Under price."
+        }
+      }
+    },
+    "ParlayOddsTeamTotals" : {
+      "type" : "object",
+      "properties" : {
+        "away" : {
+          "description" : "Home team total points.",
+          "$ref" : "#/definitions/ParlayOddsTeamTotal"
+        },
+        "home" : {
+          "description" : "Away team total points.",
+          "$ref" : "#/definitions/ParlayOddsTeamTotal"
+        }
+      }
+    },
+    "ParlayOddsTeamTotal" : {
+      "type" : "object",
+      "properties" : {
+        "points" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Total points."
+        },
+        "over" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Over price."
+        },
+        "under" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Under price."
+        }
+      }
+    },
+    "TeaserOddsResponse" : {
+      "type" : "object",
+      "properties" : {
+        "teaserId" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Unique identifier.\r\n            Teaser details can be retrieved from a call to Get Teaser Groups endpoint."
+        },
+        "sportId" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Unique identifier.\r\n            Sport details can be retrieved from a call to Get Sports endpoint."
+        },
+        "leagues" : {
+          "type" : "array",
+          "description" : "A collection of League.",
+          "items" : {
+            "$ref" : "#/definitions/TeaserOddsLeague"
+          }
+        }
+      }
+    },
+    "TeaserOddsLeague" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Unique identifier.\r\n            League details can be retrieved from a call to Get Leagues endpoint."
+        },
+        "events" : {
+          "type" : "array",
+          "description" : "A collection of Event.",
+          "items" : {
+            "$ref" : "#/definitions/TeaserOddsEvent"
+          }
+        }
+      }
+    },
+    "TeaserOddsEvent" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Unique identifier."
+        },
+        "periods" : {
+          "type" : "array",
+          "description" : "A collection of Period indicating the period numbers available for betting.",
+          "items" : {
+            "$ref" : "#/definitions/TeaserOddsPeriod"
+          }
+        }
+      }
+    },
+    "TeaserOddsPeriod" : {
+      "type" : "object",
+      "properties" : {
+        "number" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Period of the match that is being bet on.\r\n            Refer to Period Number lookup table."
+        },
+        "lineId" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Unique identifier."
+        },
+        "spread" : {
+          "description" : "Teased spread line.",
+          "$ref" : "#/definitions/TeaserOddsSpread"
+        },
+        "total" : {
+          "description" : "Teased total line.",
+          "$ref" : "#/definitions/TeaserOddsTotalPoints"
+        }
+      }
+    },
+    "TeaserOddsSpread" : {
+      "type" : "object",
+      "properties" : {
+        "maxBet" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Maximum bet amount."
+        },
+        "homeHdp" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Home team handicap.\r\n            Refer to Get Fixtures endpoint to determine home and away teams."
+        },
+        "awayHdp" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Away team handicap.\r\n            Refer to Get Fixtures endpoint to determine home and away teams."
+        }
+      }
+    },
+    "TeaserOddsTotalPoints" : {
+      "type" : "object",
+      "properties" : {
+        "maxBet" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Maximum bet amount."
+        },
+        "overPoints" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Over points."
+        },
+        "underPoints" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Under points."
+        }
+      }
+    },
+    "SportPeriod" : {
+      "type" : "object",
+      "properties" : {
+        "number" : {
+          "type" : "integer",
+          "format" : "int32"
+        },
+        "description" : {
+          "type" : "string"
+        },
+        "shortDescription" : {
+          "type" : "string"
+        },
+        "spreadDescription" : {
+          "type" : "string"
+        },
+        "moneylineDescription" : {
+          "type" : "string"
+        },
+        "totalDescription" : {
+          "type" : "string"
+        },
+        "team1TotalDescription" : {
+          "type" : "string"
+        },
+        "team2TotalDescription" : {
+          "type" : "string"
+        },
+        "spreadShortDescription" : {
+          "type" : "string"
+        },
+        "moneylineShortDescription" : {
+          "type" : "string"
+        },
+        "totalShortDescription" : {
+          "type" : "string"
+        },
+        "team1TotalShortDescription" : {
+          "type" : "string"
+        },
+        "team2TotalShortDescription" : {
+          "type" : "string"
+        }
+      }
+    },
+    "SportsResponse" : {
+      "type" : "object",
+      "properties" : {
+        "sports" : {
+          "type" : "array",
+          "description" : "Sports container.",
+          "items" : {
+            "$ref" : "#/definitions/Sport"
+          }
+        }
+      }
+    },
+    "Sport" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Sport Id."
+        },
+        "name" : {
+          "type" : "string",
+          "description" : "Sport name."
+        },
+        "hasOfferings" : {
+          "type" : "boolean",
+          "description" : "Whether the sport currently has events.",
+          "readOnly" : true
+        },
+        "leagueSpecialsCount" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Indicates how many specials are in the given sport."
+        },
+        "eventSpecialsCount" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Indicates how many 'game specials' are in the given sport."
+        },
+        "eventCount" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Indicates how many games are in the given sport."
+        }
+      }
+    },
+    "TeaserGroupsResponse" : {
+      "type" : "object",
+      "properties" : {
+        "teaserGroups" : {
+          "type" : "array",
+          "description" : "A collection of TeaserGroups containing available teasers.",
+          "items" : {
+            "$ref" : "#/definitions/TeaserGroups"
+          }
+        }
+      }
+    },
+    "TeaserGroups" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Unique identifier."
+        },
+        "name" : {
+          "type" : "string",
+          "description" : "Human friendly name."
+        },
+        "teasers" : {
+          "type" : "array",
+          "description" : "A collection of Teaser.",
+          "items" : {
+            "$ref" : "#/definitions/TeaserGroupsTeaser"
+          }
+        }
+      }
+    },
+    "TeaserGroupsTeaser" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int64",
+          "description" : "Unique identifier."
+        },
+        "description" : {
+          "type" : "string",
+          "description" : "Human friendly description."
+        },
+        "sportId" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Unique identifier.\r\n            Sport details can be retrieved from a call to Get Sports endpoint."
+        },
+        "minLegs" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Minimum number of legs that must be selected."
+        },
+        "maxLegs" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Maximum number of legs that can be selected."
+        },
+        "sameEventOnly" : {
+          "type" : "boolean",
+          "description" : "If true then all legs must be from the same event, otherwise legs can be from different events."
+        },
+        "payouts" : {
+          "type" : "array",
+          "description" : "A collection of Payout indicating all possible payout combinations.",
+          "items" : {
+            "$ref" : "#/definitions/TeaserGroupsPayout"
+          }
+        },
+        "leagues" : {
+          "type" : "array",
+          "description" : "A collection of Leagues available to the teaser.",
+          "items" : {
+            "$ref" : "#/definitions/TeaserGroupsLeague"
+          }
+        }
+      }
+    },
+    "TeaserGroupsPayout" : {
+      "type" : "object",
+      "properties" : {
+        "numberOfLegs" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Number of legs that must be bet and won on to get the associated price."
+        },
+        "price" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Price of the bet given the specified number of legs."
+        }
+      }
+    },
+    "TeaserGroupsLeague" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "integer",
+          "format" : "int32",
+          "description" : "Unique identifier.\r\n            League details can be retrieved from a call to Get Leagues endpoint."
+        },
+        "spread" : {
+          "description" : "The number of points the spread line will be teased by.",
+          "$ref" : "#/definitions/TeaserGroupsBetType"
+        },
+        "total" : {
+          "description" : "The number of points the total line will be teased by.",
+          "$ref" : "#/definitions/TeaserGroupsBetType"
+        }
+      }
+    },
+    "TeaserGroupsBetType" : {
+      "type" : "object",
+      "properties" : {
+        "points" : {
+          "type" : "number",
+          "format" : "double",
+          "description" : "Number of points the line will be teased for the given league."
+        }
+      }
+    },
+    "TranslationResponse" : {
+      "type" : "object",
+      "properties" : {
+        "translations" : {
+          "type" : "array",
+          "description" : "Collection of translations.",
+          "items" : {
+            "$ref" : "#/definitions/Translation"
+          }
+        }
+      }
+    },
+    "Translation" : {
+      "type" : "object",
+      "properties" : {
+        "text" : {
+          "type" : "string",
+          "description" : "Original requested text to be translated."
+        },
+        "cultures" : {
+          "type" : "array",
+          "description" : "Collection of translations by culture.",
+          "items" : {
+            "$ref" : "#/definitions/TranslationByCulture"
+          }
+        }
+      }
+    },
+    "TranslationByCulture" : {
+      "type" : "object",
+      "properties" : {
+        "id" : {
+          "type" : "string",
+          "description" : "Culture based on which the text is translated."
+        },
+        "text" : {
+          "type" : "string",
+          "description" : "Translation text."
+        }
+      }
+    }
+  }
+}
