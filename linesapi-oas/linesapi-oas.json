@@ -483,7 +483,7 @@
         }, {
           "name" : "since",
           "in" : "query",
-          "description" : "This is used to receive incremental updates. Use the value of last from previous odds response. When since parameter is not provided, the odds are delayed up to 1 min to encourage the use of the parameter. Please note that when using since parameter you will get in the response ONLY changed periods. If a period didn’t have any changes it will not be in the response.",
+          "description" : "This is used to receive incremental updates. Use the value of last from previous odds response. When since parameter is not provided, the odds are delayed up to 1 min to encourage the use of the parameter. Please note that when using since parameter you will get in the response ONLY changed periods. If a period did not have any changes it will not be in the response.",
           "required" : false,
           "type" : "integer",
           "format" : "int64"
