@@ -576,7 +576,7 @@
             "type" : "integer",
             "format" : "int64"
           },
-          "collectionFormat" : "mult"
+          "collectionFormat" : "multi"
         } ],
         "responses" : {
           "200" : {
@@ -1041,7 +1041,6 @@
           "description" : "Team2 score."
         },
         "cancellationReason" : {
-          "description" : "Cancellation reason for the period",
           "$ref" : "#/definitions/CancellationReasonType"
         }
       }
@@ -1054,7 +1053,6 @@
           "description" : "Cancellation Reason Code"
         },
         "details" : {
-          "description" : "Cancellation Specifics",
           "$ref" : "#/definitions/CancellationSpecificsType"
         }
       }
@@ -1683,7 +1681,6 @@
           }
         },
         "moneyline" : {
-          "description" : "Container for moneyLine odds.",
           "$ref" : "#/definitions/OddsMoneyline"
         },
         "totals" : {
@@ -1694,7 +1691,6 @@
           }
         },
         "teamTotal" : {
-          "description" : "Container for team total points.",
           "$ref" : "#/definitions/OddsTeamTotals"
         }
       }
@@ -1773,11 +1769,9 @@
       "type" : "object",
       "properties" : {
         "home" : {
-          "description" : "Away team total points.",
           "$ref" : "#/definitions/OddsTeamTotal"
         },
         "away" : {
-          "description" : "Home team total points.",
           "$ref" : "#/definitions/OddsTeamTotal"
         }
       }
@@ -1924,7 +1918,6 @@
           }
         },
         "moneyline" : {
-          "description" : "Container for moneyLine odds.",
           "$ref" : "#/definitions/ParlayOddsMoneyline"
         },
         "totals" : {
@@ -1935,7 +1928,6 @@
           }
         },
         "teamTotal" : {
-          "description" : "Container for team total points.",
           "$ref" : "#/definitions/ParlayOddsTeamTotals"
         }
       }
@@ -2014,11 +2006,9 @@
       "type" : "object",
       "properties" : {
         "away" : {
-          "description" : "Home team total points.",
           "$ref" : "#/definitions/ParlayOddsTeamTotal"
         },
         "home" : {
-          "description" : "Away team total points.",
           "$ref" : "#/definitions/ParlayOddsTeamTotal"
         }
       }
@@ -2113,11 +2103,9 @@
           "description" : "Unique identifier."
         },
         "spread" : {
-          "description" : "Teased spread line.",
           "$ref" : "#/definitions/TeaserOddsSpread"
         },
         "total" : {
-          "description" : "Teased total line.",
           "$ref" : "#/definitions/TeaserOddsTotalPoints"
         }
       }
@@ -2357,11 +2345,9 @@
           "description" : "Unique identifier.\r\n            League details can be retrieved from a call to Get Leagues endpoint."
         },
         "spread" : {
-          "description" : "The number of points the spread line will be teased by.",
           "$ref" : "#/definitions/TeaserGroupsBetType"
         },
         "total" : {
-          "description" : "The number of points the total line will be teased by.",
           "$ref" : "#/definitions/TeaserGroupsBetType"
         }
       }
