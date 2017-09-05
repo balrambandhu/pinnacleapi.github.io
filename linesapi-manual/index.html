@@ -419,7 +419,7 @@ font-style: italic;
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
     <pre class="get"><code class="huge"><span class="http-method">get</span> /v1/fixtures</code></pre></div>
-    <div class="method-summary">Returns all non-settled events.&lt;br /&gt;            Please note that it is possible that the event is in Get Fixtures response but not in Get Odds. This is happens when the odds have not been set yet for the event.&lt;br /&gt;            Please note that it is possible to receive the same exact response when using &quot;since&quot; parameter. This is rare and can be caused by internal updates of event&#39;s properties. (<span class="nickname">fixturesGet</span>)</div>
+    <div class="method-summary">Returns all non-settled events.Please note that it is possible that the event is in Get Fixtures response but not in Get Odds. This is happens when the odds have not been set yet for the event. Please note that it is possible to receive the same exact response when using &quot;since&quot; parameter. This is rare and can be caused by internal updates of event&#39;s properties. (<span class="nickname">fixturesGet</span>)</div>
     <div class="method-notes"></div>
 
 
@@ -436,7 +436,7 @@ font-style: italic;
 
       <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; To retrieve ONLY live events set the value to islive &#x3D;1. Any other value will result in retrieval of events regardless of their Live status. </div><div class="param">since (optional)</div>
 
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; This is used to receive incremental updates. Use the value of last from previous fixtures response.&lt;br /&gt;            When since parameter is not provided, the fixtures are delayed up to 1 min to encourage the use of the parameter. format: int64</div><div class="param">eventIds (optional)</div>
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; This is used to receive incremental updates. Use the value of last from previous fixtures response. When since parameter is not provided, the fixtures are delayed up to 1 min to encourage the use of the parameter. format: int64</div><div class="param">eventIds (optional)</div>
 
       <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Filter by EventIds </div><div class="param">soccerLiveBettingType (optional)</div>
 
@@ -997,7 +997,7 @@ font-style: italic;
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
     <pre class="get"><code class="huge"><span class="http-method">get</span> /v1/odds</code></pre></div>
-    <div class="method-summary">Returns straight and parlay odds for all non-settled events.&lt;br /&gt;            Please note that it is possible that the event is in Get Fixtures response but not in Get Odds. This is happens when the odds have not been set yet for the event. (<span class="nickname">oddsGetOdds</span>)</div>
+    <div class="method-summary">Returns straight and parlay odds for all non-settled events. Please note that it is possible that the event is in Get Fixtures response but not in Get Odds. This is happens when the odds have not been set yet for the event. (<span class="nickname">oddsGetOdds</span>)</div>
     <div class="method-notes"></div>
 
 
@@ -1014,7 +1014,7 @@ font-style: italic;
 
       <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Format in which we return the odds. Default is American. &#x3D; [American, Decimal, HongKong, Indonesian, Malay] </div><div class="param">since (optional)</div>
 
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; This is used to receive incremental updates. Use the value of last from previous odds response.&lt;br /&gt;            When since parameter is not provided, the odds are delayed up to 1 min to encourage the use of the parameter.&lt;br /&gt;            Please note that when using since parameter you will get in the response ONLY changed periods. If a period didn’t have any changes it will not be in the response. format: int64</div><div class="param">isLive (optional)</div>
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; This is used to receive incremental updates. Use the value of last from previous odds response. When since parameter is not provided, the odds are delayed up to 1 min to encourage the use of the parameter. Please note that when using since parameter you will get in the response ONLY changed periods. If a period didn’t have any changes it will not be in the response. format: int64</div><div class="param">isLive (optional)</div>
 
       <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; To retrieve ONLY live odds set the value to islive &#x3D;1. Otherwise response will have all odds. </div><div class="param">eventIds (optional)</div>
 
@@ -1110,7 +1110,7 @@ font-style: italic;
     <div class="method-path">
     <a class="up" href="#__Methods">Up</a>
     <pre class="get"><code class="huge"><span class="http-method">get</span> /v1/odds/parlay</code></pre></div>
-    <div class="method-summary">Returns straight and parlay odds for all non-settled events.&lt;br /&gt;            Please note that it is possible that the event is in Get Fixtures response but not in Get Odds. This is happens when the odds have not been set yet for the event. (<span class="nickname">oddsGetParlays</span>)</div>
+    <div class="method-summary">Returns straight and parlay odds for all non-settled events. Please note that it is possible that the event is in Get Fixtures response but not in Get Odds. This is happens when the odds have not been set yet for the event. (<span class="nickname">oddsGetParlays</span>)</div>
     <div class="method-notes"></div>
 
 
@@ -1127,7 +1127,7 @@ font-style: italic;
 
       <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Format in which we return the odds. Default is American. &#x3D; [American, Decimal, HongKong, Indonesian, Malay] </div><div class="param">since (optional)</div>
 
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; This is used to receive incremental updates. Use the value of last from previous odds response.&lt;br /&gt;            When since parameter is not provided, the odds are delayed up to 1 min to encourage the use of the parameter.&lt;br /&gt;            Please note that when using since parameter you will get in the response ONLY changed periods. If a period didn’t have any changes it will not be in the response. format: int64</div><div class="param">isLive (optional)</div>
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; This is used to receive incremental updates. Use the value of last from previous odds response. When since parameter is not provided, the odds are delayed up to 1 min to encourage the use of the parameter. Please note that when using since parameter you will get in the response ONLY changed periods. If a period didn’t have any changes it will not be in the response. format: int64</div><div class="param">isLive (optional)</div>
 
       <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; To retrieve ONLY live odds set the value to islive &#x3D;1. Otherwise response will have all odds. </div><div class="param">eventIds (optional)</div>
 
@@ -1234,7 +1234,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">teaserId (required)</div>
 
-      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Unique identifier.&lt;br /&gt;            Teaser details can be retrieved from a call to Get Teaser Groups endpoint. format: int64</div><div class="param">soccerLiveBettingType (optional)</div>
+      <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Unique identifier.Teaser details can be retrieved from a call to Get Teaser Groups endpoint. format: int64</div><div class="param">soccerLiveBettingType (optional)</div>
 
       <div class="param-desc"><span class="param-type">Query Parameter</span> &mdash; Gets or sets LiveBettingType. Filter to return odds only for specified live market (Danger Zone or Live Delay) &#x3D; [Legacy, DangerZone, LiveDelay, NotSet] </div>
     </div>  <!-- field-items -->
