@@ -4,6 +4,7 @@
     "version" : "1.0.0",
     "title" : "Pinnacle Lines API Specification v2.0"
   },
+  "host" : "api.pinnacle.com",
   "schemes" : [ "https" ],
   "security" : [ {
     "basicAuth" : [ ]
