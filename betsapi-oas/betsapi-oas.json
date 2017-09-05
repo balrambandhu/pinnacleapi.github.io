@@ -13,8 +13,8 @@
     "/v1/bets/place" : {
       "post" : {
         "tags" : [ "Place Bets" ],
-        "summary" : "Place straight bet.",
-        "description" : "Place Straight Bet v2",
+        "summary" : "Place straight bet v1",
+        "description" : "Place straight bet v1",
         "operationId" : "Bets_Straight",
         "consumes" : [ "application/json", "text/json" ],
         "produces" : [ "application/json" ],
@@ -65,7 +65,7 @@
     "/v2/bets/straight" : {
       "post" : {
         "tags" : [ "Place Bets" ],
-        "summary" : "Place a straight bet in the system.",
+        "summary" : "Place straight bet v2",
         "operationId" : "Bets_StraightV2",
         "consumes" : [ "application/json", "text/json" ],
         "produces" : [ "application/json" ],
