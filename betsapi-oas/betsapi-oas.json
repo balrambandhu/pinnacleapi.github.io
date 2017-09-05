@@ -115,7 +115,7 @@
     "/v1/bets/parlay" : {
       "post" : {
         "tags" : [ "Place Bets" ],
-        "summary" : "Place parlay bet in the system.",
+        "summary" : "Place parlay bet.",
         "operationId" : "Bets_Parlay",
         "consumes" : [ "application/json", "text/json" ],
         "produces" : [ "application/json" ],
@@ -165,7 +165,7 @@
     "/v1/bets/teaser" : {
       "post" : {
         "tags" : [ "Place Bets" ],
-        "summary" : "Place teaser bet in the system.",
+        "summary" : "Place teaser bet.",
         "operationId" : "Bets_Teaser",
         "consumes" : [ "application/json", "text/json" ],
         "produces" : [ "application/json" ],
@@ -215,7 +215,7 @@
     "/v1/bets/special" : {
       "post" : {
         "tags" : [ "Place Bets" ],
-        "summary" : "Place specials bet in the system.",
+        "summary" : "Place specials bet.",
         "operationId" : "Bets_Special",
         "consumes" : [ "application/json", "text/json" ],
         "produces" : [ "application/json" ],
