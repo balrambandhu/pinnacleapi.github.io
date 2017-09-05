@@ -374,6 +374,8 @@
         },
         "uniqueRequestId" : {
           "type" : "string",
+          "format" : "uuid",
+          "example" : "A9EB2EB1-13A5-4600-9F1B-4859379CDEC4",
           "description" : "Echo of the uniqueRequestId from the request."
         },
         "betterLineWasAccepted" : {
@@ -423,7 +425,7 @@
     },
     "StraightBet" : {
       "type" : "object",
-      "required" : [ "betId", "betStatus", "betType", "cancellationReason", "oddsFormat", "placedAt", "risk", "updateSequence", "wagerNumber", "win" ],
+      "required" : [ "betId", "betStatus", "betType", "oddsFormat", "placedAt", "risk", "updateSequence", "wagerNumber", "win" ],
       "properties" : {
         "betId" : {
           "type" : "integer",
@@ -1348,7 +1350,7 @@
     },
     "SpecialBet" : {
       "type" : "object",
-      "required" : [ "betId", "betStatus", "betType", "cancellationReason", "contestantId", "contestantName", "leagueId", "oddsFormat", "placedAt", "price", "risk", "specialId", "specialName", "sportId", "updateSequence", "wagerNumber", "win" ],
+      "required" : [ "betId", "betStatus", "betType", "contestantId", "contestantName", "leagueId", "oddsFormat", "placedAt", "price", "risk", "specialId", "specialName", "sportId", "updateSequence", "wagerNumber", "win" ],
       "properties" : {
         "betId" : {
           "type" : "integer",
@@ -1412,7 +1414,7 @@
         "updateSequence" : {
           "type" : "integer",
           "format" : "int64",
-          "description" : "Update Sequence"
+          "description" : "Update Sequence. It gets updated when the bet status change."
         },
         "specialId" : {
           "type" : "integer",
@@ -1520,7 +1522,7 @@
     },
     "TeaserBet" : {
       "type" : "object",
-      "required" : [ "betId", "betStatus", "betType", "cancellationReason", "isSameEventOnly", "legs", "maxPicks", "minPicks", "oddsFormat", "placedAt", "risk", "teaserName", "updateSequence", "wagerNumber", "win" ],
+      "required" : [ "betId", "betStatus", "betType", "isSameEventOnly", "legs", "maxPicks", "minPicks", "oddsFormat", "placedAt", "risk", "teaserName", "updateSequence", "wagerNumber", "win" ],
       "properties" : {
         "betId" : {
           "type" : "integer",
@@ -1616,7 +1618,7 @@
     },
     "ManualBet" : {
       "type" : "object",
-      "required" : [ "betId", "betStatus", "betType", "cancellationReason", "description", "oddsFormat", "placedAt", "risk", "updateSequence", "wagerNumber", "win" ],
+      "required" : [ "betId", "betStatus", "betType", "description", "oddsFormat", "placedAt", "risk", "updateSequence", "wagerNumber", "win" ],
       "properties" : {
         "betId" : {
           "type" : "integer",
