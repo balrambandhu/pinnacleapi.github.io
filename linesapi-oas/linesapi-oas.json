@@ -483,7 +483,7 @@
         }, {
           "name" : "since",
           "in" : "query",
-          "description" : "This is used to receive incremental updates. Use the value of last from previous odds response.<br />            When since parameter is not provided, the odds are delayed up to 1 min to encourage the use of the parameter.<br />            Please note that when using since parameter you will get in the response ONLY changed periods. If a period didn’t have any changes it will not be in the response.",
+          "description" : "This is used to receive incremental updates. Use the value of last from previous odds response. When since parameter is not provided, the odds are delayed up to 1 min to encourage the use of the parameter. Please note that when using since parameter you will get in the response ONLY changed periods. If a period didn’t have any changes it will not be in the response.",
           "required" : false,
           "type" : "integer",
           "format" : "int64"
@@ -1055,7 +1055,6 @@
           "description" : "Team2 score."
         },
         "cancellationReason" : {
-          "description" : "Cancellation reason for the period",
           "$ref" : "#/definitions/CancellationReasonType"
         }
       }
@@ -1068,7 +1067,6 @@
           "description" : "Cancellation Reason Code"
         },
         "details" : {
-          "description" : "Cancellation Specifics",
           "$ref" : "#/definitions/CancellationSpecificsType"
         }
       }
@@ -1697,7 +1695,6 @@
           }
         },
         "moneyline" : {
-          "description" : "Container for moneyLine odds.",
           "$ref" : "#/definitions/OddsMoneyline"
         },
         "totals" : {
@@ -1708,7 +1705,6 @@
           }
         },
         "teamTotal" : {
-          "description" : "Container for team total points.",
           "$ref" : "#/definitions/OddsTeamTotals"
         }
       }
@@ -1787,11 +1783,9 @@
       "type" : "object",
       "properties" : {
         "home" : {
-          "description" : "Away team total points.",
           "$ref" : "#/definitions/OddsTeamTotal"
         },
         "away" : {
-          "description" : "Home team total points.",
           "$ref" : "#/definitions/OddsTeamTotal"
         }
       }
@@ -1938,7 +1932,6 @@
           }
         },
         "moneyline" : {
-          "description" : "Container for moneyLine odds.",
           "$ref" : "#/definitions/ParlayOddsMoneyline"
         },
         "totals" : {
@@ -1949,7 +1942,6 @@
           }
         },
         "teamTotal" : {
-          "description" : "Container for team total points.",
           "$ref" : "#/definitions/ParlayOddsTeamTotals"
         }
       }
@@ -2028,11 +2020,9 @@
       "type" : "object",
       "properties" : {
         "away" : {
-          "description" : "Home team total points.",
           "$ref" : "#/definitions/ParlayOddsTeamTotal"
         },
         "home" : {
-          "description" : "Away team total points.",
           "$ref" : "#/definitions/ParlayOddsTeamTotal"
         }
       }
@@ -2127,11 +2117,9 @@
           "description" : "Unique identifier."
         },
         "spread" : {
-          "description" : "Teased spread line.",
           "$ref" : "#/definitions/TeaserOddsSpread"
         },
         "total" : {
-          "description" : "Teased total line.",
           "$ref" : "#/definitions/TeaserOddsTotalPoints"
         }
       }
@@ -2371,11 +2359,9 @@
           "description" : "Unique identifier.\r\n            League details can be retrieved from a call to Get Leagues endpoint."
         },
         "spread" : {
-          "description" : "The number of points the spread line will be teased by.",
           "$ref" : "#/definitions/TeaserGroupsBetType"
         },
         "total" : {
-          "description" : "The number of points the total line will be teased by.",
           "$ref" : "#/definitions/TeaserGroupsBetType"
         }
       }
