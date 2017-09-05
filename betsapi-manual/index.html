@@ -821,7 +821,7 @@ margin-bottom: 20px;
 };
   defs.ManualBet = {
   "type" : "object",
-  "required" : [ "betId", "betStatus", "betType", "cancellationReason", "description", "oddsFormat", "placedAt", "risk", "updateSequence", "wagerNumber", "win" ],
+  "required" : [ "betId", "betStatus", "betType", "description", "oddsFormat", "placedAt", "risk", "updateSequence", "wagerNumber", "win" ],
   "properties" : {
     "betId" : {
       "type" : "integer",
@@ -1315,6 +1315,8 @@ margin-bottom: 20px;
     },
     "uniqueRequestId" : {
       "type" : "string",
+      "format" : "uuid",
+      "example" : "A9EB2EB1-13A5-4600-9F1B-4859379CDEC4",
       "description" : "Echo of the uniqueRequestId from the request."
     },
     "betterLineWasAccepted" : {
@@ -1666,7 +1668,7 @@ margin-bottom: 20px;
 };
   defs.SpecialBet = {
   "type" : "object",
-  "required" : [ "betId", "betStatus", "betType", "cancellationReason", "contestantId", "contestantName", "leagueId", "oddsFormat", "placedAt", "price", "risk", "specialId", "specialName", "sportId", "updateSequence", "wagerNumber", "win" ],
+  "required" : [ "betId", "betStatus", "betType", "contestantId", "contestantName", "leagueId", "oddsFormat", "placedAt", "price", "risk", "specialId", "specialName", "sportId", "updateSequence", "wagerNumber", "win" ],
   "properties" : {
     "betId" : {
       "type" : "integer",
@@ -1730,7 +1732,7 @@ margin-bottom: 20px;
     "updateSequence" : {
       "type" : "integer",
       "format" : "int64",
-      "description" : "Update Sequence"
+      "description" : "Update Sequence. It gets updated when the bet status change."
     },
     "specialId" : {
       "type" : "integer",
@@ -1842,7 +1844,7 @@ margin-bottom: 20px;
 };
   defs.StraightBet = {
   "type" : "object",
-  "required" : [ "betId", "betStatus", "betType", "cancellationReason", "oddsFormat", "placedAt", "risk", "updateSequence", "wagerNumber", "win" ],
+  "required" : [ "betId", "betStatus", "betType", "oddsFormat", "placedAt", "risk", "updateSequence", "wagerNumber", "win" ],
   "properties" : {
     "betId" : {
       "type" : "integer",
@@ -2008,7 +2010,7 @@ margin-bottom: 20px;
 };
   defs.TeaserBet = {
   "type" : "object",
-  "required" : [ "betId", "betStatus", "betType", "cancellationReason", "isSameEventOnly", "legs", "maxPicks", "minPicks", "oddsFormat", "placedAt", "risk", "teaserName", "updateSequence", "wagerNumber", "win" ],
+  "required" : [ "betId", "betStatus", "betType", "isSameEventOnly", "legs", "maxPicks", "minPicks", "oddsFormat", "placedAt", "risk", "teaserName", "updateSequence", "wagerNumber", "win" ],
   "properties" : {
     "betId" : {
       "type" : "integer",
@@ -6002,7 +6004,7 @@ try {
             </div>
             <div id="generator">
                 <div class="content">
-                    Generated 2017-09-05T00:17:06.859Z
+                    Generated 2017-09-05T00:28:36.777Z
                 </div>
             </div>
         </div>
