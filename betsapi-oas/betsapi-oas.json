@@ -289,6 +289,8 @@
         },
         "uniqueRequestId" : {
           "type" : "string",
+          "format" : "uuid",
+          "example" : "D5CC50E4-284D-4D50-8D49-429BDC4F2A48",
           "description" : "This is a Unique ID for PlaceBet requests. This is to support idempotent requests."
         },
         "acceptBetterLine" : {
@@ -1686,7 +1688,7 @@
         },
         "description" : {
           "type" : "string",
-          "description" : "Manual Bet Description."
+          "description" : "Manual bet description."
         },
         "referenceBetId" : {
           "type" : "integer",
