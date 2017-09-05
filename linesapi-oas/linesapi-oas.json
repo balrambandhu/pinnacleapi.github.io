@@ -85,7 +85,7 @@
     "/v1/fixtures" : {
       "get" : {
         "tags" : [ "Fixtures" ],
-        "summary" : "Returns all non-settled events.Please note that it is possible that the event is in Get Fixtures response but not in Get Odds. This is happens when the odds have not been set yet for the event. Please note that it is possible to receive the same exact response when using *since* parameter. This is rare and can be caused by internal updates of event's properties.",
+        "summary" : "Returns all non-settled events.Please note that it is possible that the event is in Get Fixtures response but not in Get Odds. This is happens when the odds have not been set yet for the event. Please note that it is possible to receive the same exact response when using *since* parameter. This is rare and can be caused by internal updates of event  properties.",
         "operationId" : "Fixtures_Get",
         "consumes" : [ ],
         "produces" : [ "application/json", "text/json", "application/xml", "text/xml" ],
