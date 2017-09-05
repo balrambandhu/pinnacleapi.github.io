@@ -1841,8 +1841,7 @@ font-style: italic;
     <h3 class="field-label"><a name="LinesRequestTeaser">LinesRequestTeaser - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">teaserId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> Unique identifier.
-            Teaser details can be retrieved from a call to Get Teaser Groups endpoint. format: int64</div>
+      <div class="param">teaserId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> Unique identifier.  Teaser details can be retrieved from a call to Get Teaser Groups endpoint. format: int64</div>
 <div class="param">oddsFormat (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Format the odds are returned in.. &#x3D; [American, Decimal, HongKong, Indonesian, Malay] </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">American</div><div class="param-enum">Decimal</div><div class="param-enum">HongKong</div><div class="param-enum">Indonesian</div><div class="param-enum">Malay</div>
@@ -1968,10 +1967,7 @@ font-style: italic;
     <div class="field-items">
       <div class="param">uniqueLegId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> This unique id of the leg. It used to identify and match leg in the response. </div>
 <div class="param">eventId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> Id of the event. format: int64</div>
-<div class="param">periodNumber (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> This represents the period of the match. For example, for soccer we have:
-            0 -  Game
-            1 - 1st Half
-            2 - 2nd Half format: int32</div>
+<div class="param">periodNumber (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> This represents the period of the match. For example, for soccer we have:\r\n            0 -  Game            1 - 1st Half           2 - 2nd Half format: int32</div>
 <div class="param">legBetType (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Only SPREAD, MONEYLINE and TOTAL_POINTS are supported. &#x3D; [&#39;Spread&#39;, &#39;Moneyline&#39;, &#39;Total_Points&#39;] </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">Spread</div><div class="param-enum">Moneyline</div><div class="param-enum">Total_Points</div>
@@ -2137,10 +2133,7 @@ font-style: italic;
     <h3 class="field-label"><a name="SettledFixturesPeriod">SettledFixturesPeriod - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">number (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> This represents the period of the match. For example, for soccer we have:
-            0 - Game
-            1 - 1st Half
-            2 - 2nd Half format: int32</div>
+      <div class="param">number (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> This represents the period of the match. For example, for soccer we have:           0 - Game           1 - 1st Half           2 - 2nd Half format: int32</div>
 <div class="param">status (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Period settlement status. format: int32</div>
 <div class="param">settlementId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> Unique id of the settlement. In case of a re-settlement, a new settlementId and settledAt will be generated. format: int64</div>
 <div class="param">settledAt (optional)</div><div class="param-desc"><span class="param-type"><a href="#DateTime">Date</a></span> Date and time when teh period was settled . format: date-time</div>
@@ -2223,8 +2216,7 @@ font-style: italic;
     <h3 class="field-label"><a name="TeaserGroupsLeague">TeaserGroupsLeague - </a> <a class="up" href="#__Models">Up</a></h3>
     <div class='model-description'></div>
     <div class="field-items">
-      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Unique identifier.
-            League details can be retrieved from a call to Get Leagues endpoint. format: int32</div>
+      <div class="param">id (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Unique identifier. League details can be retrieved from a call to Get Leagues endpoint. format: int32</div>
 <div class="param">spread (optional)</div><div class="param-desc"><span class="param-type"><a href="#TeaserGroupsBetType">TeaserGroupsBetType</a></span>  </div>
 <div class="param">total (optional)</div><div class="param-desc"><span class="param-type"><a href="#TeaserGroupsBetType">TeaserGroupsBetType</a></span>  </div>
     </div>  <!-- field-items -->
@@ -2279,14 +2271,11 @@ font-style: italic;
     <div class="field-items">
       <div class="param">legId (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Client genereated GUID for uniquely identifying the leg. </div>
 <div class="param">eventId (optional)</div><div class="param-desc"><span class="param-type"><a href="#long">Long</a></span> Unique identifier. format: int64</div>
-<div class="param">periodNumber (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Period of the match that is being bet on.
-            Refer to Period Number lookup table. format: int32</div>
-<div class="param">betType (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Type of bet.
-            Currently, only BET_TYPE.SPREAD and BET_TYPE.TOTAL_POINTS are supported. &#x3D; [&#39;Spread&#39;, &#39;Moneyline&#39;, &#39;Total_Points&#39;] </div>
+<div class="param">periodNumber (optional)</div><div class="param-desc"><span class="param-type"><a href="#integer">Integer</a></span> Period of the match that is being bet on. Refer to Period Number lookup table. format: int32</div>
+<div class="param">betType (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Type of bet.Currently, only BET_TYPE.SPREAD and BET_TYPE.TOTAL_POINTS are supported. &#x3D; [&#39;Spread&#39;, &#39;Moneyline&#39;, &#39;Total_Points&#39;] </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">Spread</div><div class="param-enum">Total_Points</div>
-<div class="param">team (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Team being bet on for a spread line.
-            Currenlty, only TEAM_TYPE.Team1 and TEAM_TYPE.Team2 are supported. &#x3D;&gt; [ Team1 &#x3D; Team 1, Team2 &#x3D; Team 2, Draw &#x3D; Draw. This is used for MONEYLINE bet type only. ]  </div>
+<div class="param">team (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Team being bet on for a spread line. Currenlty, only TEAM_TYPE.Team1 and TEAM_TYPE.Team2 are supported. &#x3D;&gt; [ Team1 &#x3D; Team 1, Team2 &#x3D; Team 2, Draw &#x3D; Draw. This is used for MONEYLINE bet type only. ] </div>
         <div class="param-enum-header">Enum:</div>
         <div class="param-enum">Team1</div><div class="param-enum">Team2</div>
 <div class="param">side (optional)</div><div class="param-desc"><span class="param-type"><a href="#string">String</a></span> Side of a total line being bet on. &#x3D; [&#39;Over&#39;, &#39;Under&#39;] </div>
