@@ -504,13 +504,6 @@
             "format" : "int64"
           },
           "collectionFormat" : "multi"
-        }, {
-          "name" : "soccerLiveBettingType",
-          "in" : "query",
-          "description" : "Filter by bet acceptance type = [Legacy, DangerZone, LiveDelay, NotSet]",
-          "required" : false,
-          "type" : "string",
-          "enum" : [ "Legacy", "DangerZone", "LiveDelay", "NotSet" ]
         } ],
         "responses" : {
           "200" : {
@@ -583,14 +576,7 @@
             "type" : "integer",
             "format" : "int64"
           },
-          "collectionFormat" : "multi"
-        }, {
-          "name" : "soccerLiveBettingType",
-          "in" : "query",
-          "description" : "Filter by bet acceptance type = [Legacy, DangerZone, LiveDelay, NotSet]",
-          "required" : false,
-          "type" : "string",
-          "enum" : [ "Legacy", "DangerZone", "LiveDelay", "NotSet" ]
+          "collectionFormat" : "mult"
         } ],
         "responses" : {
           "200" : {
