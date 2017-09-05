@@ -723,113 +723,6 @@ margin-bottom: 20px;
 
   var defs = {}
 
-  defs.BetExtension = {
-  "type" : "object",
-  "properties" : {
-    "ticketWriter" : {
-      "type" : "string",
-      "description" : ""
-    },
-    "partnerId" : {
-      "type" : "integer",
-      "format" : "int32",
-      "description" : ""
-    },
-    "partnerName" : {
-      "type" : "string",
-      "description" : ""
-    },
-    "settledAt" : {
-      "type" : "string",
-      "format" : "date-time",
-      "description" : ""
-    },
-    "agentId" : {
-      "type" : "string",
-      "description" : ""
-    },
-    "isCreditAccount" : {
-      "type" : "boolean",
-      "description" : ""
-    },
-    "sportName" : {
-      "type" : "string",
-      "description" : ""
-    },
-    "leagueName" : {
-      "type" : "string",
-      "description" : ""
-    },
-    "periodDescription" : {
-      "type" : "string",
-      "description" : ""
-    },
-    "ties" : {
-      "type" : "integer",
-      "format" : "int32",
-      "description" : ""
-    },
-    "adjustableOddsFlag" : {
-      "type" : "string",
-      "description" : ""
-    },
-    "gradeMoney" : {
-      "type" : "integer",
-      "format" : "int32",
-      "description" : ""
-    },
-    "thresholdType" : {
-      "type" : "string",
-      "description" : ""
-    },
-    "thresholdOutcome" : {
-      "type" : "integer",
-      "format" : "int32",
-      "description" : ""
-    },
-    "traderGameComments" : {
-      "type" : "string",
-      "description" : ""
-    },
-    "outcomePeriodDescription" : {
-      "type" : "string",
-      "description" : ""
-    },
-    "team1RotNum" : {
-      "type" : "integer",
-      "format" : "int32",
-      "description" : ""
-    },
-    "team2RotNum" : {
-      "type" : "integer",
-      "format" : "int32",
-      "description" : ""
-    },
-    "dailyFigureDate" : {
-      "type" : "string",
-      "format" : "date-time",
-      "description" : ""
-    },
-    "wagerDescription" : {
-      "type" : "string",
-      "description" : ""
-    },
-    "startingPitcher1" : {
-      "type" : "string",
-      "description" : ""
-    },
-    "startingPitcher2" : {
-      "type" : "string",
-      "description" : ""
-    },
-    "gradeNum" : {
-      "type" : "integer",
-      "format" : "int32",
-      "description" : ""
-    }
-  },
-  "description" : "A Bet Extension structure used by Private API only\r\nAlways NULL for the external API"
-};
   defs.CancellationReason = {
   "type" : "object",
   "required" : [ "code" ],
@@ -912,40 +805,6 @@ margin-bottom: 20px;
   },
   "description" : ""
 };
-  defs.GetBetsRequest = {
-  "type" : "object",
-  "properties" : {
-    "betlist" : {
-      "type" : "string",
-      "description" : "Type of bet list to return. Not needed when betids is submitted. => [ SETTLED, RUNNING, CANCELLED ] ",
-      "enum" : [ "SETTLED", "RUNNING", "CANCELLED" ]
-    },
-    "fromDate" : {
-      "type" : "string",
-      "description" : "Start date of the requested period. \r\nRequired when betlist parameter is submitted.\r\nDifference between fromDate and toDdate can’t be more than 30 days.\r\nExpected format is ISO8601 - can be set to just date or date and time."
-    },
-    "toDate" : {
-      "type" : "string",
-      "description" : "End date of the requested period. \r\nRequired when betlist parameter is submitted. \r\nExpected format is ISO8601 - can be set to just date or date and time. \r\ntoDate value is exclusive, meaning it cannot be equal to fromDate."
-    },
-    "betids" : {
-      "type" : "array",
-      "description" : "A comma separated list of bet ids. \r\nWhen betids is submitted, no other parameter is necessary. \r\nMaximum is 100 ids. \r\nWorks for all non settled bets and all bets settled in the last 30 days.",
-      "items" : {
-        "type" : "integer",
-        "format" : "int32"
-      }
-    },
-    "uniqueRequestIds" : {
-      "type" : "array",
-      "description" : "A comma separated list of Unique Ids to query eralier placed bets.\r\nIf specified, is treated with highest priority, all other parameters are ignored.\r\nMaximum is 100 ids.",
-      "items" : {
-        "type" : "string"
-      }
-    }
-  },
-  "description" : ""
-};
   defs.KeyValuePair[String,String] = {
   "type" : "object",
   "required" : [ "key" ],
@@ -966,11 +825,12 @@ margin-bottom: 20px;
   "properties" : {
     "betId" : {
       "type" : "integer",
-      "format" : "int32",
+      "format" : "int64",
       "description" : "Bet identification"
     },
     "uniqueRequestId" : {
       "type" : "string",
+      "format" : "uuid",
       "description" : "Unique Request Id"
     },
     "wagerNumber" : {
@@ -980,6 +840,7 @@ margin-bottom: 20px;
     },
     "placedAt" : {
       "type" : "string",
+      "format" : "date-time",
       "description" : "Date time when the bet was placed."
     },
     "betStatus" : {
@@ -1018,7 +879,6 @@ margin-bottom: 20px;
       "description" : "Client’s commission on the bet."
     },
     "cancellationReason" : {
-      "description" : "Cancellation Reason",
       "$ref" : "#/definitions/CancellationReason"
     },
     "updateSequence" : {
@@ -1033,7 +893,7 @@ margin-bottom: 20px;
     "referenceBetId" : {
       "type" : "integer",
       "format" : "int64",
-      "description" : "ReferenceTicketNumber provided by Query service."
+      "description" : "Referenced bet id."
     }
   },
   "description" : ""
@@ -1070,20 +930,23 @@ margin-bottom: 20px;
   "properties" : {
     "betId" : {
       "type" : "integer",
-      "format" : "int32",
+      "format" : "int64",
       "description" : "Bet identification"
     },
     "uniqueRequestId" : {
       "type" : "string",
+      "format" : "uuid",
+      "example" : "10924E23-A2FE-4317-BFFD-80504675F554",
       "description" : "Unique Request Id"
     },
     "wagerNumber" : {
       "type" : "integer",
       "format" : "int32",
-      "description" : "Wager identification. All bets placed thru the API will have value 1. Website supports multiple bets (wagers) placement in the same bet slip. In that case the bet would have appropriate wager number."
+      "description" : "Wager identification. All bets placed thru the API will have value 1. Website Classic view supports multiple contest(special) bets (wagers) placement in the same bet slip. In that case the bet would have appropriate wager number."
     },
     "placedAt" : {
       "type" : "string",
+      "format" : "date-time",
       "description" : "Date time when the bet was placed."
     },
     "betStatus" : {
@@ -1122,7 +985,6 @@ margin-bottom: 20px;
       "description" : "Client’s commission on the bet."
     },
     "cancellationReason" : {
-      "description" : "Cancellation Reason",
       "$ref" : "#/definitions/CancellationReason"
     },
     "updateSequence" : {
@@ -1175,11 +1037,12 @@ margin-bottom: 20px;
     },
     "eventId" : {
       "type" : "integer",
-      "format" : "int32",
+      "format" : "int64",
       "description" : ""
     },
     "eventStartTime" : {
       "type" : "string",
+      "format" : "date-time",
       "description" : ""
     },
     "handicap" : {
@@ -1210,11 +1073,11 @@ margin-bottom: 20px;
       "description" : ""
     },
     "pitcher1MustStart" : {
-      "type" : "string",
+      "type" : "boolean",
       "description" : ""
     },
     "pitcher2MustStart" : {
-      "type" : "string",
+      "type" : "boolean",
       "description" : ""
     },
     "team1" : {
@@ -1251,7 +1114,6 @@ margin-bottom: 20px;
       "description" : ""
     },
     "cancellationReason" : {
-      "description" : "",
       "$ref" : "#/definitions/CancellationReason"
     }
   },
@@ -1265,11 +1127,13 @@ margin-bottom: 20px;
       "description" : "Unique id of the leg. It's used to identify and match legs in the response."
     },
     "lineId" : {
-      "type" : "string",
+      "type" : "integer",
+      "format" : "int64",
       "description" : "Line identification."
     },
     "altLineId" : {
-      "type" : "string",
+      "type" : "integer",
+      "format" : "int64",
       "description" : "Alternate line identification."
     },
     "pitcher1MustStart" : {
@@ -1281,15 +1145,18 @@ margin-bottom: 20px;
       "description" : "Baseball only. Refers to the pitcher for Team2. This applicable only for MONEYLINE bet type, for all other bet types this has to be TRUE."
     },
     "sportId" : {
-      "type" : "string",
+      "type" : "integer",
+      "format" : "int32",
       "description" : "Sport identification."
     },
     "eventId" : {
-      "type" : "string",
+      "type" : "integer",
+      "format" : "int64",
       "description" : "Event identification."
     },
     "periodNumber" : {
-      "type" : "string",
+      "type" : "integer",
+      "format" : "int32",
       "description" : "This represents the period of the match. For example, for soccer we have: 0 -  Game, 1 - 1st Half and 2 - 2nd Half"
     },
     "legBetType" : {
@@ -1302,7 +1169,8 @@ margin-bottom: 20px;
     },
     "side" : {
       "type" : "string",
-      "description" : "Chosen side. This is needed only for TOTAL_POINTS bet type."
+      "description" : "Chosen side. This is needed only for TOTAL_POINTS bet type.Side type. => [ OVER, UNDER ]",
+      "enum" : [ "OVER", "UNDER" ]
     }
   },
   "description" : ""
@@ -1322,12 +1190,12 @@ margin-bottom: 20px;
     "legId" : {
       "type" : "string",
       "format" : "uuid",
-      "example" : "00000000-0000-0000-0000-000000000000",
+      "example" : "10924E23-A2FE-4317-BFFD-80504675F554",
       "description" : "Echo of the legId from the request."
     },
     "lineId" : {
       "type" : "integer",
-      "format" : "int32",
+      "format" : "int64",
       "description" : "Line identification that bet was placed on."
     },
     "altLineId" : {
@@ -1357,7 +1225,8 @@ margin-bottom: 20px;
   "properties" : {
     "oddsFormat" : {
       "type" : "string",
-      "description" : "Bet is processed with this odds format."
+      "description" : "Bet odds format. => [ AMERICAN = American odds format, DECIMAL = Decimal (European) odds format, HONGKONG = Hong Kong odds format, INDONESIAN = Indonesian odds format, MALAY = Malaysian odds format ] ",
+      "enum" : [ "AMERICAN", "DECIMAL", "HONGKONG", "INDONESIAN", "MALAY" ]
     },
     "uniqueRequestId" : {
       "type" : "string",
@@ -1365,30 +1234,34 @@ margin-bottom: 20px;
     },
     "acceptBetterLine" : {
       "type" : "string",
+      "format" : "date-time",
       "description" : "Whether or not to accept a bet when there is a line change in favor of the client."
     },
     "stake" : {
-      "type" : "string",
-      "description" : "Wagered amount in Client’s currency."
+      "type" : "number",
+      "format" : "double",
+      "description" : "amount in client’s currency."
     },
     "winRiskStake" : {
       "type" : "string",
       "description" : "Whether the stake amount is risk or win amount."
     },
     "lineId" : {
-      "type" : "string",
+      "type" : "integer",
+      "format" : "int64",
       "description" : "Line identification."
     },
     "altLineId" : {
-      "type" : "string",
+      "type" : "integer",
+      "format" : "int64",
       "description" : "Alternate line identification."
     },
     "pitcher1MustStart" : {
-      "type" : "string",
+      "type" : "boolean",
       "description" : "Baseball only. Refers to the pitcher for Team1. This applicable only for MONEYLINE bet type, for all other bet types this has to be TRUE."
     },
     "pitcher2MustStart" : {
-      "type" : "string",
+      "type" : "boolean",
       "description" : "Baseball only. Refers to the pitcher for Team2. This applicable only for MONEYLINE bet type, for all other bet types this has to be TRUE."
     },
     "externalCustomerId" : {
@@ -1398,13 +1271,16 @@ margin-bottom: 20px;
       "type" : "boolean"
     },
     "sportId" : {
-      "type" : "string"
+      "type" : "integer",
+      "format" : "int32"
     },
     "eventId" : {
-      "type" : "string"
+      "type" : "integer",
+      "format" : "int64"
     },
     "periodNumber" : {
-      "type" : "string"
+      "type" : "integer",
+      "format" : "int32"
     },
     "betType" : {
       "type" : "string"
@@ -1413,7 +1289,9 @@ margin-bottom: 20px;
       "type" : "string"
     },
     "side" : {
-      "type" : "string"
+      "type" : "string",
+      "description" : "Side type. => [ OVER, UNDER ] ",
+      "enum" : [ "OVER", "UNDER" ]
     }
   },
   "description" : "Request to place a bet."
@@ -1432,7 +1310,7 @@ margin-bottom: 20px;
     },
     "betId" : {
       "type" : "integer",
-      "format" : "int32",
+      "format" : "int64",
       "description" : "The bet ID of the new bet. May be empty on failure."
     },
     "uniqueRequestId" : {
@@ -1478,23 +1356,23 @@ margin-bottom: 20px;
   "properties" : {
     "uniqueRequestId" : {
       "type" : "string",
+      "format" : "uuid",
+      "example" : "A9EB2EB1-13A5-4600-9F1B-4859379CDEC4",
       "description" : "This unique id of the place bet requests. This is to support idempotent requests."
     },
     "acceptBetterLine" : {
-      "type" : "string",
+      "type" : "boolean",
       "description" : "Whether or not to accept a bet when there is a line change in favor of the client."
     },
     "riskAmount" : {
-      "type" : "string",
+      "type" : "number",
+      "format" : "double",
       "description" : "Wagered amount in Client’s currency. It is always risk amount when placing Parlay bets NOTE: If round robin options is used this amount will apply for all parlays so actual amount wagered will be riskAmount X number of Parlays."
     },
     "oddsFormat" : {
       "type" : "string",
-      "description" : "Bet is processed with this odds format."
-    },
-    "externalCustomerId" : {
-      "type" : "string",
-      "description" : ""
+      "description" : "Bet odds format. => [ AMERICAN = American odds format, DECIMAL = Decimal (European) odds format, HONGKONG = Hong Kong odds format, INDONESIAN = Indonesian odds format, MALAY = Malaysian odds format ] ",
+      "enum" : [ "AMERICAN", "DECIMAL", "HONGKONG", "INDONESIAN", "MALAY" ]
     },
     "legs" : {
       "type" : "array",
@@ -1528,12 +1406,12 @@ margin-bottom: 20px;
     "legId" : {
       "type" : "string",
       "format" : "uuid",
-      "example" : "00000000-0000-0000-0000-000000000000",
+      "example" : "A9EB2EB1-13A5-4600-9F1B-4859379CDEC4",
       "description" : "Echo of the legId from the request."
     },
     "lineId" : {
       "type" : "integer",
-      "format" : "int32",
+      "format" : "int64",
       "description" : "Line identification that bet was placed on."
     },
     "points" : {
@@ -1549,6 +1427,8 @@ margin-bottom: 20px;
   "properties" : {
     "uniqueRequestId" : {
       "type" : "string",
+      "format" : "uuid",
+      "example" : "10924E23-A2FE-4317-BFFD-80504675F554",
       "description" : "Client generated GUID for uniquely identifying the bet."
     },
     "teaserId" : {
@@ -1558,15 +1438,17 @@ margin-bottom: 20px;
     },
     "oddsFormat" : {
       "type" : "string",
-      "description" : "Format the odds are returned in."
+      "description" : "Bet odds format. => [ AMERICAN = American odds format, DECIMAL = Decimal (European) odds format, HONGKONG = Hong Kong odds format, INDONESIAN = Indonesian odds format, MALAY = Malaysian odds format ] ",
+      "enum" : [ "AMERICAN", "DECIMAL", "HONGKONG", "INDONESIAN", "MALAY" ]
     },
     "winRiskStake" : {
       "type" : "string",
       "description" : "Whether the stake amount is risk or win amount."
     },
     "stake" : {
-      "type" : "string",
-      "description" : "Amount of the wager in the client's currency."
+      "type" : "number",
+      "format" : "double",
+      "description" : "amount in client’s currency."
     },
     "legs" : {
       "type" : "array",
@@ -1592,11 +1474,12 @@ margin-bottom: 20px;
     },
     "betId" : {
       "type" : "integer",
-      "format" : "int32",
+      "format" : "int64",
       "description" : "Id of a newly created bet."
     },
     "uniqueRequestId" : {
       "type" : "string",
+      "format" : "uuid",
       "description" : "Unique identifier provided in the request."
     },
     "roundRobinOptionWithOdds" : {
@@ -1650,11 +1533,13 @@ margin-bottom: 20px;
     },
     "betId" : {
       "type" : "integer",
-      "format" : "int32",
+      "format" : "int64",
       "description" : "Id of a newly created bet."
     },
     "uniqueRequestId" : {
       "type" : "string",
+      "format" : "uuid",
+      "example" : "10924E23-A2FE-4317-BFFD-80504675F554",
       "description" : "Unique identifier provided in the request."
     },
     "price" : {
@@ -1665,7 +1550,7 @@ margin-bottom: 20px;
     "riskAmount" : {
       "type" : "number",
       "format" : "double",
-      "description" : "Amount wagered.."
+      "description" : "Amount wagered."
     },
     "winAmount" : {
       "type" : "number",
@@ -1675,16 +1560,6 @@ margin-bottom: 20px;
     "winRiskStake" : {
       "type" : "string",
       "description" : "Whether the stake amount is risk or win amount."
-    },
-    "minStakeAmount" : {
-      "type" : "number",
-      "format" : "double",
-      "description" : "**TODO: SHOULD THIS PROPERTY BE REMOVED?**"
-    },
-    "maxStakeAmount" : {
-      "type" : "number",
-      "format" : "double",
-      "description" : "**TODO: SHOULD THIS PROPERTY BE REMOVED?**"
     },
     "invalidLegs" : {
       "type" : "array",
@@ -1716,11 +1591,13 @@ margin-bottom: 20px;
     },
     "betId" : {
       "type" : "integer",
-      "format" : "int32",
+      "format" : "int64",
       "description" : "Id of a newly created bet."
     },
     "uniqueRequestId" : {
       "type" : "string",
+      "format" : "uuid",
+      "example" : "10924E23-A2FE-4317-BFFD-80504675F554",
       "description" : "Unique identifier provided in the request."
     },
     "betterLineWasAccepted" : {
@@ -1793,11 +1670,13 @@ margin-bottom: 20px;
   "properties" : {
     "betId" : {
       "type" : "integer",
-      "format" : "int32",
+      "format" : "int64",
       "description" : "Bet identification"
     },
     "uniqueRequestId" : {
       "type" : "string",
+      "format" : "uuid",
+      "example" : "10924E23-A2FE-4317-BFFD-80504675F554",
       "description" : "Unique Request Id"
     },
     "wagerNumber" : {
@@ -1807,6 +1686,7 @@ margin-bottom: 20px;
     },
     "placedAt" : {
       "type" : "string",
+      "format" : "date-time",
       "description" : "Date time when the bet was placed."
     },
     "betStatus" : {
@@ -1845,7 +1725,6 @@ margin-bottom: 20px;
       "description" : "Client’s commission on the bet."
     },
     "cancellationReason" : {
-      "description" : "Cancellation Reason",
       "$ref" : "#/definitions/CancellationReason"
     },
     "updateSequence" : {
@@ -1855,7 +1734,7 @@ margin-bottom: 20px;
     },
     "specialId" : {
       "type" : "integer",
-      "format" : "int32",
+      "format" : "int64",
       "description" : ""
     },
     "specialName" : {
@@ -1864,7 +1743,7 @@ margin-bottom: 20px;
     },
     "contestantId" : {
       "type" : "integer",
-      "format" : "int32",
+      "format" : "int64",
       "description" : ""
     },
     "contestantName" : {
@@ -1897,7 +1776,7 @@ margin-bottom: 20px;
     },
     "eventId" : {
       "type" : "integer",
-      "format" : "int32",
+      "format" : "int64",
       "description" : ""
     },
     "periodNumber" : {
@@ -1921,6 +1800,8 @@ margin-bottom: 20px;
   "properties" : {
     "uniqueRequestId" : {
       "type" : "string",
+      "format" : "uuid",
+      "example" : "10924E23-A2FE-4317-BFFD-80504675F554",
       "description" : "This unique id of the place bet requests. This is to support idempotent requests."
     },
     "acceptBetterLine" : {
@@ -1929,26 +1810,31 @@ margin-bottom: 20px;
     },
     "oddsFormat" : {
       "type" : "string",
-      "description" : "Bet is processed with this odds format.."
+      "description" : "Bet odds format. => [ AMERICAN = American odds format, DECIMAL = Decimal (European) odds format, HONGKONG = Hong Kong odds format, INDONESIAN = Indonesian odds format, MALAY = Malaysian odds format ] ",
+      "enum" : [ "AMERICAN", "DECIMAL", "HONGKONG", "INDONESIAN", "MALAY" ]
     },
     "stake" : {
-      "type" : "string",
-      "description" : "Whether the stake amount is risk or win amount."
+      "type" : "number",
+      "format" : "double",
+      "description" : "amount in client’s currency."
     },
     "winRiskStake" : {
       "type" : "string",
-      "description" : "Wagered amount in Client’s currency."
+      "description" : "Whether the stake amount is risk or win amount."
     },
     "lineId" : {
-      "type" : "string",
+      "type" : "integer",
+      "format" : "int64",
       "description" : "Line identification."
     },
     "specialId" : {
-      "type" : "string",
+      "type" : "integer",
+      "format" : "int64",
       "description" : "Special identification."
     },
     "contestantId" : {
-      "type" : "string",
+      "type" : "integer",
+      "format" : "int64",
       "description" : "Contestant identification."
     }
   },
@@ -1960,7 +1846,7 @@ margin-bottom: 20px;
   "properties" : {
     "betId" : {
       "type" : "integer",
-      "format" : "int32",
+      "format" : "int64",
       "description" : "Bet identification"
     },
     "uniqueRequestId" : {
@@ -1974,6 +1860,7 @@ margin-bottom: 20px;
     },
     "placedAt" : {
       "type" : "string",
+      "format" : "date-time",
       "description" : "Date time when the bet was placed."
     },
     "betStatus" : {
@@ -2012,7 +1899,6 @@ margin-bottom: 20px;
       "description" : "Client’s commission on the bet."
     },
     "cancellationReason" : {
-      "description" : "Cancellation Reason",
       "$ref" : "#/definitions/CancellationReason"
     },
     "updateSequence" : {
@@ -2032,7 +1918,7 @@ margin-bottom: 20px;
     },
     "eventId" : {
       "type" : "integer",
-      "format" : "int32",
+      "format" : "int64",
       "description" : ""
     },
     "handicap" : {
@@ -2063,11 +1949,11 @@ margin-bottom: 20px;
       "description" : ""
     },
     "pitcher1MustStart" : {
-      "type" : "string",
+      "type" : "boolean",
       "description" : ""
     },
     "pitcher2MustStart" : {
-      "type" : "string",
+      "type" : "boolean",
       "description" : ""
     },
     "team1" : {
@@ -2114,7 +2000,7 @@ margin-bottom: 20px;
       "description" : ""
     },
     "isLive" : {
-      "type" : "string",
+      "type" : "boolean",
       "description" : ""
     }
   },
@@ -2126,11 +2012,13 @@ margin-bottom: 20px;
   "properties" : {
     "betId" : {
       "type" : "integer",
-      "format" : "int32",
+      "format" : "int64",
       "description" : "Bet identification"
     },
     "uniqueRequestId" : {
       "type" : "string",
+      "format" : "uuid",
+      "example" : "10924E23-A2FE-4317-BFFD-80504675F554",
       "description" : "Unique Request Id"
     },
     "wagerNumber" : {
@@ -2140,6 +2028,7 @@ margin-bottom: 20px;
     },
     "placedAt" : {
       "type" : "string",
+      "format" : "date-time",
       "description" : "Date time when the bet was placed."
     },
     "betStatus" : {
@@ -2178,7 +2067,6 @@ margin-bottom: 20px;
       "description" : "Client’s commission on the bet."
     },
     "cancellationReason" : {
-      "description" : "Cancellation Reason",
       "$ref" : "#/definitions/CancellationReason"
     },
     "updateSequence" : {
@@ -2219,6 +2107,8 @@ margin-bottom: 20px;
   "properties" : {
     "legId" : {
       "type" : "string",
+      "format" : "int64",
+      "example" : "10924E23-A2FE-4317-BFFD-80504675F554",
       "description" : "Client generated GUID for uniquely identifying the leg."
     },
     "betType" : {
@@ -2226,16 +2116,13 @@ margin-bottom: 20px;
       "description" : "Type of bet."
     },
     "lineId" : {
-      "type" : "string",
+      "type" : "integer",
+      "format" : "int64",
       "description" : "Unique identifier."
-    },
-    "altLineId" : {
-      "type" : "string",
-      "description" : "**TODO: SHOULD THIS PROPERTY BE REMOVED?**"
     },
     "eventId" : {
       "type" : "integer",
-      "format" : "int32",
+      "format" : "int64",
       "description" : "Unique identifier."
     },
     "team" : {
@@ -2244,7 +2131,8 @@ margin-bottom: 20px;
     },
     "side" : {
       "type" : "string",
-      "description" : "Side of a total line being bet on."
+      "description" : "Side of a total line being bet on. Side type. => [ OVER, UNDER ]",
+      "enum" : [ "OVER", "UNDER" ]
     }
   },
   "description" : ""
@@ -2274,7 +2162,7 @@ margin-bottom: 20px;
     },
     "eventId" : {
       "type" : "integer",
-      "format" : "int32",
+      "format" : "int64",
       "description" : ""
     },
     "eventStartTime" : {
@@ -2488,7 +2376,7 @@ public class BetsApiExample {
         String betlist = betlist_example; // String | Type of bet list to return. Not needed when betids is submitted. => [ SETTLED, RUNNING, CANCELLED ] 
         String fromDate = fromDate_example; // String | Start date of the requested period. <br />Required when betlist parameter is submitted.<br />Difference between fromDate and toDdate can’t be more than 30 days.<br />Expected format is ISO8601 - can be set to just date or date and time.
         String toDate = toDate_example; // String | End date of the requested period. <br />Required when betlist parameter is submitted. <br />Expected format is ISO8601 - can be set to just date or date and time. <br />toDate value is exclusive, meaning it cannot be equal to fromDate.
-        array[Integer] betids = ; // array[Integer] | A comma separated list of bet ids. <br />When betids is submitted, no other parameter is necessary. <br />Maximum is 100 ids. <br />Works for all non settled bets and all bets settled in the last 30 days.
+        array[Long] betids = ; // array[Long] | A comma separated list of bet ids. <br />When betids is submitted, no other parameter is necessary. <br />Maximum is 100 ids. <br />Works for all non settled bets and all bets settled in the last 30 days.
         array[String] uniqueRequestIds = ; // array[String] | A comma separated list of Unique Ids to query eralier placed bets.<br />If specified, is treated with highest priority, all other parameters are ignored.<br />Maximum is 100 ids.
         try {
             GetBetsByTypeResponse result = apiInstance.betsGetBetsByType(betlist, fromDate, toDate, betids, uniqueRequestIds);
@@ -2515,7 +2403,7 @@ public class BetsApiExample {
         String betlist = betlist_example; // String | Type of bet list to return. Not needed when betids is submitted. => [ SETTLED, RUNNING, CANCELLED ] 
         String fromDate = fromDate_example; // String | Start date of the requested period. <br />Required when betlist parameter is submitted.<br />Difference between fromDate and toDdate can’t be more than 30 days.<br />Expected format is ISO8601 - can be set to just date or date and time.
         String toDate = toDate_example; // String | End date of the requested period. <br />Required when betlist parameter is submitted. <br />Expected format is ISO8601 - can be set to just date or date and time. <br />toDate value is exclusive, meaning it cannot be equal to fromDate.
-        array[Integer] betids = ; // array[Integer] | A comma separated list of bet ids. <br />When betids is submitted, no other parameter is necessary. <br />Maximum is 100 ids. <br />Works for all non settled bets and all bets settled in the last 30 days.
+        array[Long] betids = ; // array[Long] | A comma separated list of bet ids. <br />When betids is submitted, no other parameter is necessary. <br />Maximum is 100 ids. <br />Works for all non settled bets and all bets settled in the last 30 days.
         array[String] uniqueRequestIds = ; // array[String] | A comma separated list of Unique Ids to query eralier placed bets.<br />If specified, is treated with highest priority, all other parameters are ignored.<br />Maximum is 100 ids.
         try {
             GetBetsByTypeResponse result = apiInstance.betsGetBetsByType(betlist, fromDate, toDate, betids, uniqueRequestIds);
@@ -2547,7 +2435,7 @@ Configuration *apiConfig = [Configuration sharedConfig];
 String *betlist = betlist_example; // Type of bet list to return. Not needed when betids is submitted. => [ SETTLED, RUNNING, CANCELLED ]  (optional)
 String *fromDate = fromDate_example; // Start date of the requested period. <br />Required when betlist parameter is submitted.<br />Difference between fromDate and toDdate can’t be more than 30 days.<br />Expected format is ISO8601 - can be set to just date or date and time. (optional)
 String *toDate = toDate_example; // End date of the requested period. <br />Required when betlist parameter is submitted. <br />Expected format is ISO8601 - can be set to just date or date and time. <br />toDate value is exclusive, meaning it cannot be equal to fromDate. (optional)
-array[Integer] *betids = ; // A comma separated list of bet ids. <br />When betids is submitted, no other parameter is necessary. <br />Maximum is 100 ids. <br />Works for all non settled bets and all bets settled in the last 30 days. (optional)
+array[Long] *betids = ; // A comma separated list of bet ids. <br />When betids is submitted, no other parameter is necessary. <br />Maximum is 100 ids. <br />Works for all non settled bets and all bets settled in the last 30 days. (optional)
 array[String] *uniqueRequestIds = ; // A comma separated list of Unique Ids to query eralier placed bets.<br />If specified, is treated with highest priority, all other parameters are ignored.<br />Maximum is 100 ids. (optional)
 
 BetsApi *apiInstance = [[BetsApi alloc] init];
@@ -2585,7 +2473,7 @@ var opts = {
   'betlist': betlist_example, // {String} Type of bet list to return. Not needed when betids is submitted. => [ SETTLED, RUNNING, CANCELLED ] 
   'fromDate': fromDate_example, // {String} Start date of the requested period. <br />Required when betlist parameter is submitted.<br />Difference between fromDate and toDdate can’t be more than 30 days.<br />Expected format is ISO8601 - can be set to just date or date and time.
   'toDate': toDate_example, // {String} End date of the requested period. <br />Required when betlist parameter is submitted. <br />Expected format is ISO8601 - can be set to just date or date and time. <br />toDate value is exclusive, meaning it cannot be equal to fromDate.
-  'betids': , // {array[Integer]} A comma separated list of bet ids. <br />When betids is submitted, no other parameter is necessary. <br />Maximum is 100 ids. <br />Works for all non settled bets and all bets settled in the last 30 days.
+  'betids': , // {array[Long]} A comma separated list of bet ids. <br />When betids is submitted, no other parameter is necessary. <br />Maximum is 100 ids. <br />Works for all non settled bets and all bets settled in the last 30 days.
   'uniqueRequestIds':  // {array[String]} A comma separated list of Unique Ids to query eralier placed bets.<br />If specified, is treated with highest priority, all other parameters are ignored.<br />Maximum is 100 ids.
 };
 
@@ -2628,7 +2516,7 @@ namespace Example
             var betlist = betlist_example;  // String | Type of bet list to return. Not needed when betids is submitted. => [ SETTLED, RUNNING, CANCELLED ]  (optional) 
             var fromDate = fromDate_example;  // String | Start date of the requested period. <br />Required when betlist parameter is submitted.<br />Difference between fromDate and toDdate can’t be more than 30 days.<br />Expected format is ISO8601 - can be set to just date or date and time. (optional) 
             var toDate = toDate_example;  // String | End date of the requested period. <br />Required when betlist parameter is submitted. <br />Expected format is ISO8601 - can be set to just date or date and time. <br />toDate value is exclusive, meaning it cannot be equal to fromDate. (optional) 
-            var betids = new array[Integer](); // array[Integer] | A comma separated list of bet ids. <br />When betids is submitted, no other parameter is necessary. <br />Maximum is 100 ids. <br />Works for all non settled bets and all bets settled in the last 30 days. (optional) 
+            var betids = new array[Long](); // array[Long] | A comma separated list of bet ids. <br />When betids is submitted, no other parameter is necessary. <br />Maximum is 100 ids. <br />Works for all non settled bets and all bets settled in the last 30 days. (optional) 
             var uniqueRequestIds = new array[String](); // array[String] | A comma separated list of Unique Ids to query eralier placed bets.<br />If specified, is treated with highest priority, all other parameters are ignored.<br />Maximum is 100 ids. (optional) 
 
             try
@@ -2662,7 +2550,7 @@ $api_instance = new io.swagger.client\Api\BetsApi();
 $betlist = betlist_example; // String | Type of bet list to return. Not needed when betids is submitted. => [ SETTLED, RUNNING, CANCELLED ] 
 $fromDate = fromDate_example; // String | Start date of the requested period. <br />Required when betlist parameter is submitted.<br />Difference between fromDate and toDdate can’t be more than 30 days.<br />Expected format is ISO8601 - can be set to just date or date and time.
 $toDate = toDate_example; // String | End date of the requested period. <br />Required when betlist parameter is submitted. <br />Expected format is ISO8601 - can be set to just date or date and time. <br />toDate value is exclusive, meaning it cannot be equal to fromDate.
-$betids = ; // array[Integer] | A comma separated list of bet ids. <br />When betids is submitted, no other parameter is necessary. <br />Maximum is 100 ids. <br />Works for all non settled bets and all bets settled in the last 30 days.
+$betids = ; // array[Long] | A comma separated list of bet ids. <br />When betids is submitted, no other parameter is necessary. <br />Maximum is 100 ids. <br />Works for all non settled bets and all bets settled in the last 30 days.
 $uniqueRequestIds = ; // array[String] | A comma separated list of Unique Ids to query eralier placed bets.<br />If specified, is treated with highest priority, all other parameters are ignored.<br />Maximum is 100 ids.
 
 try {
@@ -2811,7 +2699,7 @@ try {
   "type" : "array",
   "items" : {
     "type" : "integer",
-    "format" : "int32"
+    "format" : "int64"
   },
   "collectionFormat" : "multi"
 };
@@ -6114,7 +6002,7 @@ try {
             </div>
             <div id="generator">
                 <div class="content">
-                    Generated 2017-09-04T01:18:45.169Z
+                    Generated 2017-09-05T00:17:06.859Z
                 </div>
             </div>
         </div>
