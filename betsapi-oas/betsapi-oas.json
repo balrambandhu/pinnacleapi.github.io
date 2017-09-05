@@ -12,7 +12,7 @@
   "paths" : {
     "/v1/bets/place" : {
       "post" : {
-        "tags" : [ "Bets" ],
+        "tags" : [ "Place Bets" ],
         "summary" : "Place straight bet.",
         "description" : "Place Straight Bet v2",
         "operationId" : "Bets_Straight",
@@ -64,7 +64,7 @@
     },
     "/v2/bets/straight" : {
       "post" : {
-        "tags" : [ "Bets" ],
+        "tags" : [ "Place Bets" ],
         "summary" : "Place a straight bet in the system.",
         "operationId" : "Bets_StraightV2",
         "consumes" : [ "application/json", "text/json" ],
@@ -114,7 +114,7 @@
     },
     "/v1/bets/parlay" : {
       "post" : {
-        "tags" : [ "Bets" ],
+        "tags" : [ "Place Bets" ],
         "summary" : "Place parlay bet in the system.",
         "operationId" : "Bets_Parlay",
         "consumes" : [ "application/json", "text/json" ],
@@ -164,7 +164,7 @@
     },
     "/v1/bets/teaser" : {
       "post" : {
-        "tags" : [ "Bets" ],
+        "tags" : [ "Place Bets" ],
         "summary" : "Place teaser bet in the system.",
         "operationId" : "Bets_Teaser",
         "consumes" : [ "application/json", "text/json" ],
@@ -214,7 +214,7 @@
     },
     "/v1/bets/special" : {
       "post" : {
-        "tags" : [ "Bets" ],
+        "tags" : [ "Place Bets" ],
         "summary" : "Place specials bet in the system.",
         "operationId" : "Bets_Special",
         "consumes" : [ "application/json", "text/json" ],
@@ -264,7 +264,7 @@
     },
     "/v2/bets" : {
       "get" : {
-        "tags" : [ "Bets" ],
+        "tags" : [ "Get Bets" ],
         "summary" : "Returns running and settled bets.",
         "operationId" : "Bets_GetBetsByType",
         "consumes" : [ ],
@@ -346,7 +346,7 @@
     },
     "/v1/bets/betting-status" : {
       "get" : {
-        "tags" : [ "Bets" ],
+        "tags" : [ "Place Bets" ],
         "summary" : "Returns current betting status. During maintenance windows betting could be disabled , you can call this operation to check the current betting status.",
         "operationId" : "Bets_GetBettingStatus",
         "consumes" : [ ],
