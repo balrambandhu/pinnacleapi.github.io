@@ -296,6 +296,7 @@
         "acceptBetterLine" : {
           "type" : "string",
           "format" : "boolean",
+          "example" : "true",
           "description" : "Whether or not to accept a bet when there is a line change in favor of the client."
         },
         "stake" : {
