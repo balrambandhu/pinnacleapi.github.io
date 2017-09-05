@@ -635,7 +635,7 @@
     "/v1/periods" : {
       "get" : {
         "tags" : [ "Period" ],
-        "summary" : "Returns straight and parlay odds for all non-settled events.<br />            Please note that it is possible that the event is in Get Fixtures response but not in Get Odds. This is happens when the odds have not been set yet for the event.",
+        "summary" : "Returns straight and parlay odds for all non-settled events. Please note that it is possible that the event is in Get Fixtures response but not in Get Odds. This is happens when the odds have not been set yet for the event.",
         "operationId" : "Period_GetPeriods",
         "consumes" : [ ],
         "produces" : [ "application/json", "text/json", "application/xml", "text/xml" ],
@@ -719,7 +719,7 @@
     "/v1/translations" : {
       "get" : {
         "tags" : [ "Translations" ],
-        "summary" : "Each string in parameters must be URL encoded and separated with “|” character<br />            Parameters are not case-sensitive",
+        "summary" : "Each string in parameters must be URL encoded and separated with “|” character.Parameters are not case-sensitive",
         "operationId" : "Translations_Get",
         "consumes" : [ ],
         "produces" : [ "application/json", "text/json", "application/xml", "text/xml" ],
