@@ -726,7 +726,7 @@
         "parameters" : [ {
           "name" : "cultureCodes",
           "in" : "query",
-          "description" : "Must be in \"Language Culture Name\" format.",
+          "description" : "Must be in Language Culture Name format.",
           "required" : true,
           "type" : "string"
         }, {
