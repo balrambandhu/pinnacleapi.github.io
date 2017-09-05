@@ -85,7 +85,7 @@
     "/v1/fixtures" : {
       "get" : {
         "tags" : [ "Fixtures" ],
-        "summary" : "Returns all non-settled events.<br />            Please note that it is possible that the event is in Get Fixtures response but not in Get Odds. This is happens when the odds have not been set yet for the event.<br />            Please note that it is possible to receive the same exact response when using \"since\" parameter. This is rare and can be caused by internal updates of event's properties.",
+        "summary" : "Returns all non-settled events.Please note that it is possible that the event is in Get Fixtures response but not in Get Odds. This is happens when the odds have not been set yet for the event. Please note that it is possible to receive the same exact response when using \"since\" parameter. This is rare and can be caused by internal updates of event's properties.",
         "operationId" : "Fixtures_Get",
         "consumes" : [ ],
         "produces" : [ "application/json", "text/json", "application/xml", "text/xml" ],
@@ -116,7 +116,7 @@
         }, {
           "name" : "since",
           "in" : "query",
-          "description" : "This is used to receive incremental updates. Use the value of last from previous fixtures response.<br />            When since parameter is not provided, the fixtures are delayed up to 1 min to encourage the use of the parameter.",
+          "description" : "This is used to receive incremental updates. Use the value of last from previous fixtures response. When since parameter is not provided, the fixtures are delayed up to 1 min to encourage the use of the parameter.",
           "required" : false,
           "type" : "integer",
           "format" : "int64"
@@ -451,7 +451,7 @@
     "/v1/odds" : {
       "get" : {
         "tags" : [ "Odds" ],
-        "summary" : "Returns straight and parlay odds for all non-settled events.<br />            Please note that it is possible that the event is in Get Fixtures response but not in Get Odds. This is happens when the odds have not been set yet for the event.",
+        "summary" : "Returns straight and parlay odds for all non-settled events. Please note that it is possible that the event is in Get Fixtures response but not in Get Odds. This is happens when the odds have not been set yet for the event.",
         "operationId" : "Odds_GetOdds",
         "consumes" : [ ],
         "produces" : [ "application/json", "text/json", "application/xml", "text/xml" ],
@@ -483,7 +483,7 @@
         }, {
           "name" : "since",
           "in" : "query",
-          "description" : "This is used to receive incremental updates. Use the value of last from previous odds response.<br />            When since parameter is not provided, the odds are delayed up to 1 min to encourage the use of the parameter.<br />            Please note that when using since parameter you will get in the response ONLY changed periods. If a period didn’t have any changes it will not be in the response.",
+          "description" : "This is used to receive incremental updates. Use the value of last from previous odds response. When since parameter is not provided, the odds are delayed up to 1 min to encourage the use of the parameter. Please note that when using since parameter you will get in the response ONLY changed periods. If a period didn’t have any changes it will not be in the response.",
           "required" : false,
           "type" : "integer",
           "format" : "int64"
@@ -524,7 +524,7 @@
     "/v1/odds/parlay" : {
       "get" : {
         "tags" : [ "Odds" ],
-        "summary" : "Returns straight and parlay odds for all non-settled events.<br />            Please note that it is possible that the event is in Get Fixtures response but not in Get Odds. This is happens when the odds have not been set yet for the event.",
+        "summary" : "Returns straight and parlay odds for all non-settled events. Please note that it is possible that the event is in Get Fixtures response but not in Get Odds. This is happens when the odds have not been set yet for the event.",
         "operationId" : "Odds_GetParlays",
         "consumes" : [ ],
         "produces" : [ "application/json", "text/json", "application/xml", "text/xml" ],
@@ -556,7 +556,7 @@
         }, {
           "name" : "since",
           "in" : "query",
-          "description" : "This is used to receive incremental updates. Use the value of last from previous odds response.<br />            When since parameter is not provided, the odds are delayed up to 1 min to encourage the use of the parameter.<br />            Please note that when using since parameter you will get in the response ONLY changed periods. If a period didn’t have any changes it will not be in the response.",
+          "description" : "This is used to receive incremental updates. Use the value of last from previous odds response. When since parameter is not provided, the odds are delayed up to 1 min to encourage the use of the parameter. Please note that when using since parameter you will get in the response ONLY changed periods. If a period didn’t have any changes it will not be in the response.",
           "required" : false,
           "type" : "integer",
           "format" : "int64"
@@ -604,7 +604,7 @@
         "parameters" : [ {
           "name" : "teaserId",
           "in" : "query",
-          "description" : "Unique identifier.<br />            Teaser details can be retrieved from a call to Get Teaser Groups endpoint.",
+          "description" : "Unique identifier.Teaser details can be retrieved from a call to Get Teaser Groups endpoint.",
           "required" : true,
           "type" : "integer",
           "format" : "int64"
