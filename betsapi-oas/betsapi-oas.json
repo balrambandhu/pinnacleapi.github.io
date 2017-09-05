@@ -295,12 +295,13 @@
         },
         "acceptBetterLine" : {
           "type" : "string",
-          "format" : "date-time",
+          "format" : "boolean",
           "description" : "Whether or not to accept a bet when there is a line change in favor of the client."
         },
         "stake" : {
           "type" : "number",
           "format" : "double",
+          "example" : 10.5,
           "description" : "amount in client’s currency."
         },
         "winRiskStake" : {
