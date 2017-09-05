@@ -4,8 +4,6 @@
     "version" : "1.0.0",
     "title" : "Pinnacle Lines API Specification v2.0"
   },
-  "host" : "virtserver.swaggerhub.com",
-  "basePath" : "/pinnacle/LinesAPI/1.0.0",
   "schemes" : [ "https" ],
   "security" : [ {
     "basicAuth" : [ ]
