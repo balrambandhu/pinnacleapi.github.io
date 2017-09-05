@@ -85,7 +85,7 @@
     "/v1/fixtures" : {
       "get" : {
         "tags" : [ "Fixtures" ],
-        "summary" : "Returns all non-settled events.<br />            Please note that it is possible that the event is in Get Fixtures response but not in Get Odds. This is happens when the odds have not been set yet for the event.<br />            Please note that it is possible to receive the same exact response when using \"since\" parameter. This is rare and can be caused by internal updates of event's properties.",
+        "summary" : "Returns all non-settled events.Please note that it is possible that the event is in Get Fixtures response but not in Get Odds. This is happens when the odds have not been set yet for the event. Please note that it is possible to receive the same exact response when using *since* parameter. This is rare and can be caused by internal updates of event's properties.",
         "operationId" : "Fixtures_Get",
         "consumes" : [ ],
         "produces" : [ "application/json", "text/json", "application/xml", "text/xml" ],
@@ -451,7 +451,7 @@
     "/v1/odds" : {
       "get" : {
         "tags" : [ "Odds" ],
-        "summary" : "Returns straight and parlay odds for all non-settled events.<br />            Please note that it is possible that the event is in Get Fixtures response but not in Get Odds. This is happens when the odds have not been set yet for the event.",
+        "summary" : "Returns straight and parlay odds for all non-settled events. Please note that it is possible that the event is in Get Fixtures response but not in Get Odds. This is happens when the odds have not been set yet for the event.",
         "operationId" : "Odds_GetOdds",
         "consumes" : [ ],
         "produces" : [ "application/json", "text/json", "application/xml", "text/xml" ],
@@ -504,13 +504,6 @@
             "format" : "int64"
           },
           "collectionFormat" : "multi"
-        }, {
-          "name" : "soccerLiveBettingType",
-          "in" : "query",
-          "description" : "Filter by bet acceptance type = [Legacy, DangerZone, LiveDelay, NotSet]",
-          "required" : false,
-          "type" : "string",
-          "enum" : [ "Legacy", "DangerZone", "LiveDelay", "NotSet" ]
         } ],
         "responses" : {
           "200" : {
@@ -531,7 +524,7 @@
     "/v1/odds/parlay" : {
       "get" : {
         "tags" : [ "Odds" ],
-        "summary" : "Returns straight and parlay odds for all non-settled events.<br />            Please note that it is possible that the event is in Get Fixtures response but not in Get Odds. This is happens when the odds have not been set yet for the event.",
+        "summary" : "Returns straight and parlay odds for all non-settled events. Please note that it is possible that the event is in Get Fixtures response but not in Get Odds. This is happens when the odds have not been set yet for the event.",
         "operationId" : "Odds_GetParlays",
         "consumes" : [ ],
         "produces" : [ "application/json", "text/json", "application/xml", "text/xml" ],
@@ -563,7 +556,7 @@
         }, {
           "name" : "since",
           "in" : "query",
-          "description" : "This is used to receive incremental updates. Use the value of last from previous odds response.<br />            When since parameter is not provided, the odds are delayed up to 1 min to encourage the use of the parameter.<br />            Please note that when using since parameter you will get in the response ONLY changed periods. If a period didn’t have any changes it will not be in the response.",
+          "description" : "This is used to receive incremental updates. Use the value of last from previous odds response. When since parameter is not provided, the odds are delayed up to 1 min to encourage the use of the parameter. Please note that when using since parameter you will get in the response ONLY changed periods. If a period didn’t have any changes it will not be in the response.",
           "required" : false,
           "type" : "integer",
           "format" : "int64"
@@ -584,13 +577,6 @@
             "format" : "int64"
           },
           "collectionFormat" : "multi"
-        }, {
-          "name" : "soccerLiveBettingType",
-          "in" : "query",
-          "description" : "Filter by bet acceptance type = [Legacy, DangerZone, LiveDelay, NotSet]",
-          "required" : false,
-          "type" : "string",
-          "enum" : [ "Legacy", "DangerZone", "LiveDelay", "NotSet" ]
         } ],
         "responses" : {
           "200" : {
@@ -618,7 +604,7 @@
         "parameters" : [ {
           "name" : "teaserId",
           "in" : "query",
-          "description" : "Unique identifier.<br />            Teaser details can be retrieved from a call to Get Teaser Groups endpoint.",
+          "description" : "Unique identifier.Teaser details can be retrieved from a call to Get Teaser Groups endpoint.",
           "required" : true,
           "type" : "integer",
           "format" : "int64"
@@ -649,7 +635,7 @@
     "/v1/periods" : {
       "get" : {
         "tags" : [ "Period" ],
-        "summary" : "Returns straight and parlay odds for all non-settled events.<br />            Please note that it is possible that the event is in Get Fixtures response but not in Get Odds. This is happens when the odds have not been set yet for the event.",
+        "summary" : "Returns straight and parlay odds for all non-settled events. Please note that it is possible that the event is in Get Fixtures response but not in Get Odds. This is happens when the odds have not been set yet for the event.",
         "operationId" : "Period_GetPeriods",
         "consumes" : [ ],
         "produces" : [ "application/json", "text/json", "application/xml", "text/xml" ],
@@ -733,7 +719,7 @@
     "/v1/translations" : {
       "get" : {
         "tags" : [ "Translations" ],
-        "summary" : "Each string in parameters must be URL encoded and separated with “|” character<br />            Parameters are not case-sensitive",
+        "summary" : "Each string in parameters must be URL encoded and separated with “|” character.Parameters are not case-sensitive",
         "operationId" : "Translations_Get",
         "consumes" : [ ],
         "produces" : [ "application/json", "text/json", "application/xml", "text/xml" ],
@@ -1027,7 +1013,7 @@
         "number" : {
           "type" : "integer",
           "format" : "int32",
-          "description" : "This represents the period of the match. For example, for soccer we have:\r\n            0 - Game\r\n            1 - 1st Half\r\n            2 - 2nd Half"
+          "description" : "This represents the period of the match. For example, for soccer we have:  0 - Game  1 - 1st Half 2 - 2nd Half"
         },
         "status" : {
           "type" : "integer",
@@ -1317,7 +1303,7 @@
         "periodNumber" : {
           "type" : "integer",
           "format" : "int32",
-          "description" : "This represents the period of the match. For example, for soccer we have:\r\n            0 -  Game\r\n            1 - 1st Half\r\n            2 - 2nd Half"
+          "description" : "This represents the period of the match. For example, for soccer we have:           0 -  Game            1 - 1st Half           2 - 2nd Half"
         },
         "legBetType" : {
           "type" : "string",
@@ -1447,7 +1433,7 @@
         "teaserId" : {
           "type" : "integer",
           "format" : "int64",
-          "description" : "Unique identifier.\r\n            Teaser details can be retrieved from a call to Get Teaser Groups endpoint."
+          "description" : "Unique identifier.  Teaser details can be retrieved from a call to Get Teaser Groups endpoint."
         },
         "oddsFormat" : {
           "type" : "string",
@@ -1478,16 +1464,16 @@
         "periodNumber" : {
           "type" : "integer",
           "format" : "int32",
-          "description" : "Period of the match that is being bet on.\r\n            Refer to Period Number lookup table."
+          "description" : "Period of the match that is being bet on. Refer to Period Number lookup table."
         },
         "betType" : {
           "type" : "string",
-          "description" : "Type of bet.\r\n            Currently, only BET_TYPE.SPREAD and BET_TYPE.TOTAL_POINTS are supported. = ['Spread', 'Moneyline', 'Total_Points']",
+          "description" : "Type of bet.Currently, only BET_TYPE.SPREAD and BET_TYPE.TOTAL_POINTS are supported. = ['Spread', 'Moneyline', 'Total_Points']",
           "enum" : [ "Spread", "Total_Points" ]
         },
         "team" : {
           "type" : "string",
-          "description" : "Team being bet on for a spread line.\r\n            Currenlty, only TEAM_TYPE.Team1 and TEAM_TYPE.Team2 are supported. => [ Team1 = Team 1, Team2 = Team 2, Draw = Draw. This is used for MONEYLINE bet type only. ] ",
+          "description" : "Team being bet on for a spread line. Currenlty, only TEAM_TYPE.Team1 and TEAM_TYPE.Team2 are supported. => [ Team1 = Team 1, Team2 = Team 2, Draw = Draw. This is used for MONEYLINE bet type only. ]",
           "enum" : [ "Team1", "Team2" ]
         },
         "side" : {
@@ -1660,7 +1646,7 @@
         "number" : {
           "type" : "integer",
           "format" : "int32",
-          "description" : "This represents the period of the match. For example, for soccer we have:\r\n            0 - Game\r\n            1 - 1st Half\r\n            2 - 2nd Half\r\n            Full list of periods per sports"
+          "description" : "This represents the period of the match. For example, for soccer we have:  0 - Game   1 - 1st Half    2 - 2nd Half   Full list of periods per sports"
         },
         "cutoff" : {
           "type" : "string",
@@ -1897,7 +1883,7 @@
         "number" : {
           "type" : "integer",
           "format" : "int32",
-          "description" : "This represents the period of the match. For example, for soccer we have:\r\n            0 - Game\r\n            1 - 1st Half\r\n            2 - 2nd Half\r\n            Full list of periods per sports"
+          "description" : "This represents the period of the match. For example, for soccer we have:     0 - Game  1 - 1st Half    2 - 2nd Half            Full list of periods per sports"
         },
         "cutoff" : {
           "type" : "string",
@@ -2053,12 +2039,12 @@
         "teaserId" : {
           "type" : "integer",
           "format" : "int64",
-          "description" : "Unique identifier.\r\n            Teaser details can be retrieved from a call to Get Teaser Groups endpoint."
+          "description" : "Unique identifier.Teaser details can be retrieved from a call to Get Teaser Groups endpoint."
         },
         "sportId" : {
           "type" : "integer",
           "format" : "int32",
-          "description" : "Unique identifier.\r\n            Sport details can be retrieved from a call to Get Sports endpoint."
+          "description" : "Unique identifier. Sport details can be retrieved from a call to Get Sports endpoint."
         },
         "leagues" : {
           "type" : "array",
@@ -2075,7 +2061,7 @@
         "id" : {
           "type" : "integer",
           "format" : "int32",
-          "description" : "Unique identifier.\r\n            League details can be retrieved from a call to Get Leagues endpoint."
+          "description" : "Unique identifier. League details can be retrieved from a call to Get Leagues endpoint."
         },
         "events" : {
           "type" : "array",
@@ -2109,7 +2095,7 @@
         "number" : {
           "type" : "integer",
           "format" : "int32",
-          "description" : "Period of the match that is being bet on.\r\n            Refer to Period Number lookup table."
+          "description" : "Period of the match that is being bet on. Refer to Period Number lookup table."
         },
         "lineId" : {
           "type" : "integer",
@@ -2135,12 +2121,12 @@
         "homeHdp" : {
           "type" : "number",
           "format" : "double",
-          "description" : "Home team handicap.\r\n            Refer to Get Fixtures endpoint to determine home and away teams."
+          "description" : "Home team handicap.Refer to Get Fixtures endpoint to determine home and away teams."
         },
         "awayHdp" : {
           "type" : "number",
           "format" : "double",
-          "description" : "Away team handicap.\r\n            Refer to Get Fixtures endpoint to determine home and away teams."
+          "description" : "Away team handicap.Refer to Get Fixtures endpoint to determine home and away teams."
         }
       }
     },
@@ -2303,7 +2289,7 @@
         "sportId" : {
           "type" : "integer",
           "format" : "int32",
-          "description" : "Unique identifier.\r\n            Sport details can be retrieved from a call to Get Sports endpoint."
+          "description" : "Unique identifier. Sport details can be retrieved from a call to Get Sports endpoint."
         },
         "minLegs" : {
           "type" : "integer",
@@ -2356,7 +2342,7 @@
         "id" : {
           "type" : "integer",
           "format" : "int32",
-          "description" : "Unique identifier.\r\n            League details can be retrieved from a call to Get Leagues endpoint."
+          "description" : "Unique identifier. League details can be retrieved from a call to Get Leagues endpoint."
         },
         "spread" : {
           "$ref" : "#/definitions/TeaserGroupsBetType"
