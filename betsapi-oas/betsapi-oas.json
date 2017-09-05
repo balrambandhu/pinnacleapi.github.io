@@ -40,10 +40,22 @@
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
+          "401" : {
+            "description" : "Unauthorized",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "403" : {
+            "description" : "Forbidden",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
           "500" : {
             "description" : "InternalServerError",
             "schema" : {
-              "$ref" : "#/definitions/ErrorResponse"
+              "$ref" : "#/definitions/ErrorResponseWithErrorId"
             }
           }
         },
@@ -76,11 +88,17 @@
           "400" : {
             "description" : "BadRequest",
             "schema" : {
-              "$ref" : "#/definitions/ErrorResponseWithErrorId"
+              "$ref" : "#/definitions/ErrorResponse"
             }
           },
           "401" : {
             "description" : "Unauthorized",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "403" : {
+            "description" : "Forbidden",
             "schema" : {
               "$ref" : "#/definitions/ErrorResponse"
             }
@@ -123,10 +141,22 @@
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
+          "401" : {
+            "description" : "Unauthorized",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "403" : {
+            "description" : "Forbidden",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
           "500" : {
             "description" : "InternalServerError",
             "schema" : {
-              "$ref" : "#/definitions/ErrorResponse"
+              "$ref" : "#/definitions/ErrorResponseWithErrorId"
             }
           }
         }
@@ -161,10 +191,22 @@
               "$ref" : "#/definitions/ErrorResponse"
             }
           },
+          "401" : {
+            "description" : "Unauthorized",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "403" : {
+            "description" : "Forbidden",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
           "500" : {
             "description" : "InternalServerError",
             "schema" : {
-              "$ref" : "#/definitions/ErrorResponse"
+              "$ref" : "#/definitions/ErrorResponseWithErrorId"
             }
           }
         }
@@ -191,6 +233,30 @@
             "description" : "OK",
             "schema" : {
               "$ref" : "#/definitions/MultiBetResponse[PublicSpecialBetResponse]"
+            }
+          },
+          "400" : {
+            "description" : "BadRequest",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "403" : {
+            "description" : "Forbidden",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "500" : {
+            "description" : "InternalServerError",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponseWithErrorId"
             }
           }
         }
@@ -250,6 +316,30 @@
             "schema" : {
               "$ref" : "#/definitions/GetBetsByTypeResponse"
             }
+          },
+          "400" : {
+            "description" : "BadRequest",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "403" : {
+            "description" : "Forbidden",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "500" : {
+            "description" : "InternalServerError",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponseWithErrorId"
+            }
           }
         }
       }
@@ -267,6 +357,30 @@
             "description" : "OK",
             "schema" : {
               "$ref" : "#/definitions/WageringStatusResponse"
+            }
+          },
+          "400" : {
+            "description" : "BadRequest",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "401" : {
+            "description" : "Unauthorized",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "403" : {
+            "description" : "Forbidden",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponse"
+            }
+          },
+          "500" : {
+            "description" : "InternalServerError",
+            "schema" : {
+              "$ref" : "#/definitions/ErrorResponseWithErrorId"
             }
           }
         }
@@ -307,16 +421,20 @@
         },
         "winRiskStake" : {
           "type" : "string",
-          "description" : "Whether the stake amount is risk or win amount."
+          "example" : "RISK",
+          "description" : "Whether the stake amount is risk or win amount.",
+          "enum" : [ "WIN", "RISK" ]
         },
         "lineId" : {
           "type" : "integer",
           "format" : "int64",
+          "example" : 420921914,
           "description" : "Line identification."
         },
         "altLineId" : {
           "type" : "integer",
           "format" : "int64",
+          "example" : "null",
           "description" : "Alternate line identification."
         },
         "pitcher1MustStart" : {
@@ -327,32 +445,41 @@
           "type" : "boolean",
           "description" : "Baseball only. Refers to the pitcher for Team2. This applicable only for MONEYLINE bet type, for all other bet types this has to be TRUE."
         },
-        "externalCustomerId" : {
-          "type" : "string"
-        },
         "isMaxStakeBet" : {
-          "type" : "boolean"
+          "type" : "boolean",
+          "example" : false,
+          "default" : false
         },
         "sportId" : {
           "type" : "integer",
-          "format" : "int32"
+          "format" : "int32",
+          "example" : 29
         },
         "eventId" : {
           "type" : "integer",
-          "format" : "int64"
+          "format" : "int64",
+          "example" : 757504261
         },
         "periodNumber" : {
           "type" : "integer",
-          "format" : "int32"
+          "format" : "int32",
+          "example" : 0
         },
         "betType" : {
-          "type" : "string"
+          "type" : "string",
+          "example" : "MONEYLINE",
+          "description" : "Bet Type. => [ MONEYLINE, TEAM_TOTAL_POINTS, SPREAD, TOTAL_POINTS ] ",
+          "enum" : [ "MONEYLINE", "TEAM_TOTAL_POINTS", "SPREAD", "TOTAL_POINTS" ]
         },
         "team" : {
-          "type" : "string"
+          "type" : "string",
+          "example" : "TEAM1",
+          "description" : "Team type. => [ TEAM1, TEAM2, DRAW ] ",
+          "enum" : [ "TEAM1", "TEAM2", "DRAW" ]
         },
         "side" : {
           "type" : "string",
+          "example" : "null",
           "description" : "Side type. => [ OVER, UNDER ] ",
           "enum" : [ "OVER", "UNDER" ]
         }
@@ -364,7 +491,9 @@
       "properties" : {
         "status" : {
           "type" : "string",
-          "description" : "Status of the response."
+          "example" : "ACCEPTED",
+          "description" : "Status of the response.",
+          "enum" : [ "ACCEPTED", "PENDING_ACCEPTANCE", "PROCESSED_WITH_ERROR" ]
         },
         "errorCode" : {
           "type" : "string",
@@ -410,15 +539,19 @@
       "properties" : {
         "status" : {
           "type" : "string",
-          "description" : "Status of the response."
+          "example" : "ACCEPTED",
+          "description" : "Status of the response.",
+          "enum" : [ "ACCEPTED", "PENDING_ACCEPTANCE", "PROCESSED_WITH_ERROR" ]
         },
         "errorCode" : {
           "type" : "string",
+          "example" : "null",
           "description" : "If Status is PROCESSED_WITH_ERROR, errorCode will be in the response. => [ ALL_BETTING_CLOSED = Betting is not allowed at this moment. This may happen during system maintenance, ALL_LIVE_BETTING_CLOSED = Live betting is not allowed at this moment. This may happen during system maintenance, ABOVE_EVENT_MAX = Bet cannot be placed because client exceeded allowed maximum of risk on a line, ABOVE_MAX_BET_AMOUNT = Stake is above allowed maximum amount, BELOW_MIN_BET_AMOUNT = Stake is below allowed minimum amount, BLOCKED_BETTING = Customer is an agent, BLOCKED_CLIENT = Client is no longer active, INSUFFICIENT_FUNDS = Bet is submitted by a client with insufficient funds, INVALID_COUNTRY = Client country is not allowed for betting, INVALID_EVENT = Invalid eventid, INVALID_ODDS_FORMAT = If a bet was submitted with the odds format that is not allowed for the client, LINE_CHANGED = Bet is submitted on a line that has changed, LISTED_PITCHERS_SELECTION_ERROR = If bet was submitted with pitcher1MustStart and/or pitcher2MustStart parameters in Place Bet request with values that are not allowed., OFFLINE_EVENT = Bet is submitted on a event that is offline or the submitted line is not offered at the moment due to points/handicap change or the submitted bet type is just not offered at the moment., PAST_CUTOFFTIME = Bet is submitted on a game after the betting cutoff time, RED_CARDS_CHANGED = Bet is submitted on a live soccer event with changed red card count, SCORE_CHANGED = Bet is submitted on a live soccer event with changed score, TIME_RESTRICTION = Bet is submitted within too short of a period from the same bet previously placed by a client, DUPLICATE_UNIQUE_REQUEST_ID, INCOMPLETE_CUSTOMER_BETTING_PROFILE, INVALID_CUSTOMER_PROFILE, LIMITS_CONFIGURATION_ISSUE, RESPONSIBLE_BETTING_LOSS_LIMIT_EXCEEDED, RESPONSIBLE_BETTING_RISK_LIMIT_EXCEEDED, RESUBMIT_REQUEST, SYSTEM_ERROR_3, WAGERING_SUSPENDED ] ",
           "enum" : [ "ALL_BETTING_CLOSED", "ALL_LIVE_BETTING_CLOSED", "ABOVE_EVENT_MAX", "ABOVE_MAX_BET_AMOUNT", "BELOW_MIN_BET_AMOUNT", "BLOCKED_BETTING", "BLOCKED_CLIENT", "INSUFFICIENT_FUNDS", "INVALID_COUNTRY", "INVALID_EVENT", "INVALID_ODDS_FORMAT", "LINE_CHANGED", "LISTED_PITCHERS_SELECTION_ERROR", "OFFLINE_EVENT", "PAST_CUTOFFTIME", "RED_CARDS_CHANGED", "SCORE_CHANGED", "TIME_RESTRICTION", "DUPLICATE_UNIQUE_REQUEST_ID", "INCOMPLETE_CUSTOMER_BETTING_PROFILE", "INVALID_CUSTOMER_PROFILE", "LIMITS_CONFIGURATION_ISSUE", "RESPONSIBLE_BETTING_LOSS_LIMIT_EXCEEDED", "RESPONSIBLE_BETTING_RISK_LIMIT_EXCEEDED", "RESUBMIT_REQUEST", "SYSTEM_ERROR_3", "WAGERING_SUSPENDED" ]
         },
         "uniqueRequestId" : {
           "type" : "string",
+          "example" : "D5CC50E4-284D-4D50-8D49-429BDC4F2A4",
           "description" : "Echo of the uniqueRequestId from the request."
         },
         "straightBet" : {
@@ -434,55 +567,61 @@
         "betId" : {
           "type" : "integer",
           "format" : "int64",
+          "example" : 759629245,
           "description" : "Bet identification"
-        },
-        "uniqueRequestId" : {
-          "type" : "string",
-          "description" : "Unique Request Id"
         },
         "wagerNumber" : {
           "type" : "integer",
           "format" : "int32",
+          "example" : 1,
           "description" : "Wager identification. All bets placed thru the API will have value 1. Website Classic view supports multiple contest(special) bets placement in the same bet slip in that case the bet would have appropriate wager number, as well as all round robin parlay bets."
         },
         "placedAt" : {
           "type" : "string",
           "format" : "date-time",
+          "example" : "2017-09-05T01:32:59Z",
           "description" : "Date time when the bet was placed."
         },
         "betStatus" : {
           "type" : "string",
+          "example" : "ACCEPTED",
           "description" : "Bet Status. => [ ACCEPTED = Bet was accepted, CANCELLED = Bet is cancelled as per Pinnacle betting rules, LOSE = The bet is settled as lose, PENDING_ACCEPTANCE = This status is reserved only for live bets. If a live bet is placed during danger zone or live delay is applied, it will be in PENDING_ACCEPTANCE , otherwise in ACCEPTED status. From this status bet can go to ACCEPTED or REJECTED status, REFUNDED = When an event is cancelled or when the bet is settled as push, the bet will have REFUNDED status, NOT_ACCEPTED = Bet was rejected. Bet can be rejected only if it was previously in PENDING_ACCEPTANCE status, WON = The bet is settled as won ] ",
           "enum" : [ "ACCEPTED", "CANCELLED", "LOSE", "PENDING_ACCEPTANCE", "REFUNDED", "NOT_ACCEPTED", "WON" ]
         },
         "betType" : {
           "type" : "string",
+          "example" : "MONEYLINE",
           "description" : "Bet Type. => [ MONEYLINE, TEAM_TOTAL_POINTS, SPREAD, TOTAL_POINTS, SPECIAL, PARLAY, TEASER, MANUAL ] ",
           "enum" : [ "MONEYLINE", "TEAM_TOTAL_POINTS", "SPREAD", "TOTAL_POINTS", "SPECIAL", "PARLAY", "TEASER", "MANUAL" ]
         },
         "win" : {
           "type" : "number",
           "format" : "double",
+          "example" : 1.0,
           "description" : "Win amount."
         },
         "risk" : {
           "type" : "number",
           "format" : "double",
+          "example" : 1.5,
           "description" : "Risk amount."
         },
         "winLoss" : {
           "type" : "number",
           "format" : "double",
+          "example" : "null",
           "description" : "Win-Loss for settled bets."
         },
         "oddsFormat" : {
           "type" : "string",
+          "example" : "AMERICAN",
           "description" : "Bet odds format. => [ AMERICAN = American odds format, DECIMAL = Decimal (European) odds format, HONGKONG = Hong Kong odds format, INDONESIAN = Indonesian odds format, MALAY = Malaysian odds format ] ",
           "enum" : [ "AMERICAN", "DECIMAL", "HONGKONG", "INDONESIAN", "MALAY" ]
         },
         "customerCommission" : {
           "type" : "number",
           "format" : "double",
+          "example" : "null",
           "description" : "Client’s commission on the bet."
         },
         "cancellationReason" : {
@@ -491,103 +630,125 @@
         "updateSequence" : {
           "type" : "integer",
           "format" : "int64",
+          "example" : 111548915,
           "description" : "Update Sequence"
         },
         "sportId" : {
           "type" : "integer",
           "format" : "int32",
+          "example" : 29,
           "description" : ""
         },
         "leagueId" : {
           "type" : "integer",
           "format" : "int32",
+          "example" : 2462,
           "description" : ""
         },
         "eventId" : {
           "type" : "integer",
           "format" : "int64",
+          "example" : 757064557,
           "description" : ""
         },
         "handicap" : {
           "type" : "number",
           "format" : "double",
+          "example" : "null",
           "description" : ""
         },
         "price" : {
           "type" : "number",
           "format" : "double",
+          "example" : -155.0,
           "description" : ""
         },
         "teamName" : {
           "type" : "string",
+          "example" : "Crvena Zvezda",
           "description" : ""
         },
         "side" : {
           "type" : "string",
+          "example" : "null",
           "description" : " => [ OVER, UNDER ] ",
           "enum" : [ "OVER", "UNDER" ]
         },
         "pitcher1" : {
           "type" : "string",
+          "example" : "null",
           "description" : ""
         },
         "pitcher2" : {
           "type" : "string",
+          "example" : "null",
           "description" : ""
         },
         "pitcher1MustStart" : {
           "type" : "boolean",
+          "example" : false,
           "description" : ""
         },
         "pitcher2MustStart" : {
           "type" : "boolean",
+          "example" : false,
           "description" : ""
         },
         "team1" : {
           "type" : "string",
+          "example" : "Crvena Zvezda",
           "description" : ""
         },
         "team2" : {
           "type" : "string",
+          "example" : "Partizan",
           "description" : ""
         },
         "periodNumber" : {
           "type" : "integer",
           "format" : "int32",
+          "example" : 0,
           "description" : ""
         },
         "team1Score" : {
           "type" : "number",
           "format" : "double",
-          "description" : ""
+          "example" : "null",
+          "description" : "Team 1 score that the bet was placed on"
         },
         "team2Score" : {
           "type" : "number",
           "format" : "double",
-          "description" : ""
+          "example" : "null",
+          "description" : "Team 2 score that the bet was placed"
         },
         "ftTeam1Score" : {
           "type" : "number",
           "format" : "double",
-          "description" : ""
+          "example" : "null",
+          "description" : "Full time team 1 score"
         },
         "ftTeam2Score" : {
           "type" : "number",
           "format" : "double",
-          "description" : ""
+          "example" : "null",
+          "description" : "Full time team 2 score"
         },
         "pTeam1Score" : {
           "type" : "number",
           "format" : "double",
-          "description" : ""
+          "example" : "null",
+          "description" : "End of period team 1 score. If the bet was placed on Game period (periodNumber =0) , this will be null"
         },
         "pTeam2Score" : {
           "type" : "number",
           "format" : "double",
-          "description" : ""
+          "example" : "null",
+          "description" : "End of period team 2 score. If the bet was placed on Game period (periodNumber =0) , this will be null"
         },
         "isLive" : {
           "type" : "boolean",
+          "example" : false,
           "description" : ""
         }
       },
@@ -695,11 +856,11 @@
           "description" : "Alternate line identification."
         },
         "pitcher1MustStart" : {
-          "type" : "string",
+          "type" : "boolean",
           "description" : "Baseball only. Refers to the pitcher for Team1.  This applicable only for MONEYLINE bet type, for all other bet types this has to be TRUE."
         },
         "pitcher2MustStart" : {
-          "type" : "string",
+          "type" : "boolean",
           "description" : "Baseball only. Refers to the pitcher for Team2. This applicable only for MONEYLINE bet type, for all other bet types this has to be TRUE."
         },
         "sportId" : {
