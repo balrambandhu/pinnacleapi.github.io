@@ -1013,7 +1013,7 @@
         "number" : {
           "type" : "integer",
           "format" : "int32",
-          "description" : "This represents the period of the match. For example, for soccer we have:\r\n            0 - Game\r\n            1 - 1st Half\r\n            2 - 2nd Half"
+          "description" : "This represents the period of the match. For example, for soccer we have:           0 - Game           1 - 1st Half           2 - 2nd Half"
         },
         "status" : {
           "type" : "integer",
@@ -1303,7 +1303,7 @@
         "periodNumber" : {
           "type" : "integer",
           "format" : "int32",
-          "description" : "This represents the period of the match. For example, for soccer we have:\r\n            0 -  Game\r\n            1 - 1st Half\r\n            2 - 2nd Half"
+          "description" : "This represents the period of the match. For example, for soccer we have:\\r\\n            0 -  Game            1 - 1st Half           2 - 2nd Half"
         },
         "legBetType" : {
           "type" : "string",
@@ -1433,7 +1433,7 @@
         "teaserId" : {
           "type" : "integer",
           "format" : "int64",
-          "description" : "Unique identifier.\r\n            Teaser details can be retrieved from a call to Get Teaser Groups endpoint."
+          "description" : "Unique identifier.  Teaser details can be retrieved from a call to Get Teaser Groups endpoint."
         },
         "oddsFormat" : {
           "type" : "string",
@@ -1464,16 +1464,16 @@
         "periodNumber" : {
           "type" : "integer",
           "format" : "int32",
-          "description" : "Period of the match that is being bet on.\r\n            Refer to Period Number lookup table."
+          "description" : "Period of the match that is being bet on. Refer to Period Number lookup table."
         },
         "betType" : {
           "type" : "string",
-          "description" : "Type of bet.\r\n            Currently, only BET_TYPE.SPREAD and BET_TYPE.TOTAL_POINTS are supported. = ['Spread', 'Moneyline', 'Total_Points']",
+          "description" : "Type of bet.Currently, only BET_TYPE.SPREAD and BET_TYPE.TOTAL_POINTS are supported. = ['Spread', 'Moneyline', 'Total_Points']",
           "enum" : [ "Spread", "Total_Points" ]
         },
         "team" : {
           "type" : "string",
-          "description" : "Team being bet on for a spread line.\r\n            Currenlty, only TEAM_TYPE.Team1 and TEAM_TYPE.Team2 are supported. => [ Team1 = Team 1, Team2 = Team 2, Draw = Draw. This is used for MONEYLINE bet type only. ] ",
+          "description" : "Team being bet on for a spread line. Currenlty, only TEAM_TYPE.Team1 and TEAM_TYPE.Team2 are supported. => [ Team1 = Team 1, Team2 = Team 2, Draw = Draw. This is used for MONEYLINE bet type only. ]",
           "enum" : [ "Team1", "Team2" ]
         },
         "side" : {
@@ -2342,7 +2342,7 @@
         "id" : {
           "type" : "integer",
           "format" : "int32",
-          "description" : "Unique identifier.\r\n            League details can be retrieved from a call to Get Leagues endpoint."
+          "description" : "Unique identifier. League details can be retrieved from a call to Get Leagues endpoint."
         },
         "spread" : {
           "$ref" : "#/definitions/TeaserGroupsBetType"
