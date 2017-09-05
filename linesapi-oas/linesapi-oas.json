@@ -1141,12 +1141,12 @@
           "type" : "array",
           "description" : "Leagues container.",
           "items" : {
-            "$ref" : "#/definitions/League "
+            "$ref" : "#/definitions/League"
           }
         }
       }
     },
-    "League " : {
+    "League" : {
       "type" : "object",
       "properties" : {
         "id" : {
