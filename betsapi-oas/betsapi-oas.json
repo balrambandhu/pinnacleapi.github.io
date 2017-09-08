@@ -867,7 +867,7 @@
         },
         "legs" : {
           "type" : "array",
-          "description" : "Collection of parlay legs (format described below).",
+          "description" : "Collection of parlay legs.",
           "items" : {
             "$ref" : "#/definitions/ParlayLegRequest"
           }
