@@ -766,10 +766,57 @@
           "type" : "string"
         },
         "details" : {
-          "type" : "array",
-          "items" : {
-            "$ref" : "#/definitions/KeyValuePair[String,String]"
-          }
+          "$ref" : "#/definitions/CancellationDetails"
+        }
+      },
+      "description" : ""
+    },
+    "CancellationDetails" : {
+      "type" : "object",
+      "properties" : {
+        "correctTeam1Id" : {
+          "type" : "string",
+          "example" : "Arizona Diamondbacks"
+        },
+        "correctTeam2Id" : {
+          "type" : "string",
+          "example" : "Blue Jays Hits"
+        },
+        "correctListedPitcher1" : {
+          "type" : "string",
+          "example" : "Smith"
+        },
+        "correctListedPitcher2" : {
+          "type" : "string",
+          "example" : "Tony"
+        },
+        "correctSpread" : {
+          "type" : "string",
+          "example" : "1.3"
+        },
+        "correctTotalPoints" : {
+          "type" : "string",
+          "example" : "34.7"
+        },
+        "correctTeam1TotalPoints" : {
+          "type" : "string",
+          "example" : "3.4"
+        },
+        "correctTeam2TotalPoints" : {
+          "type" : "string",
+          "example" : "2.6"
+        },
+        "correctTeam1Score" : {
+          "type" : "string",
+          "example" : "1"
+        },
+        "correctTeam2Score" : {
+          "type" : "string",
+          "example" : "3"
+        },
+        "correctTeam1TennisSetsScore" : {
+          "type" : "string",
+          "example" : "2"
         }
       },
       "description" : ""
