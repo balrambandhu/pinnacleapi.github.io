@@ -934,7 +934,8 @@
         "legBetType" : {
           "type" : "string",
           "example" : "MONELYLINE",
-          "description" : "Only SPREAD, MONEYLINE and TOTAL_POINTS are supported."
+          "description" : "Only SPREAD, MONEYLINE and TOTAL_POINTS are supported.",
+          "enum" : [ "MONEYLINE", "SPREAD", "TOTAL_POINTS" ]
         },
         "team" : {
           "type" : "string",
@@ -1323,7 +1324,7 @@
         "teaserId" : {
           "type" : "integer",
           "format" : "int32",
-          "description" : "Unique identifier.\r\nTeaser details can be retrieved from a call to Get Teaser Groups endpoint."
+          "description" : "Unique identifier. Teaser details can be retrieved from a call to Get Teaser Groups endpoint."
         },
         "oddsFormat" : {
           "type" : "string",
