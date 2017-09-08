@@ -350,7 +350,7 @@
     },
     "/v1/bets/betting-status" : {
       "get" : {
-        "tags" : [ "Place Bets" ],
+        "tags" : [ "Betting Status" ],
         "summary" : "Returns current betting status. During maintenance windows betting could be disabled , you can call this operation to check the current betting status.",
         "operationId" : "Bets_GetBettingStatus",
         "consumes" : [ ],
@@ -1007,9 +1007,6 @@
           "items" : {
             "$ref" : "#/definitions/ParlayLegResponse"
           }
-        },
-        "parlayBet" : {
-          "$ref" : "#/definitions/ParlayBet"
         }
       },
       "description" : ""
