@@ -718,37 +718,37 @@
           "type" : "number",
           "format" : "double",
           "example" : "null",
-          "description" : "Team 1 score that the bet was placed on"
+          "description" : "Team 1 score that the bet was placed on, only for live bets."
         },
         "team2Score" : {
           "type" : "number",
           "format" : "double",
           "example" : "null",
-          "description" : "Team 2 score that the bet was placed"
+          "description" : "Team 2 score that the bet was placed, only for live bets."
         },
         "ftTeam1Score" : {
           "type" : "number",
           "format" : "double",
           "example" : "null",
-          "description" : "Full time team 1 score"
+          "description" : "Full time team 1 score, only for settled bets."
         },
         "ftTeam2Score" : {
           "type" : "number",
           "format" : "double",
           "example" : "null",
-          "description" : "Full time team 2 score"
+          "description" : "Full time team 2 score, only for settled bets."
         },
         "pTeam1Score" : {
           "type" : "number",
           "format" : "double",
           "example" : "null",
-          "description" : "End of period team 1 score. If the bet was placed on Game period (periodNumber =0) , this will be null"
+          "description" : ".End of period team 1 score, only for settled bets. If the bet was placed on Game period (periodNumber =0) , this will be null . "
         },
         "pTeam2Score" : {
           "type" : "number",
           "format" : "double",
           "example" : "null",
-          "description" : "End of period team 2 score. If the bet was placed on Game period (periodNumber =0) , this will be null"
+          "description" : "End of period team 2 score, only for settled bets. If the bet was placed on Game period (periodNumber =0) , this will be null"
         },
         "isLive" : {
           "type" : "boolean",
