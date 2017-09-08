@@ -1079,7 +1079,6 @@
         },
         "correlatedLegs" : {
           "type" : "array",
-          "example" : null,
           "description" : "If errorCode is CORRELATED will contain legIds of all correlated legs.",
           "items" : {
             "type" : "string",
