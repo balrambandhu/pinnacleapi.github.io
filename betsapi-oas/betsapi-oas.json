@@ -874,7 +874,7 @@
         },
         "roundRobinOptions" : {
           "type" : "array",
-          "description" : "null",
+          "description" : "",
           "items" : {
             "type" : "string",
             "enum" : [ "Parlay", "TwoLegRoundRobin", "ThreeLegRoundRobin", "FourLegRoundRobin", "FiveLegRoundRobin", "SixLegRoundRobin", "SevenLegRoundRobin", "EightLegRoundRobin" ]
@@ -1020,7 +1020,7 @@
         "roundRobinOption" : {
           "type" : "string",
           "example" : "Parlay",
-          "description" : "null",
+          "description" : "",
           "enum" : [ "Parlay", "TwoLegRoundRobin", "ThreeLegRoundRobin", "FourLegRoundRobin", "FiveLegRoundRobin", "SixLegRoundRobin", "SevenLegRoundRobin", "EightLegRoundRobin" ]
         },
         "odds" : {
