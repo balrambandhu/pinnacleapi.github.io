@@ -1096,6 +1096,7 @@
         "betId" : {
           "type" : "integer",
           "format" : "int64",
+          "example" : 760404490,
           "description" : "Bet identification"
         },
         "uniqueRequestId" : {
@@ -1107,36 +1108,43 @@
         "wagerNumber" : {
           "type" : "integer",
           "format" : "int32",
+          "example" : 1,
           "description" : "Wager identification. All bets placed thru the API will have value 1. Website Classic view supports multiple contest(special) bets placement in the same bet slip in that case the bet would have appropriate wager number, as well as all round robin parlay bets."
         },
         "placedAt" : {
           "type" : "string",
           "format" : "date-time",
+          "example" : "2017-09-08T00:55:11Z",
           "description" : "Date time when the bet was placed."
         },
         "betStatus" : {
           "type" : "string",
+          "example" : "ACCEPTED",
           "description" : "Bet Status. => [ ACCEPTED = Bet was accepted, CANCELLED = Bet is cancelled as per Pinnacle betting rules, LOSE = The bet is settled as lose, PENDING_ACCEPTANCE = This status is reserved only for live bets. If a live bet is placed during danger zone or live delay is applied, it will be in PENDING_ACCEPTANCE , otherwise in ACCEPTED status. From this status bet can go to ACCEPTED or REJECTED status, REFUNDED = When an event is cancelled or when the bet is settled as push, the bet will have REFUNDED status, NOT_ACCEPTED = Bet was rejected. Bet can be rejected only if it was previously in PENDING_ACCEPTANCE status, WON = The bet is settled as won ] ",
           "enum" : [ "ACCEPTED", "CANCELLED", "LOSE", "PENDING_ACCEPTANCE", "REFUNDED", "NOT_ACCEPTED", "WON" ]
         },
         "betType" : {
           "type" : "string",
+          "example" : "PARLAY",
           "description" : "Bet Type. => [ MONEYLINE, TEAM_TOTAL_POINTS, SPREAD, TOTAL_POINTS, SPECIAL, PARLAY, TEASER, MANUAL ] ",
           "enum" : [ "MONEYLINE", "TEAM_TOTAL_POINTS", "SPREAD", "TOTAL_POINTS", "SPECIAL", "PARLAY", "TEASER", "MANUAL" ]
         },
         "win" : {
           "type" : "number",
           "format" : "double",
+          "example" : 6.82,
           "description" : "Win amount."
         },
         "risk" : {
           "type" : "number",
           "format" : "double",
+          "example" : 1.0,
           "description" : "Risk amount."
         },
         "winLoss" : {
           "type" : "number",
           "format" : "double",
+          "example" : "null",
           "description" : "Win-Loss for settled bets."
         },
         "oddsFormat" : {
@@ -1147,6 +1155,7 @@
         "customerCommission" : {
           "type" : "number",
           "format" : "double",
+          "example" : "null",
           "description" : "Client’s commission on the bet."
         },
         "cancellationReason" : {
@@ -1155,6 +1164,7 @@
         "updateSequence" : {
           "type" : "integer",
           "format" : "int64",
+          "example" : 112839436,
           "description" : "Update Sequence"
         },
         "legs" : {
@@ -1167,12 +1177,14 @@
         "odds" : {
           "type" : "number",
           "format" : "double",
+          "example" : 682.0,
           "description" : ""
         },
         "finalOdds" : {
           "type" : "number",
           "format" : "double",
-          "description" : ""
+          "example" : 0.0,
+          "description" : "Only for settled parlay. Final price may differ in case leg was cancelled or half win"
         }
       },
       "description" : ""
