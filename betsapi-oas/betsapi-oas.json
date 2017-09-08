@@ -850,15 +850,18 @@
         },
         "acceptBetterLine" : {
           "type" : "boolean",
+          "example" : true,
           "description" : "Whether or not to accept a bet when there is a line change in favor of the client."
         },
         "riskAmount" : {
           "type" : "number",
           "format" : "double",
-          "description" : "Wagered amount in Client’s currency. It is always risk amount when placing Parlay bets NOTE: If round robin options is used this amount will apply for all parlays so actual amount wagered will be riskAmount X number of Parlays."
+          "example" : 10.5,
+          "description" : "Amount in client’s currency. It is always risk amount when placing Parlay bets NOTE: If round robin options is used this amount will apply for all parlays so actual amount wagered will be riskAmount X number of Parlays."
         },
         "oddsFormat" : {
           "type" : "string",
+          "example" : "DECIMAL",
           "description" : "Bet odds format. => [ AMERICAN = American odds format, DECIMAL = Decimal (European) odds format, HONGKONG = Hong Kong odds format, INDONESIAN = Indonesian odds format, MALAY = Malaysian odds format ] ",
           "enum" : [ "AMERICAN", "DECIMAL", "HONGKONG", "INDONESIAN", "MALAY" ]
         },
@@ -871,9 +874,11 @@
         },
         "roundRobinOptions" : {
           "type" : "array",
-          "description" : "[Parlay, TwoLegRoundRobin, ThreeLegRoundRobin, FourLegRoundRobin, FiveLegRoundRobin, SixLegRoundRobin, SevenLegRoundRobin, EightLegRoundRobin]",
+          "description" : "null",
           "items" : {
-            "type" : "string"
+            "type" : "string",
+            "example" : "Parlay",
+            "enum" : [ "Parlay", "TwoLegRoundRobin", "ThreeLegRoundRobin", "FourLegRoundRobin", "FiveLegRoundRobin", "SixLegRoundRobin", "SevenLegRoundRobin", "EightLegRoundRobin" ]
           }
         }
       },
@@ -884,51 +889,62 @@
       "properties" : {
         "uniqueLegId" : {
           "type" : "string",
+          "example" : "CFAD8ACF-E410-437C-8F0F-33611F565981",
           "description" : "Unique id of the leg. It's used to identify and match legs in the response."
         },
         "lineId" : {
           "type" : "integer",
           "format" : "int64",
+          "example" : 419715968,
           "description" : "Line identification."
         },
         "altLineId" : {
           "type" : "integer",
           "format" : "int64",
+          "example" : "null",
           "description" : "Alternate line identification."
         },
         "pitcher1MustStart" : {
           "type" : "boolean",
+          "example" : false,
           "description" : "Baseball only. Refers to the pitcher for Team1.  This applicable only for MONEYLINE bet type, for all other bet types this has to be TRUE."
         },
         "pitcher2MustStart" : {
           "type" : "boolean",
+          "example" : false,
           "description" : "Baseball only. Refers to the pitcher for Team2. This applicable only for MONEYLINE bet type, for all other bet types this has to be TRUE."
         },
         "sportId" : {
           "type" : "integer",
           "format" : "int32",
+          "example" : 29,
           "description" : "Sport identification."
         },
         "eventId" : {
           "type" : "integer",
           "format" : "int64",
+          "example" : 758023991,
           "description" : "Event identification."
         },
         "periodNumber" : {
           "type" : "integer",
           "format" : "int32",
+          "example" : 0,
           "description" : "This represents the period of the match. For example, for soccer we have: 0 -  Game, 1 - 1st Half and 2 - 2nd Half"
         },
         "legBetType" : {
           "type" : "string",
+          "example" : "MONELYLINE",
           "description" : "Only SPREAD, MONEYLINE and TOTAL_POINTS are supported."
         },
         "team" : {
           "type" : "string",
+          "example" : "TEAM1",
           "description" : "Chosen team type. This is needed only for SPREAD and MONEYLINE bet types."
         },
         "side" : {
           "type" : "string",
+          "example" : "null",
           "description" : "Chosen side. This is needed only for TOTAL_POINTS bet type.Side type. => [ OVER, UNDER ]",
           "enum" : [ "OVER", "UNDER" ]
         }
@@ -1004,16 +1020,20 @@
       "properties" : {
         "roundRobinOption" : {
           "type" : "string",
-          "description" : "= [Parlay, TwoLegRoundRobin, ThreeLegRoundRobin, FourLegRoundRobin, FiveLegRoundRobin, SixLegRoundRobin, SevenLegRoundRobin, EightLegRoundRobin]"
+          "example" : "Parlay",
+          "description" : "null",
+          "enum" : [ "Parlay", "TwoLegRoundRobin", "ThreeLegRoundRobin", "FourLegRoundRobin", "FiveLegRoundRobin", "SixLegRoundRobin", "SevenLegRoundRobin", "EightLegRoundRobin" ]
         },
         "odds" : {
           "type" : "number",
           "format" : "double",
+          "example" : 682.0,
           "description" : "Parlay odds for this option."
         },
         "unroundedDecimalOdds" : {
           "type" : "number",
           "format" : "double",
+          "example" : 7.8231,
           "description" : "Unrounded parlay odds in decimal format to be used for calculations only"
         }
       },
@@ -1024,10 +1044,13 @@
       "properties" : {
         "status" : {
           "type" : "string",
-          "description" : "Status of the request."
+          "example" : "VALID",
+          "description" : "Status of the request.",
+          "enum" : [ "PROCESSED_WITH_ERROR", "VALID" ]
         },
         "errorCode" : {
           "type" : "string",
+          "example" : "null",
           "description" : "When Status is PROCESSED_WITH_ERROR, provides a code indicating the specific problem. => [ CANNOT_PARLAY_LIVE_GAME = The wager is placed on Live game, CORRELATED = The leg is correlated with another one, EVENT_NO_LONGER_AVAILABLE_FOR_BETTING = The event is no longer offered for Parlays, EVENT_NOT_OFFERED_FOR_PARLAY = The event is not offered for Parlays, INVALID_EVENT = Live betting is not allowed at this moment, INVALID_LEG_BET_TYPE = Leg bet type is not accepted for Parlays, Accepted values are: SPREAD, MONEYLINE, TOTAL_POINTS., INVALID_PARLAY_BET = The leg did not validated due to error on Parlay Bet. Check the error PlaceParlayBet response for error details, LINE_CHANGED = Bet is submitted on a line that has changed, LINE_DOES_NOT_BELONG_TO_EVENT = LineId does not match the EventId specified in the request, LISTED_PITCHERS_SELECTION_ERROR = If bet was submitted with pitcher1MustStart and/or pitcher2MustStart parameters with values that are not allowed, ODDS_NO_LONGER_OFFERED_FOR_PARLAY_1 = Due to line change odds are not offered for Parlay anymore, ODDS_NO_LONGER_OFFERED_FOR_PARLAY_2 = Due to line change odds are not offered for Parlay anymore, ODDS_NO_LONGER_OFFERED_FOR_PARLAY_3 = Due to line change odds are not offered for Parlay anymore, OFFLINE_EVENT = Bet is submitted on an event that is offline or with incorrect lineId, PAST_CUTOFFTIME = Bet is submitted on a game after the betting cutoff time, SYSTEM_ERROR_1 = Unexpected error or System error, SYSTEM_ERROR_2 = Unexpected error or System error, SYSTEM_ERROR_3 = Unexpected error or System error, LINE_IS_NOT_AVAILABLE = Line is not available for the specified Parlay Leg. ] ",
           "enum" : [ "CANNOT_PARLAY_LIVE_GAME", "CORRELATED", "EVENT_NO_LONGER_AVAILABLE_FOR_BETTING", "EVENT_NOT_OFFERED_FOR_PARLAY", "INVALID_EVENT", "INVALID_LEG_BET_TYPE", "INVALID_PARLAY_BET", "LINE_CHANGED", "LINE_DOES_NOT_BELONG_TO_EVENT", "LISTED_PITCHERS_SELECTION_ERROR", "ODDS_NO_LONGER_OFFERED_FOR_PARLAY_1", "ODDS_NO_LONGER_OFFERED_FOR_PARLAY_2", "ODDS_NO_LONGER_OFFERED_FOR_PARLAY_3", "OFFLINE_EVENT", "PAST_CUTOFFTIME", "SYSTEM_ERROR_1", "SYSTEM_ERROR_2", "SYSTEM_ERROR_3", "LINE_IS_NOT_AVAILABLE" ]
         },
@@ -1040,20 +1063,24 @@
         "lineId" : {
           "type" : "integer",
           "format" : "int64",
+          "example" : 419715968,
           "description" : "Line identification that bet was placed on."
         },
         "altLineId" : {
           "type" : "integer",
           "format" : "int64",
-          "description" : "If Bet was placed on Alternate Line the Id of that line will be returned."
+          "example" : "null",
+          "description" : "If bet was accpepted on alternate line, the altLineId will be returned."
         },
         "price" : {
           "type" : "number",
           "format" : "double",
+          "example" : 167.0,
           "description" : "Price that the bet was placed on."
         },
         "correlatedLegs" : {
           "type" : "array",
+          "example" : null,
           "description" : "If errorCode is CORRELATED will contain legIds of all correlated legs.",
           "items" : {
             "type" : "string",
