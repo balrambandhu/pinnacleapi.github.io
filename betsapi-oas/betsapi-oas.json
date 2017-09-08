@@ -753,7 +753,7 @@
         "isLive" : {
           "type" : "boolean",
           "example" : false,
-          "description" : ""
+          "description" : "Whether the bet is on live event"
         }
       },
       "description" : ""
