@@ -136,7 +136,7 @@
           "200" : {
             "description" : "OK",
             "schema" : {
-              "$ref" : "#/definitions/PublicPlaceParlayBetResponse"
+              "$ref" : "#/definitions/PlaceParlayBetResponse"
             }
           },
           "400" : {
@@ -186,7 +186,7 @@
           "200" : {
             "description" : "OK",
             "schema" : {
-              "$ref" : "#/definitions/PublicPlaceTeaserBetResponse"
+              "$ref" : "#/definitions/PlaceTeaserBetResponse"
             }
           },
           "400" : {
@@ -236,7 +236,7 @@
           "200" : {
             "description" : "OK",
             "schema" : {
-              "$ref" : "#/definitions/MultiBetResponse[PublicSpecialBetResponse]"
+              "$ref" : "#/definitions/MultiBetResponse[SpecialBetResponse]"
             }
           },
           "400" : {
@@ -950,7 +950,7 @@
       },
       "description" : ""
     },
-    "PublicPlaceParlayBetResponse" : {
+    "PlaceParlayBetResponse" : {
       "type" : "object",
       "properties" : {
         "status" : {
@@ -1387,7 +1387,7 @@
       },
       "description" : ""
     },
-    "PublicPlaceTeaserBetResponse" : {
+    "PlaceTeaserBetResponse" : {
       "type" : "object",
       "properties" : {
         "status" : {
@@ -1534,20 +1534,20 @@
       },
       "description" : ""
     },
-    "MultiBetResponse[PublicSpecialBetResponse]" : {
+    "MultiBetResponse[SpecialBetResponse]" : {
       "type" : "object",
       "properties" : {
         "bets" : {
           "type" : "array",
           "description" : "The individual bets.",
           "items" : {
-            "$ref" : "#/definitions/PublicSpecialBetResponse"
+            "$ref" : "#/definitions/SpecialBetResponse"
           }
         }
       },
       "description" : ""
     },
-    "PublicSpecialBetResponse" : {
+    "SpecialBetResponse" : {
       "type" : "object",
       "properties" : {
         "status" : {
