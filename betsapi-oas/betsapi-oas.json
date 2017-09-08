@@ -58,7 +58,7 @@
           "500" : {
             "description" : "InternalServerError",
             "schema" : {
-              "$ref" : "#/definitions/ErrorResponseWithErrorId"
+              "$ref" : "#/definitions/ErrorResponseWithErrorRef"
             }
           }
         },
@@ -110,7 +110,7 @@
           "500" : {
             "description" : "InternalServerError",
             "schema" : {
-              "$ref" : "#/definitions/ErrorResponseWithErrorId"
+              "$ref" : "#/definitions/ErrorResponseWithErrorRef"
             }
           }
         }
@@ -160,7 +160,7 @@
           "500" : {
             "description" : "InternalServerError",
             "schema" : {
-              "$ref" : "#/definitions/ErrorResponseWithErrorId"
+              "$ref" : "#/definitions/ErrorResponseWithErrorRef"
             }
           }
         }
@@ -210,7 +210,7 @@
           "500" : {
             "description" : "InternalServerError",
             "schema" : {
-              "$ref" : "#/definitions/ErrorResponseWithErrorId"
+              "$ref" : "#/definitions/ErrorResponseWithErrorRef"
             }
           }
         }
@@ -260,7 +260,7 @@
           "500" : {
             "description" : "InternalServerError",
             "schema" : {
-              "$ref" : "#/definitions/ErrorResponseWithErrorId"
+              "$ref" : "#/definitions/ErrorResponseWithErrorRef"
             }
           }
         }
@@ -342,7 +342,7 @@
           "500" : {
             "description" : "InternalServerError",
             "schema" : {
-              "$ref" : "#/definitions/ErrorResponseWithErrorId"
+              "$ref" : "#/definitions/ErrorResponseWithErrorRef"
             }
           }
         }
@@ -384,7 +384,7 @@
           "500" : {
             "description" : "InternalServerError",
             "schema" : {
-              "$ref" : "#/definitions/ErrorResponseWithErrorId"
+              "$ref" : "#/definitions/ErrorResponseWithErrorRef"
             }
           }
         }
@@ -816,26 +816,16 @@
         },
         "correctTeam1TennisSetsScore" : {
           "type" : "string",
+          "example" : "4"
+        },
+        "correctTeam2TennisSetsScore" : {
+          "type" : "string",
           "example" : "2"
         }
       },
       "description" : ""
     },
-    "KeyValuePair[String,String]" : {
-      "type" : "object",
-      "required" : [ "key" ],
-      "properties" : {
-        "key" : {
-          "type" : "string",
-          "readOnly" : true
-        },
-        "value" : {
-          "type" : "string",
-          "readOnly" : true
-        }
-      }
-    },
-    "ErrorResponseWithErrorId" : {
+    "ErrorResponseWithErrorRef" : {
       "type" : "object",
       "properties" : {
         "ref" : {
