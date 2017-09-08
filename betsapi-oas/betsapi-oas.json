@@ -763,7 +763,8 @@
       "required" : [ "code" ],
       "properties" : {
         "code" : {
-          "type" : "string"
+          "type" : "string",
+          "example" : "FBS_CW_227"
         },
         "details" : {
           "$ref" : "#/definitions/CancellationDetails"
