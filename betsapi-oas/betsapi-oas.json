@@ -877,7 +877,6 @@
           "description" : "null",
           "items" : {
             "type" : "string",
-            "example" : "Parlay",
             "enum" : [ "Parlay", "TwoLegRoundRobin", "ThreeLegRoundRobin", "FourLegRoundRobin", "FiveLegRoundRobin", "SixLegRoundRobin", "SevenLegRoundRobin", "EightLegRoundRobin" ]
           }
         }
