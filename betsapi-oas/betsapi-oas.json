@@ -1940,9 +1940,6 @@
           "format" : "double",
           "description" : "Client’s commission on the bet."
         },
-        "cancellationReason" : {
-          "$ref" : "#/definitions/CancellationReason"
-        },
         "updateSequence" : {
           "type" : "integer",
           "format" : "int64",
