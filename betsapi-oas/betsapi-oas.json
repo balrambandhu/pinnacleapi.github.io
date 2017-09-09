@@ -1498,36 +1498,44 @@
           "description" : "This unique id of the place bet requests. This is to support idempotent requests."
         },
         "acceptBetterLine" : {
-          "type" : "string",
+          "type" : "boolean",
+          "example" : true,
           "description" : "Whether or not to accept a bet when there is a line change in favor of the client."
         },
         "oddsFormat" : {
           "type" : "string",
+          "example" : "AMERICAN",
           "description" : "Bet odds format. => [ AMERICAN = American odds format, DECIMAL = Decimal (European) odds format, HONGKONG = Hong Kong odds format, INDONESIAN = Indonesian odds format, MALAY = Malaysian odds format ] ",
           "enum" : [ "AMERICAN", "DECIMAL", "HONGKONG", "INDONESIAN", "MALAY" ]
         },
         "stake" : {
           "type" : "number",
           "format" : "double",
+          "example" : 10.5,
           "description" : "amount in client’s currency."
         },
         "winRiskStake" : {
           "type" : "string",
-          "description" : "Whether the stake amount is risk or win amount."
+          "example" : "RISK",
+          "description" : "Whether the stake amount is risk or win amount.",
+          "enum" : [ "WIN", "RISK" ]
         },
         "lineId" : {
           "type" : "integer",
           "format" : "int64",
+          "example" : 51024304,
           "description" : "Line identification."
         },
         "specialId" : {
           "type" : "integer",
           "format" : "int64",
+          "example" : 726394409,
           "description" : "Special identification."
         },
         "contestantId" : {
           "type" : "integer",
           "format" : "int64",
+          "example" : 726394411,
           "description" : "Contestant identification."
         }
       },
@@ -1551,16 +1559,20 @@
       "properties" : {
         "status" : {
           "type" : "string",
-          "description" : "Status of the request."
+          "example" : "ACCEPTED",
+          "description" : "Status of the request.",
+          "enum" : [ "ACCEPTED", "PROCESSED_WITH_ERROR" ]
         },
         "errorCode" : {
           "type" : "string",
+          "example" : "null",
           "description" : "When Status is PROCESSED_WITH_ERROR, provides a code indicating the specific problem. => [ ALL_BETTING_CLOSED = Betting is not allowed at this moment. This may happen during system maintenance., ABOVE_MAX_BET_AMOUNT = Stake is above allowed maximum amount, BELOW_MIN_BET_AMOUNT = Stake is below allowed minimum amount, BLOCKED_BETTING = Customer is an agent, BLOCKED_CLIENT = Client is no longer active, CONTEST_FUNCTIONALITY_IS_DISABLED = Contest functionality is disabled, CONTEST_NOT_FOUND = Incorrect contest id provided or contest is no longer available, DUPLICATE_UNIQUE_REQUEST_ID = UniqueRequestId must be inque for each bet, INCOMPLETE_CUSTOMER_BETTING_PROFILE = Customer profile could not be loaded, please contact CSD, INSUFFICIENT_FUNDS = Bet is submitted by a client with insufficient funds, INVALID_COUNTRY = Client country is not allowed for betting, INVALID_REQUEST = Special bet request is not valid, LINE_CHANGED = Bet is submitted on a line that has changed, PAST_CUTOFFTIME = Bet is submitted on a game after the betting cutoff time, RESPONSIBLE_BETTING_LOSS_LIMIT_EXCEEDED = Self-imposed loss limit exceeded, RESPONSIBLE_BETTING_RISK_LIMIT_EXCEEDED = Self-imposed risk limit exceeded, RESUBMIT_REQUEST = The ticket hast to be resubmitted, SYSTEM_ERROR_1 = Unexpected error or System error, SYSTEM_ERROR_2 = Unexpected error or System error, UNIQUE_REQUEST_ID_REQUIRED = UniqueRequestId is missing, WAGERING_SUSPENDED = The customer wagering is suspended, CUSTOMER_TYPE_DOES_NOT_MATCH_PARTNER, INVALID_CUSTOMER_PROFILE, INVALID_WAGER, INVALID_WAGER_TYPE ] ",
           "enum" : [ "ALL_BETTING_CLOSED", "ABOVE_MAX_BET_AMOUNT", "BELOW_MIN_BET_AMOUNT", "BLOCKED_BETTING", "BLOCKED_CLIENT", "CONTEST_FUNCTIONALITY_IS_DISABLED", "CONTEST_NOT_FOUND", "DUPLICATE_UNIQUE_REQUEST_ID", "INCOMPLETE_CUSTOMER_BETTING_PROFILE", "INSUFFICIENT_FUNDS", "INVALID_COUNTRY", "INVALID_REQUEST", "LINE_CHANGED", "PAST_CUTOFFTIME", "RESPONSIBLE_BETTING_LOSS_LIMIT_EXCEEDED", "RESPONSIBLE_BETTING_RISK_LIMIT_EXCEEDED", "RESUBMIT_REQUEST", "SYSTEM_ERROR_1", "SYSTEM_ERROR_2", "UNIQUE_REQUEST_ID_REQUIRED", "WAGERING_SUSPENDED", "CUSTOMER_TYPE_DOES_NOT_MATCH_PARTNER", "INVALID_CUSTOMER_PROFILE", "INVALID_WAGER", "INVALID_WAGER_TYPE" ]
         },
         "betId" : {
           "type" : "integer",
           "format" : "int64",
+          "example" : 760745142,
           "description" : "Id of a newly created bet."
         },
         "uniqueRequestId" : {
@@ -1571,6 +1583,7 @@
         },
         "betterLineWasAccepted" : {
           "type" : "boolean",
+          "example" : false,
           "description" : "Whether or not the bet was accepted on the line that changed in favour of client.\r\nThis can be true only if acceptBetterLine in the Place Bet request is set to TRUE."
         },
         "maxStake" : {
