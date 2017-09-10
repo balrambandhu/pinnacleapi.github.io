@@ -33,8 +33,8 @@
         "responses" : {
           "200" : {
             "description" : "OK",
-            "schema" : {
-              "$ref" : "#/definitions/PlaceBetResponse"
+            "examples" : {
+              "application/json" : "{\"status\":\"ACCEPTED\",\"errorCode\":null,\"betId\":761875754,\"uniqueRequestId\":\"0865697a-6e4e-49dc-b77a-190e71a57bc8\",\"betterLineWasAccepted\":false,\"price\":-147.0}"
             }
           },
           "400" : {
