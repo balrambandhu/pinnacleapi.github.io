@@ -525,10 +525,15 @@
           "type": "boolean",
           "description": "Baseball only. Refers to the pitcher for Team2. This applicable only for MONEYLINE bet type, for all other bet types this has to be TRUE."
         },
-        "isMaxStakeBet": {
-          "type": "boolean",
-          "example": false,
-          "default": false
+        "fillType": {
+          "type": "string",
+          "description": "NORMAL - bet will be placed on specfied stake. FillAndKill - If the stake is over the max limit, bet will be placed on max limit, otherwise it will be placed on specified stake. FillMaxLimit - bet will be places on max limit, stake amount will be ignored. Please note that maximum limits can change at any moment, which may result in risking more than anticipated. This option is replacement of isMaxStakeBet from v1/bets/place",
+          "enum": [
+            "NORMAL",
+            "FILLANDKILL",
+            "FILLMAXLIMIT"
+          ],
+          "example": "Normal"
         },
         "sportId": {
           "type": "integer",
