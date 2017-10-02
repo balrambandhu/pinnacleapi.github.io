@@ -48,6 +48,9 @@
             "description": "OK",
             "examples": {
               "application/json": "{\"status\":\"ACCEPTED\",\"errorCode\":null,\"betId\":761875754,\"uniqueRequestId\":\"0865697a-6e4e-49dc-b77a-190e71a57bc8\",\"betterLineWasAccepted\":false,\"price\":-147.0}"
+            },
+            "schema": {
+              "$ref": "#/definitions/PlaceBetResponse"
             }
           },
           "400": {
@@ -427,7 +430,7 @@
           "200": {
             "description": "OK",
             "schema": {
-              "$ref": "#/definitions/WageringStatusResponse"
+              "$ref": "#/definitions/BettingStatusResponse"
             }
           },
           "400": {
@@ -527,13 +530,14 @@
         },
         "fillType": {
           "type": "string",
-          "description": "NORMAL - bet will be placed on specfied stake. FillAndKill - If the stake is over the max limit, bet will be placed on max limit, otherwise it will be placed on specified stake. FillMaxLimit - bet will be places on max limit, stake amount will be ignored. Please note that maximum limits can change at any moment, which may result in risking more than anticipated. This option is replacement of isMaxStakeBet from v1/bets/place",
+          "description": "NORMAL - bet will be placed on specified stake. FILLANDKILL - If the stake is over the max limit, bet will be placed on max limit, otherwise it will be placed on specified stake. FILLANDKILL - bet will be places on max limit, stake amount will be ignored. Please note that maximum limits can change at any moment, which may result in risking more than anticipated. This option is replacement of isMaxStakeBet from v1/bets/place",
           "enum": [
             "NORMAL",
             "FILLANDKILL",
             "FILLMAXLIMIT"
           ],
-          "example": "Normal"
+          "example": "NORMAL",
+          "default": "NORMAL"
         },
         "sportId": {
           "type": "integer",
@@ -679,7 +683,7 @@
         "errorCode": {
           "type": "string",
           "example": "null",
-          "description": "If Status is PROCESSED_WITH_ERROR, errorCode will be in the response. => [ ALL_BETTING_CLOSED = Betting is not allowed at this moment. This may happen during system maintenance, ALL_LIVE_BETTING_CLOSED = Live betting is not allowed at this moment. This may happen during system maintenance, ABOVE_EVENT_MAX = Bet cannot be placed because client exceeded allowed maximum of risk on a line, ABOVE_MAX_BET_AMOUNT = Stake is above allowed maximum amount, BELOW_MIN_BET_AMOUNT = Stake is below allowed minimum amount, BLOCKED_BETTING = Customer is an agent, BLOCKED_CLIENT = Client is no longer active, INSUFFICIENT_FUNDS = Bet is submitted by a client with insufficient funds, INVALID_COUNTRY = Client country is not allowed for betting, INVALID_EVENT = Invalid eventid, INVALID_ODDS_FORMAT = If a bet was submitted with the odds format that is not allowed for the client, LINE_CHANGED = Bet is submitted on a line that has changed, LISTED_PITCHERS_SELECTION_ERROR = If bet was submitted with pitcher1MustStart and/or pitcher2MustStart parameters in Place Bet request with values that are not allowed., OFFLINE_EVENT = Bet is submitted on a event that is offline or the submitted line is not offered at the moment due to points/handicap change or the submitted bet type is just not offered at the moment., PAST_CUTOFFTIME = Bet is submitted on a game after the betting cutoff time, RED_CARDS_CHANGED = Bet is submitted on a live soccer event with changed red card count, SCORE_CHANGED = Bet is submitted on a live soccer event with changed score, TIME_RESTRICTION = Bet is submitted within too short of a period from the same bet previously placed by a client, DUPLICATE_UNIQUE_REQUEST_ID, INCOMPLETE_CUSTOMER_BETTING_PROFILE, INVALID_CUSTOMER_PROFILE, LIMITS_CONFIGURATION_ISSUE, RESPONSIBLE_BETTING_LOSS_LIMIT_EXCEEDED, RESPONSIBLE_BETTING_RISK_LIMIT_EXCEEDED, RESUBMIT_REQUEST, SYSTEM_ERROR_3, WAGERING_SUSPENDED ] ",
+          "description": "If Status is PROCESSED_WITH_ERROR, errorCode will be in the response. => [ ALL_BETTING_CLOSED = Betting is not allowed at this moment. This may happen during system maintenance, ALL_LIVE_BETTING_CLOSED = Live betting is not allowed at this moment. This may happen during system maintenance, ABOVE_EVENT_MAX = Bet cannot be placed because client exceeded allowed maximum of risk on a line, ABOVE_MAX_BET_AMOUNT = Stake is above allowed maximum amount, BELOW_MIN_BET_AMOUNT = Stake is below allowed minimum amount, BLOCKED_BETTING = Customer is an agent, BLOCKED_CLIENT = Client is no longer active, INSUFFICIENT_FUNDS = Bet is submitted by a client with insufficient funds, INVALID_COUNTRY = Client country is not allowed for betting, INVALID_EVENT = Invalid eventid, INVALID_ODDS_FORMAT = If a bet was submitted with the odds format that is not allowed for the client, LINE_CHANGED = Bet is submitted on a line that has changed, LISTED_PITCHERS_SELECTION_ERROR = If bet was submitted with pitcher1MustStart and/or pitcher2MustStart parameters in Place Bet request with values that are not allowed., OFFLINE_EVENT = Bet is submitted on a event that is offline or the submitted line is not offered at the moment due to points/handicap change or the submitted bet type is just not offered at the moment., PAST_CUTOFFTIME = Bet is submitted on a game after the betting cutoff time, RED_CARDS_CHANGED = Bet is submitted on a live soccer event with changed red card count, SCORE_CHANGED = Bet is submitted on a live soccer event with changed score, TIME_RESTRICTION = Bet is submitted within too short of a period from the same bet previously placed by a client, DUPLICATE_UNIQUE_REQUEST_ID, INCOMPLETE_CUSTOMER_BETTING_PROFILE, INVALID_CUSTOMER_PROFILE, LIMITS_CONFIGURATION_ISSUE, RESPONSIBLE_BETTING_LOSS_LIMIT_EXCEEDED, RESPONSIBLE_BETTING_RISK_LIMIT_EXCEEDED, RESUBMIT_REQUEST, SYSTEM_ERROR_3, WAGERING_SUSPENDED , LICENCE_RESTRICTION_LIVE_BETTING_BLOCKED - Live betting blocked due to licence restrictions] ",
           "enum": [
             "ALL_BETTING_CLOSED",
             "ALL_LIVE_BETTING_CLOSED",
@@ -707,7 +711,8 @@
             "RESPONSIBLE_BETTING_RISK_LIMIT_EXCEEDED",
             "RESUBMIT_REQUEST",
             "SYSTEM_ERROR_3",
-            "WAGERING_SUSPENDED"
+            "WAGERING_SUSPENDED",
+            "LICENCE_RESTRICTION_LIVE_BETTING_BLOCKED"
           ]
         },
         "uniqueRequestId": {
@@ -1972,7 +1977,6 @@
             "SYSTEM_ERROR_2",
             "UNIQUE_REQUEST_ID_REQUIRED",
             "WAGERING_SUSPENDED",
-            "CUSTOMER_TYPE_DOES_NOT_MATCH_PARTNER",
             "INVALID_CUSTOMER_PROFILE",
             "INVALID_WAGER",
             "INVALID_WAGER_TYPE"
@@ -2046,30 +2050,18 @@
         "betStatus": {
           "type": "string",
           "example": "ACCEPTED",
-          "description": "Bet Status. => [ ACCEPTED = Bet was accepted, CANCELLED = Bet is cancelled as per Pinnacle betting rules, LOSE = The bet is settled as lose, PENDING_ACCEPTANCE = This status is reserved only for live bets. If a live bet is placed during danger zone or live delay is applied, it will be in PENDING_ACCEPTANCE , otherwise in ACCEPTED status. From this status bet can go to ACCEPTED or NOT_ACCEPTED status, REFUNDED = When an event is cancelled or when the bet is settled as push, the bet will have REFUNDED status, NOT_ACCEPTED = Bet was not accepted. Bet can be in this status only if it was previously in PENDING_ACCEPTANCE status, WON = The bet is settled as won ] ",
+          "description": "Bet Status. => [ ACCEPTED = Bet was accepted, CANCELLED = Bet is cancelled as per Pinnacle betting rules, LOSE = The bet is settled as lose,REFUNDED = When an event is cancelled or when the bet is settled as push, the bet will have REFUNDED status, WON = The bet is settled as won ] ",
           "enum": [
             "ACCEPTED",
             "CANCELLED",
             "LOSE",
             "REFUNDED",
-            "WON",
-            "NOT_ACCEPTED"
+            "WON"
           ]
         },
         "betType": {
           "type": "string",
-          "example": "SPECIAL",
-          "description": "Bet Type. => [ MONEYLINE, TEAM_TOTAL_POINTS, SPREAD, TOTAL_POINTS, SPECIAL, PARLAY, TEASER, MANUAL ] ",
-          "enum": [
-            "MONEYLINE",
-            "TEAM_TOTAL_POINTS",
-            "SPREAD",
-            "TOTAL_POINTS",
-            "SPECIAL",
-            "PARLAY",
-            "TEASER",
-            "MANUAL"
-          ]
+          "default": "SPECIAL"
         },
         "win": {
           "type": "number",
@@ -2275,7 +2267,7 @@
         },
         "betStatus": {
           "type": "string",
-          "description": "Bet Status. => [ ACCEPTED = Bet was accepted, CANCELLED = Bet is cancelled as per Pinnacle betting rules, LOSE = The bet is settled as lose, REFUNDED = When an event is cancelled or when the bet is settled as push, the bet will have REFUNDED status, NOT_ACCEPTED = Bet was not accepted. Bet can be in this status only if it was previously in PENDING_ACCEPTANCE status, WON = The bet is settled as won ] ",
+          "description": "Bet Status. => [ ACCEPTED = Bet was accepted, CANCELLED = Bet is cancelled as per Pinnacle betting rules, LOSE = The bet is settled as lose, REFUNDED = When an event is cancelled or when the bet is settled as push, the bet will have REFUNDED status, WON = The bet is settled as won ] ",
           "enum": [
             "ACCEPTED",
             "CANCELLED",
@@ -2286,17 +2278,7 @@
         },
         "betType": {
           "type": "string",
-          "description": "Bet Type. => [ MONEYLINE, TEAM_TOTAL_POINTS, SPREAD, TOTAL_POINTS, SPECIAL, PARLAY, TEASER, MANUAL ] ",
-          "enum": [
-            "MONEYLINE",
-            "TEAM_TOTAL_POINTS",
-            "SPREAD",
-            "TOTAL_POINTS",
-            "SPECIAL",
-            "PARLAY",
-            "TEASER",
-            "MANUAL"
-          ]
+          "default": "TEASER"
         },
         "win": {
           "type": "number",
@@ -2399,7 +2381,7 @@
         },
         "betStatus": {
           "type": "string",
-          "description": "Bet Status. => [ ACCEPTED = Bet was accepted, CANCELLED = Bet is cancelled as per Pinnacle betting rules, LOSE = The bet is settled as lose, REFUNDED = When an event is cancelled or when the bet is settled as push, the bet will have REFUNDED status, NOT_ACCEPTED = Bet was not accepted. Bet can be in this status only if it was previously in PENDING_ACCEPTANCE status, WON = The bet is settled as won ] ",
+          "description": "Bet Status. => [ ACCEPTED = Bet was accepted, CANCELLED = Bet is cancelled as per Pinnacle betting rules, LOSE = The bet is settled as lose, REFUNDED = When an event is cancelled or when the bet is settled as push, the bet will have REFUNDED status, WON = The bet is settled as won ] ",
           "enum": [
             "ACCEPTED",
             "CANCELLED",
@@ -2410,17 +2392,7 @@
         },
         "betType": {
           "type": "string",
-          "description": "Bet Type. => [ MONEYLINE, TEAM_TOTAL_POINTS, SPREAD, TOTAL_POINTS, SPECIAL, PARLAY, TEASER, MANUAL ] ",
-          "enum": [
-            "MONEYLINE",
-            "TEAM_TOTAL_POINTS",
-            "SPREAD",
-            "TOTAL_POINTS",
-            "SPECIAL",
-            "PARLAY",
-            "TEASER",
-            "MANUAL"
-          ]
+          "default": "MANUAL"
         },
         "win": {
           "type": "number",
@@ -2533,7 +2505,7 @@
       },
       "description": ""
     },
-    "WageringStatusResponse": {
+    "BettingStatusResponse": {
       "type": "object",
       "required": [
         "status"
@@ -2541,7 +2513,7 @@
       "properties": {
         "status": {
           "type": "string",
-          "description": "Wagering Status => [ ALL_BETTING_ENABLED, ALL_LIVE_BETTING_CLOSED, ALL_BETTING_CLOSED ] ",
+          "description": "Betting Statuses => [ ALL_BETTING_ENABLED, ALL_LIVE_BETTING_CLOSED, ALL_BETTING_CLOSED ] ",
           "enum": [
             "ALL_BETTING_ENABLED",
             "ALL_LIVE_BETTING_CLOSED",
