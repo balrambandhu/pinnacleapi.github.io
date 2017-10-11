@@ -1,7 +1,7 @@
 swagger: '2.0'
 info:
   version: 1.0.0
-  title: Pinnacle Lines API Specification v2.0
+  title: Pinnacle Sports - Lines API Specification
   x-logo:
     url: >-
       https://avatars1.githubusercontent.com/u/31601407?v=4&u=54e0f4214bbf5680607a7f8e0ea78717912accee&s=400
@@ -1395,50 +1395,6 @@ paths:
           description: OK
           schema:
             $ref: '#/definitions/TeaserGroupsResponse'
-        '400':
-          description: BadRequest
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-        '401':
-          description: Unauthorized
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-        '403':
-          description: Forbidden
-          schema:
-            $ref: '#/definitions/ErrorResponse'
-        '500':
-          description: InternalServerError
-          schema:
-            $ref: '#/definitions/ExtendedErrorResponse'
-  /v1/translations:
-    get:
-      description: Get Transaltions - v1
-      tags:
-        - Others
-      summary: >-
-        Each string in parameters must be URL encoded and separated with “|”
-        character. Parameters are not case-sensitive.
-      operationId: Translations_V1_Get
-      consumes: []
-      produces:
-        - application/json
-      parameters:
-        - name: cultureCodes
-          in: query
-          description: Must be in Language Culture Name format.
-          required: true
-          type: string
-        - name: baseTexts
-          in: query
-          description: Array of strings to be translated.
-          required: true
-          type: string
-      responses:
-        '200':
-          description: OK
-          schema:
-            $ref: '#/definitions/TranslationResponse'
         '400':
           description: BadRequest
           schema:
@@ -3011,34 +2967,6 @@ definitions:
         type: number
         format: double
         description: Number of points the line will be teased for the given league.
-  TranslationResponse:
-    type: object
-    properties:
-      translations:
-        type: array
-        description: Collection of translations.
-        items:
-          $ref: '#/definitions/Translation'
-  Translation:
-    type: object
-    properties:
-      text:
-        type: string
-        description: Original requested text to be translated.
-      cultures:
-        type: array
-        description: Collection of translations by culture.
-        items:
-          $ref: '#/definitions/TranslationByCulture'
-  TranslationByCulture:
-    type: object
-    properties:
-      id:
-        type: string
-        description: Culture based on which the text is translated.
-      text:
-        type: string
-        description: Translation text.
   SpecialsFixturesResponse:
     type: object
     properties:

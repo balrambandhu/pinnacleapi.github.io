@@ -1,0 +1,167 @@
+swagger: '2.0'
+info:
+  version: 1.0.0
+  title: Pinnacle Sports - Customer API Specification
+x-logo:
+    url: >-
+      https://avatars1.githubusercontent.com/u/31601407?v=4&u=54e0f4214bbf5680607a7f8e0ea78717912accee&s=400
+host: api.pinnacle.com
+schemes:
+  - https
+security:
+  - basicAuth: []
+paths:
+  /v1/client/balance:
+    get:
+      description: Get Client Balance - V1
+      tags:
+        - Default
+      summary: Returns current client balance.
+      operationId: Client_Balance_V1_Get
+      consumes: []
+      produces:
+        - application/json
+        - text/json
+        - application/xml
+        - text/xml
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/ClientBalanceResponse'
+        '400':
+          description: BadRequest
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: InternalServerError
+          schema:
+            $ref: '#/definitions/ExtendedErrorResponse'
+      deprecated: false
+  /v1/translations:
+    get:
+      description: Get Transaltions - v1
+      tags:
+        - Default
+      summary: >-
+        Each string in parameters must be URL encoded and separated with “|”
+        character. Parameters are not case-sensitive.
+      operationId: Translations_V1_Get
+      consumes: []
+      produces:
+        - application/json
+      parameters:
+        - name: cultureCodes
+          in: query
+          description: Must be in Language Culture Name format.
+          required: true
+          type: string
+        - name: baseTexts
+          in: query
+          description: Array of strings to be translated.
+          required: true
+          type: string
+      responses:
+        '200':
+          description: OK
+          schema:
+            $ref: '#/definitions/TranslationResponse'
+        '400':
+          description: BadRequest
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '401':
+          description: Unauthorized
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '403':
+          description: Forbidden
+          schema:
+            $ref: '#/definitions/ErrorResponse'
+        '500':
+          description: InternalServerError
+          schema:
+            $ref: '#/definitions/ExtendedErrorResponse'
+securityDefinitions:
+  basicAuth:
+    type: basic
+definitions:
+  ErrorResponse:
+    type: object
+    properties:
+      code:
+        type: string
+        description: Identifier representing the the type of error that occurred.
+      message:
+        type: string
+        description: Description of the the error.
+    description: Contains details of an error that was encountered.
+  ExtendedErrorResponse:
+    type: object
+    properties:
+      ref:
+        type: string
+      code:
+        type: string
+      message:
+        type: string
+  ClientBalanceResponse:
+    description: Client Balance Details
+    type: object
+    properties:
+      availableBalance:
+        format: double
+        description: Amount available for betting.
+        type: number
+      outstandingTransactions:
+        format: double
+        description: Sum of not yet settled bet amounts.
+        type: number
+      givenCredit:
+        format: double
+        description: Client’s credit.
+        type: number
+      currency:
+        description: Client’s currency code.
+        type: string
+    required: 
+      - availableBalance
+      - outstandingTransactions
+      - givenCredit
+      - currency
+  TranslationResponse:
+    type: object
+    properties:
+      translations:
+        type: array
+        description: Collection of translations.
+        items:
+          $ref: '#/definitions/Translation'
+  Translation:
+    type: object
+    properties:
+      text:
+        type: string
+        description: Original requested text to be translated.
+      cultures:
+        type: array
+        description: Collection of translations by culture.
+        items:
+          $ref: '#/definitions/TranslationByCulture'
+  TranslationByCulture:
+    type: object
+    properties:
+      id:
+        type: string
+        description: Culture based on which the text is translated.
+      text:
+        type: string
+        description: Translation text.
