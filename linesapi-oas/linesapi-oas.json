@@ -3,8 +3,7 @@ info:
   version: 1.0.0
   title: Pinnacle - Lines API Specification
   x-logo:
-    url: >-
-      https://avatars1.githubusercontent.com/u/31601407?v=4&u=54e0f4214bbf5680607a7f8e0ea78717912accee&s=400
+    url: https://avatars1.githubusercontent.com/u/31601407?v=4&u=54e0f4214bbf5680607a7f8e0ea78717912accee&s=400
 host: api.pinnacle.com
 schemes:
   - https
@@ -1573,13 +1572,11 @@ definitions:
       liveStatus:
         type: integer
         format: int32
-        description: >-
+        description: |
           Indicates live status of the event. 
           
           0 = No live betting will be offered on this event, 
-          
           1 = Live betting event, 
-          
           2 = Live betting will be offered on this event
         enum:
           - 0
@@ -1593,14 +1590,12 @@ definitions:
         description: Away team pitcher. Only for Baseball.
       status:
         type: string
-        description: >-
+        description: |
         
           Status of the event. 
           
           O = This is the starting status of a game. It means that the lines are open for betting, 
-          
           H = This status indicates that the lines are temporarily unavailable for betting, 
-          
           I = This status indicates that one or more lines have a red circle (lower maximum bet amount)
         enum:
           - O
@@ -1609,14 +1604,12 @@ definitions:
       parlayRestriction:
         type: integer
         format: int32
-        description: >-
+        description: |
         
           Parlay status of the event. 
           
           0 = Allowed to parlay, without restrictions, 
-          
           1 = Not allowed to parlay this event, 
-          
           2 = Allowed to parlay with the restrictions. You can not have more than one leg from the same event in the parlay. All events with the same rotation number are treated as same event.
         enum:
           - 0
@@ -1672,17 +1665,13 @@ definitions:
       status:
         type: integer
         format: int32
-        description: >-
+        description: |
           Period settlement status. 
           
           1 = Event period is settled, 
-          
           2 = Event period is re-settled, 
-          
           3 = Event period is cancelled, 
-          
           4 = Event period is re-settled as cancelled, 
-          
           5 = Event is deleted
         enum:
           - 1
@@ -1765,29 +1754,19 @@ definitions:
       state:
         type: integer
         format: int32
-        description: >-
+        description: |
           State of the game.
           
           1 = First half in progress, 
-          
           2 = Half time in progress, 
-          
           3 = Second half in progress, 
-          
           4 = End of regular time,
-          
           5 = First half extra time in progress, 
-          
           6 = Extra time half time in progress, 
-          
           7 = Second half extra time in progress, 
-          
           8 = End of extra time, 
-          
           9 = End of Game, 
-          
           10 = Game is temporary suspended, 
-          
           11 = Penalties in progress
         enum:
           - 1
@@ -1969,48 +1948,32 @@ definitions:
       status:
         type: string
         description: Status of the parlay [VALID = Parlay is valid, PROCESSED_WITH_ERROR = Parlay contains error(s)]
+        example: PROCESSED_WITH_ERROR
         enum:
           - VALID
           - PROCESSED_WITH_ERROR
       error:
         type: string
-        description: >-
+        description: |
             If status is PROCESSED_WITH_ERROR, error will be in the response.
           
             ABOVE_MAX_BET_AMOUNT = Stake is above allowed maximum amount,
-            
             ALL_BETTING_CLOSED = Betting is not allowed at this moment,
-            
             BELOW_MIN_BET_AMOUNT = Stake is below allowed minimum amount,
-            
             BLOCKED_BETTING = Customer is an agent,
-            
             BLOCKED_CLIENT = Client is no longer active,
-            
             DUPLICATE_UNIQUE_REQUEST_ID = Duplicate Request Id,
-            
             INSUFFICIENT_FUNDS = Bet is submitted by a client with insufficient funds,
-            
             INVALID_COUNTRY = Client country is not allowed for betting,
-            
             INVALID_LEGS = One or more legs are invalid,
-            
             INVALID_ODDS_FORMAT = If a bet was submitted with the odds format that is not allowed for the client,
-            
             INVALID_REQUEST = Parlay request is not valid,
-            
             INVALID_ROUND_ROBIN_OPTIONS = Round robin options are invalid (i.e. does not match with number of legs),
-            
             ROUND_ROBIN_DISALLOWED = Round robin is disallowed for one of the leagues,
-            
             TOO_MANY_LEGS = Maximum of 10 legs can be specified,
-            
             TOO_FEW_LEGS = At least 2 legs are required for Parlay,
-            
             RESPONSIBLE_BETTING_RISK_LIMIT_EXCEEDED = Self-imposed risk limit exceeded,
-            
             RESPONSIBLE_BETTING_LOSS_LIMIT_EXCEEDED = Self-imposed loss limit exceeded,
-            
             INVALID_CUSTOMER_PROFILE = Invalid Customer Profile
         enum:
           - ABOVE_MAX_BET_AMOUNT
@@ -2056,23 +2019,16 @@ definitions:
     properties:
       roundRobinOption:
         type: string
-        description: >- 
+        description: | 
           RoundRobinOptions
           
             Parlay = Single parlay that include all wagers (No Round Robin), 
-            
             TwoLegRoundRobin = Multiple parlays having 2 wagers each (round robin style), 
-            
             ThreeLegRoundRobin = Multiple parlays having 3 wagers each (round robin style), 
-            
             FourLegRoundRobin = Multiple parlays having 4 wagers each (round robin style), 
-            
             FiveLegRoundRobin = Multiple parlays having 5 wagers each (round robin style), 
-            
             SixLegRoundRobin = Multiple parlays having 6 wagers each (round robin style),
-            
             SevenLegRoundRobin = Multiple parlays having 7 wagers each (round robin style), 
-            
             EightLegRoundRobin = Multiple parlays having 8 wagers each (round robin style)
         enum:
           - Parlay
@@ -2106,51 +2062,30 @@ definitions:
           - PROCESSED_WITH_ERROR
       errorCode:
         type: string
-        description: >-
+        description: |
           When Status is PROCESSED_WITH_ERROR, provides a code indicating the specific problem. 
           
             CANNOT_PARLAY_LIVE_GAME = The wager is placed on Live game, 
-            
             CORRELATED = The leg is correlated with another one, 
-            
             EVENT_NO_LONGER_AVAILABLE_FOR_BETTING = The event is no longer offered for Parlays, 
-            
             EVENT_NOT_OFFERED_FOR_PARLAY = The event is not offered for Parlays, 
-            
             INVALID_EVENT = Live betting is not allowed at this moment, 
-            
             INVALID_LEG_BET_TYPE = Leg bet type is not accepted for Parlays, Accepted values are SPREAD, MONEYLINE, TOTAL_POINTS,
-            
             INVALID_PARLAY_BET = The leg did not validated due to error on ParlayBet. Check the error PlaceParlayBet response for error details,
-            
             LINE_CHANGED = Bet is submitted on a line that has changed,
-            
             LINE_DOES_NOT_BELONG_TO_EVENT = LineId does not match the EventId specified in the request, 
-            
             LISTED_PITCHERS_SELECTION_ERROR = If bet was submitted with pitcher1MustStart and/or pitcher2MustStart parameters with values that are not allowed, 
-            
             ODDS_NO_LONGER_OFFERED_FOR_PARLAY_1 = Due to line change odds are not offered for Parlay anymore,
-            
             ODDS_NO_LONGER_OFFERED_FOR_PARLAY_2 = Due to line change odds are not offered for Parlay anymore, 
-            
             ODDS_NO_LONGER_OFFERED_FOR_PARLAY_3 = Due to line change odds are not offered for Parlay anymore, 
-            
             OFFLINE_EVENT = Bet is submitted on an event that is offline or with incorrect lineId, 
-            
             PAST_CUTOFFTIME = Bet is submitted on a game after the betting cutoff time, 
-            
             SYSTEM_ERROR_1 = Unexpected error or System error,
-            
             SYSTEM_ERROR_2 = Unexpected error or System error, 
-            
             SYSTEM_ERROR_3 = Unexpected error or System error,
-            
             LINE_IS_NOT_AVAILABLE = Line is not available for the specified Parlay Leg,
-            
             WAGER_TYPE_NO_LONGER_AVAILABLE_FOR_BETTING = Wager Type no longer available for betting,
-            
             WAGER_TYPE_NOT_VALID_FOR_PARLAY =  Wager Type not valid for parlay,
-            
             WAGER_TYPE_CONFLICTS_WITH_OTHER_LEG = Wager Type conflicts with other leg
         enum:
           - CANNOT_PARLAY_LIVE_GAME
@@ -2271,26 +2206,21 @@ definitions:
       status:
         type: string
         description: Status of the request. [VALID = Teaser is valid, PROCESSED_WITH_ERROR = Teaser contains one or more errors] 
+        example: PROCESSED_WITH_ERROR
         enum:
           - VALID
           - PROCESSED_WITH_ERROR
       errorCode:
         type: string
-        description: >-
+        description: |
           When Status is PROCESSED_WITH_ERROR, provides a code indicating the specific problem. 
           
-            INVALID_LEGS = One or more of the legs is invalid, 
-            
+            INVALID_LEGS = One or more of the legs is invalid,
             SAME_EVENT_ONLY_REQUIRED = Teaser specified requires that all legs are from the same event,
-            
             TEASER_DISABLED = Teaser has been disabled and cannot be bet on,
-            
             TEASER_DOES_NOT_EXIST = The teaser identifier could requeted could not be found,
-            
             TOO_FEW_LEGS = You do not meet the minimum number of legs requirement for the teaser specified, 
-            
             TOO_MANY_LEGS = You are above the maximum number of legs for the teaser specified, 
-            
             UNKNOWN = An unknown error has occured 
         enum:
           - INVALID_LEGS
@@ -2334,20 +2264,18 @@ definitions:
       status:
         type: string
         description: Status of the request. [VALID = Teaser is valid, PROCESSED_WITH_ERROR = Teaser contains error(s)] 
+        example: PROCESSED_WITH_ERROR
         enum:
           - VALID
           - PROCESSED_WITH_ERROR
       errorCode:
         type: string
-        description: >-
+        description: |
           When Status is PROCESSED_WITH_ERROR, provides a code indicating the specific problem.
           
             EVENT_NOT_FOUND = The event specified could not be found, 
-            
             POINTS_NO_LONGER_AVAILABLE = The points requested are no longer available. This means that the lines moved, 
-            
             UNKNOWN = An unknown error has occured, 
-            
             WAGER_TYPE_NOT_VALID_FOR_TEASER = The specified wager type is not valid for teasers
         enum:
           - EVENT_NOT_FOUND
@@ -2964,8 +2892,7 @@ definitions:
       id:
         type: integer
         format: int32
-        description: >-
-          Unique identifier. League details can be retrieved from a call to v2/leagues endpoint.
+        description: Unique identifier. League details can be retrieved from a call to v2/leagues endpoint.
       spread:
         $ref: '#/definitions/TeaserGroupsBetType'
       total:
@@ -3037,13 +2964,11 @@ definitions:
         description: Measurment in the context of the special. This is applicable to specials bet type spead and over/under. In a hockey special this could be goals.
         type: string
       status:
-        description: >-
+        description: |
           Status of the Special 
           
           O = This is the starting status of a game. It means that the lines are open for betting, 
-          
           H = This status indicates that the lines are temporarily unavailable for betting, 
-          
           I = This status indicates that one or more lines have a red circle (a lower maximum bet amount)
         enum:
           - O
