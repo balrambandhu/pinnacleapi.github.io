@@ -1,7 +1,7 @@
 swagger: '2.0'
 info:
   version: 1.0.0
-  title: Pinnacle Sports - Customer API Specification
+  title: Pinnacle - Customer API Specification
 x-logo:
     url: >-
       https://avatars1.githubusercontent.com/u/31601407?v=4&u=54e0f4214bbf5680607a7f8e0ea78717912accee&s=400
