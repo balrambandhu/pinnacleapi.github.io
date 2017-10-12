@@ -13,11 +13,11 @@ security:
 paths:
   /v1/fixtures:
     get:
-      description: Get Fixtures - V1
       tags:
         - Fixtures
-      summary: >-
-        Returns all non-settled events for the given sport. Please note that it is possible that the event is in Get Fixtures response but not in Get Odds. This happens when the odds are not currently available for wagering. Please note that it is possible to receive the same exact response when using *since* parameter. This is rare and can be caused by internal updates of event properties.
+      summary: Get Fixtures - v1
+      description: >-
+        Returns all **non-settled** events for the given sport. Please note that it is possible that the event is in Get Fixtures response but not in Get Odds. This happens when the odds are not currently available for wagering. Please note that it is possible to receive the same exact response when using **since** parameter. This is rare and can be caused by internal updates of event properties.
       operationId: Fixtures_V1_Get
       consumes: []
       produces:
@@ -84,10 +84,11 @@ paths:
             $ref: '#/definitions/ExtendedErrorResponse'
   /v1/fixtures/special:
     get:
-      description: Get Special Fixtures - V1
       tags:
         - Fixtures
-      summary: Returns all non-settled specials for the given sport.
+      summary: Get Special Fixtures - v1
+      description: >-
+        Returns all **non-settled** specials for the given sport.
       operationId: Fixtures_Special_V1_Get
       consumes: []
       produces:
@@ -350,10 +351,10 @@ paths:
       deprecated: false
   /v1/fixtures/settled:
     get:
-      description: Get Settled Fixtures - V1
       tags:
         - Fixtures
-      summary: Returns fixtures settled in the last 24 hours for the given sport.
+      summary: Get Settled Fixtures - v1
+      description: Returns fixtures settled in the last 24 hours for the given sport.
       operationId: Fixtures_Settled_V1_Get
       consumes: []
       produces:
@@ -430,10 +431,10 @@ paths:
             $ref: '#/definitions/ExtendedErrorResponse'
   /v1/fixtures/special/settled:
     get:
-      description: Get Settled Special Fixtures - v1
       tags:
         - Fixtures
-      summary: Returns all specials which are settled in the last 24 hours for the given Sport.
+      summary: Get Settled Special Fixtures - v1
+      description: Returns all specials which are settled in the last 24 hours for the given Sport.
       operationId: Fixtures_Specials_Settled_V1_Get
       consumes: []
       produces:
@@ -507,11 +508,11 @@ paths:
       deprecated: false
   /v1/odds:
     get:
-      description: Get Odds - v1
       tags:
         - Odds
-      summary: >-
-        Returns straight and parlay odds for all non-settled events. Please note that it is possible that the event is in Get Fixtures response but not in Get Odds. This happens when the odds are not currently available for wagering.
+      summary: Get Straight Odds - v1
+      description: >-
+        Returns straight odds for all non-settled events. Please note that it is possible that the event is in Get Fixtures response but not in Get Odds. This happens when the odds are not currently available for wagering.
       operationId: Odds_Straight_V1_Get
       consumes: []
       produces:
@@ -585,11 +586,11 @@ paths:
             $ref: '#/definitions/ErrorResponse'
   /v1/odds/parlay:
     get:
-      description: Get Parlay Odds - v1
       tags:
         - Odds
-      summary: >-
-        Returns straight and parlay odds for all non-settled events. Please note that it is possible that the event is in Get Fixtures response but notin Get Odds. This happens when the odds are not currently available for wagering.
+      summary: Get Parlay Odds - v1
+      description: >-
+        Returns parlay odds for all non-settled events. Please note that it is possible that the event is in Get Fixtures response but notin Get Odds. This happens when the odds are not currently available for wagering.
       operationId: Odds_Parlays_V1_Get
       consumes: []
       produces:
@@ -675,10 +676,10 @@ paths:
             $ref: '#/definitions/ExtendedErrorResponse'
   /v1/odds/teaser:
     get:
-      description: Get Teaser Odds - v1
       tags:
         - Odds
-      summary: Returns odds for specified teaser.
+      summary: Get Teaser Odds - v1
+      description: Returns odds for specified teaser.
       operationId: Odds_Teasers_V1_Get
       consumes: []
       produces:
@@ -715,10 +716,10 @@ paths:
             $ref: '#/definitions/ExtendedErrorResponse'
   /v1/odds/special:
     get:
-      description: Get Special Odds - v1
       tags:
         - Odds
-      summary: Returns odds for specials for all non-settled events.
+      summary: Get Special Odds - v1
+      description: Returns odds for specials for all non-settled events.
       operationId: Odds_Special_V1_Get
       consumes: []
       produces:
@@ -944,10 +945,10 @@ paths:
       deprecated: false
   /v1/line:
     get:
-      description: Get Line - v1
       tags:
         - Line
-      summary: Returns latest line.
+      summary: Get Straight Line - v1
+      description: Returns latest line.
       operationId: Line_Straight_V1_Get
       consumes: []
       produces:
@@ -1045,10 +1046,10 @@ paths:
             $ref: '#/definitions/ExtendedErrorResponse'
   /v1/line/parlay:
     post:
-      description: Get Parlay Line - v1
       tags:
         - Line
-      summary: Returns parlay lines and calculate odds.
+      summary: Get Parlay Line - v1
+      description: Returns parlay lines and calculate odds.
       operationId: Line_Parlay_V1_Post
       consumes:
         - application/json
@@ -1083,12 +1084,11 @@ paths:
             $ref: '#/definitions/ExtendedErrorResponse'
   /v1/line/teaser:
     post:
-      description: Get Teaser Line - v1
       tags:
         - Line
-      summary: >-
-        Validates a teaser bet prior to submission. Returns bet limit and price
-        on success.
+      summary: Get Teaser Line - v1
+      description: >-
+        Validates a teaser bet prior to submission. Returns bet limit and price on success.
       operationId: Line_Teaser_V1_Post
       consumes:
         - application/json
@@ -1123,10 +1123,11 @@ paths:
             $ref: '#/definitions/ExtendedErrorResponse'
   /v1/line/special:
     get:
-      description: Get Special Line - v1
       tags:
         - Line
       operationId: Line_Special_V1_Get
+      summary: Get Special Line - v1
+      description: Returns special lines and calculate odds.
       consumes: []
       produces:
         - application/json
@@ -1191,12 +1192,11 @@ paths:
       deprecated: false
   /v2/sports:
     get:
-      description: Get Sports - v2
       tags:
         - Others  
-      summary: >-
-        Returns all sports with the status whether they currently have lines or
-        not.
+      summary: Get Sports - v2
+      description:  >-
+        Returns all sports with the status whether they currently have lines or not.
       operationId: Sports_V2_Get
       consumes: []
       produces:
@@ -1221,12 +1221,11 @@ paths:
             $ref: '#/definitions/LinesErrorResponse'
   /v2/leagues:
     get:
-      description: Get Leagues - v2
       tags:
         - Others
-      summary:
-        Returns all sports leagues with the status whether they currently have
-        lines or not.
+      summary: Get Leagues - v2
+      description: >-
+        Returns all sports leagues with the status whether they currently have lines or not.
       operationId: Leagues_V2_Get
       consumes: []
       produces:
@@ -1260,10 +1259,10 @@ paths:
             $ref: '#/definitions/ExtendedErrorResponse'
   /v1/periods:
     get:
-      description: Get Periods - v1
       tags:
         - Others
-      summary: >-
+      summary: Get Periods - v1
+      description: >- 
         Returns all periods for a given sport.
       operationId: Periods_V1_Get
       consumes: []
@@ -1339,10 +1338,10 @@ paths:
             $ref: '#/definitions/ExtendedErrorResponse'
   /v1/inrunning:
     get:
-      description: Get In Running - v1
       tags:
         - Others
-      summary: >-
+      summary: Get In-Running - v1
+      description: >-
         Returns all live soccer events that have a status that indicates the event is in progress.
       operationId: InRunning_V1_Get
       consumes: []
@@ -1368,10 +1367,10 @@ paths:
             $ref: '#/definitions/ExtendedLinesErrorResponse'
   /v1/teaser/groups:
     get:
-      description: Get Teaser Groups - v1
       tags:
         - Others
-      summary: Returns all teaser groups.
+      summary: Get Teaser Groups - v1
+      description: Returns all teaser groups.
       operationId: Teaser_Groups_V1_Get
       consumes: []
       produces:
@@ -1413,10 +1412,10 @@ paths:
             $ref: '#/definitions/ExtendedErrorResponse'
   /v1/cancellationreasons:
     get:
-      description: Get Cancellation Reasons - v1
       tags:
         - Others
-      summary: Lookup for all the cancellation reasons
+      summary: Get Cancellation Reasons - v1
+      description: Lookup for all the cancellation reasons
       operationId: CancellationReasons_V1_Get
       consumes: []
       produces:
@@ -1441,10 +1440,10 @@ paths:
             $ref: '#/definitions/ExtendedErrorResponse'
   /v2/currencies:
     get:
-      description: Get Currencies - v2
       tags:
         - Others
-      summary: Returns the list of supported currencies
+      summary: Get Currencies - v2
+      description: Returns the list of supported currencies
       operationId: Currencies_V2_Get
       consumes: []
       produces:

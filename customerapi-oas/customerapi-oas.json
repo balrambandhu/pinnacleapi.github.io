@@ -13,10 +13,10 @@ security:
 paths:
   /v1/client/balance:
     get:
-      description: Get Client Balance - V1
       tags:
         - Default
-      summary: Returns current client balance.
+      summary: Get Client Balance - v1
+      description: Returns current client balance.
       operationId: Client_Balance_V1_Get
       consumes: []
       produces:
@@ -48,12 +48,12 @@ paths:
       deprecated: false
   /v1/translations:
     get:
-      description: Get Transaltions - v1
       tags:
         - Default
-      summary: >-
-        Each string in parameters must be URL encoded and separated with “|”
-        character. Parameters are not case-sensitive.
+      summary: Get Translations - v1
+        
+      description: >-
+        Returns translations for strings in base texts array. Each string in parameters must be URL encoded and separated with '|' character. Parameters are not case-sensitive.
       operationId: Translations_V1_Get
       consumes: []
       produces:
